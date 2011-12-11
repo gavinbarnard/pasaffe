@@ -1,0 +1,1456 @@
+2011-12-11  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.11
+
+2011-12-11  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	Updated NEWS file
+
+2011-12-11  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* README:
+
+	- Added a README file
+
+2011-12-11  Launchpad Translations on behalf of mdeslaur
+
+	* po/fr.po:
+
+	Launchpad automatic translations update.
+
+2011-12-10  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	- Updated NEWS file
+
+2011-12-10  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* debian:
+	* debian/changelog:
+	* debian/compat:
+	* debian/control:
+	* debian/copyright:
+	* debian/rules:
+	* do-release:
+
+	- Remove debian directory, and fix do-release. This should be in
+	distribution packaging, not in the upstream tarball.
+
+2011-12-10  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe_lib/Window.py:
+
+	- Re-enable launchpad integration, since we'll try and get this into
+	Precise.
+
+2011-12-10  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* help/fr:
+	* help/fr/delete-entry.page:
+	* help/fr/figures:
+	* help/fr/figures/icon.png:
+	* help/fr/index.page:
+	* help/fr/new-entry.page:
+	* help/fr/preferences.page:
+	* help/fr/show-secrets.page:
+	* help/C/delete-entry.page:
+	* help/C/index.page:
+	* help/C/new-entry.page:
+	* help/C/preferences.page:
+	* help/C/show-secrets.page:
+
+	- Added french help file
+	- Corrected email address in help files
+
+2011-12-10  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* help/C/delete-entry.page:
+	* help/C/new-entry.page:
+	* help/C/show-secrets.page:
+	* help/C/topic1.page:
+	* NEWS:
+	* TODO:
+	* help/C/figures/icon.png:
+	* help/C/index.page:
+	* help/C/preferences.page:
+
+	- Added help file with basic usage instructions
+
+2011-10-04  Launchpad Translations on behalf of mdeslaur
+
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+
+	Launchpad automatic translations update.
+
+2011-10-03  Launchpad Translations on behalf of mdeslaur
+
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+
+	Launchpad automatic translations update.
+
+2011-10-02  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	Prepared NEWS file for next release
+
+2011-10-02  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* debian/changelog:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.10
+
+2011-10-02  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* pasaffe/PasaffeWindow.py:
+
+	Don't indicate a save is required when a new entry is cancelled
+
+2011-10-02  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* TODO:
+	* data/ui/PasaffeWindow.ui:
+	* pasaffe/PasaffeWindow.py:
+
+	- merged improvements from Francesco Marella
+	- Updated NEWS and TODO files
+
+2011-09-28  Francesco Marella  <fmarl@paranoici.org>
+
+	* data/ui/PasaffeWindow.ui:
+	* pasaffe/PasaffeWindow.py:
+
+	Implement the duplication of entries through the clone action
+
+2011-09-28  Francesco Marella  <fmarl@paranoici.org>
+
+	* data/ui/PasaffeWindow.ui:
+	* pasaffe/PasaffeWindow.py:
+
+	Add Context menu to left pane entries
+
+2011-09-28  Francesco Marella  <fmarl@paranoici.org>
+
+	* data/ui/PasaffeWindow.ui:
+	* pasaffe/PasaffeWindow.py:
+
+	Replace Cut-Copy-Paste actions with Clone
+
+2011-09-30  Launchpad Translations on behalf of mdeslaur
+
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+
+	Launchpad automatic translations update.
+
+2011-09-27  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* .quickly:
+	* data/ui/AboutPasaffeDialog.ui:
+
+	Added contributors to about dialog
+
+2011-09-27  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* TODO:
+
+	Updated NEWS and TODO
+
+2011-09-27  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/pasaffe.schemas.in:
+	* data/ui/PreferencesPasaffeDialog.ui:
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe/PreferencesPasaffeDialog.py:
+	* pasaffe/__init__.py:
+
+	Implement option to automatically save changes. (LP: #856302)
+	Thanks to Francesco Marella!
+
+2011-09-27  Francesco Marella  <fmarl@paranoici.org>
+
+	* data/pasaffe.schemas.in:
+	* data/ui/PreferencesPasaffeDialog.ui:
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe/PreferencesPasaffeDialog.py:
+	* pasaffe/__init__.py:
+
+	Implement automatically save changes (LP: #856302)
+
+2011-09-22  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+
+	Added save option to TODO
+
+2011-09-21  Launchpad Translations on behalf of mdeslaur
+
+	* po/it.po:
+	* po/nl.po:
+
+	Launchpad automatic translations update.
+
+2011-09-20  Launchpad Translations on behalf of mdeslaur
+
+	* po/it.po:
+	* po/nl.po:
+
+	Launchpad automatic translations update.
+
+2011-09-20  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* bin/pasaffe-import-figaroxml:
+	* pasaffe_lib/figaroxml.py:
+	* AUTHORS:
+	* NEWS:
+	* debian/copyright:
+
+	Merged pasaffe-import-figaroxml from Francesco Marella
+	Updated copyright, AUTHORS and NEWS files
+
+2011-09-20  Francesco Marella  <fmarl@paranoici.org>
+
+	* bin/pasaffe-import-figaroxml:
+	* pasaffe_lib/figaroxml.py:
+
+	pasaffe-import-figaroxml script helps to migrate from fpm2 to pasaffe.
+	
+	Open fpm2, export all your passwords to XML file and use pasaffe-import-figaroxml to import them in pasaffe.
+
+2011-09-18  Launchpad Translations on behalf of mdeslaur
+
+	* po/nl.po:
+
+	Launchpad automatic translations update.
+
+2011-09-17  Launchpad Translations on behalf of mdeslaur
+
+	* po/fr.po:
+
+	Launchpad automatic translations update.
+
+2011-09-16  Launchpad Translations on behalf of mdeslaur
+
+	* po/fr.po:
+
+	Launchpad automatic translations update.
+
+2011-09-15  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	- Prepared NEWS file for next release
+
+2011-09-15  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* debian/changelog:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.9
+
+2011-09-15  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+
+	- added a TODO
+
+2011-09-10  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* pasaffe/PasaffeWindow.py:
+
+	- Don't crash when adding a new entry and attempting to update the right
+	pane when nothing is selected.
+
+2011-08-29  Launchpad Translations on behalf of mdeslaur
+
+	* po/fr.po:
+
+	Launchpad automatic translations update.
+
+2011-08-28  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	- Prepare NEWS file for new release
+
+2011-08-28  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* debian/changelog:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.8
+
+2011-08-28  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	- Updated NEWS
+
+2011-08-28  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* setup.py:
+
+	- python-distutils-extra in Lucid and Maverick doesn't support Mallard
+	help files, so add workaround in setup.py
+
+2011-08-26  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* bin/pasaffe-dump-db:
+	* AUTHORS:
+	* NEWS:
+	* debian/copyright:
+
+	- merged pasaffe-dump-db thanks to Jamie Standboge
+	- updated AUTHORS and debian/copyright files
+
+2011-08-26  Jamie Strandboge  <jamie@canonical.com>
+
+	* bin/pasaffe-dump-db:
+	* NEWS:
+
+	add bin/pasaffe-dump-db
+
+2011-08-26  Launchpad Translations on behalf of mdeslaur
+
+	* po/fr.po:
+
+	Launchpad automatic translations update.
+
+2011-08-25  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* pasaffe/PasaffeWindow.py:
+
+	- Only update right pane if the same entry is still selected
+
+2011-08-25  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* debian/changelog:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.7
+
+2011-08-25  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/fr.po:
+
+	- merge translations
+
+2011-08-25  Launchpad Translations on behalf of mdeslaur
+
+	* po/fr.po:
+
+	Launchpad automatic translations update.
+
+2011-08-25  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* pasaffe/PasaffeWindow.py:
+
+	Prevent the edit entry dialog from opening twice
+
+2011-08-24  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/fr.po:
+
+	- Merge translations from launchpad
+
+2011-08-24  Launchpad Translations on behalf of mdeslaur
+
+	* po/fr.po:
+
+	Launchpad automatic translations update.
+
+2011-08-24  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* bin/pasaffe-import-entry:
+	* NEWS:
+
+	- Added script to import an entry from the command line
+
+2011-08-23  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	- Update NEWS
+
+2011-08-23  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe_lib/preferences.py:
+
+	- better handle empty gconf keys
+
+2011-08-23  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	- Add new section to NEWS
+
+2011-08-23  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* do-release:
+
+	- also create new release in debian/changes
+
+2011-08-23  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* debian/changelog:
+
+	New release
+
+2011-08-23  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.6
+
+2011-08-23  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	Added NEWS
+
+2011-08-23  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/AboutPasaffeDialog.ui:
+	* data/ui/EditDetailsDialog.ui:
+	* data/ui/LockScreenDialog.ui:
+	* data/ui/NewDatabaseDialog.ui:
+	* data/ui/NewPasswordDialog.ui:
+	* data/ui/PasswordEntryDialog.ui:
+	* data/ui/PreferencesPasaffeDialog.ui:
+	* data/ui/SaveChangesDialog.ui:
+
+	- fixed compatibility with recent glade
+
+2011-08-23  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* TODO:
+
+	- Updated NEWS and TODO
+
+2011-08-23  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/fr.po:
+
+	- Updated french translation
+
+2011-08-23  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/pasaffe.pot:
+
+	Update .pot file
+
+2011-08-23  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe/__init__.py:
+
+	Make more strings translatable
+
+2011-08-23  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe_lib/Window.py:
+
+	- pasaffe_lib/Window.py: use new preference name
+
+2011-08-23  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/fr.po:
+
+	- add the start of a french translation
+
+2011-08-23  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po:
+	* po/pasaffe.pot:
+	* NEWS:
+	* do-release:
+
+	- uncomment bzr stuff in do-release
+	- added po directory
+	- added NEWS
+
+2011-08-23  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* do-release:
+	* NEWS:
+	* setup.py:
+
+	- Added do-release maintainer script based on the one by Martin Pitt
+	in the jockey package
+	- Make setup.py executable
+	- Formatted NEWS file to work with do-release
+
+2011-08-23  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe_lib/pasaffeconfig.py:
+
+	pasaffe_lib/pasaffeconfig.py: set version to 0. It automatically gets
+	updated by setup.py.
+
+2011-08-22  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* data/ui/PasaffeWindow.ui:
+
+	Added missing Open URL button tooltip
+
+2011-08-22  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* debian/changelog:
+	* pasaffe_lib/pasaffeconfig.py:
+	* setup.py:
+
+	New release
+
+2011-08-22  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* data/ui/PasaffeWindow.ui:
+	* pasaffe/PasaffeWindow.py:
+
+	- Added toolbar button and keyboard shortcut to open URL
+
+2011-08-22  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* data/pasaffe.schemas.in:
+	* data/ui/PasaffeWindow.ui:
+	* data/ui/PreferencesPasaffeDialog.ui:
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe/PreferencesPasaffeDialog.py:
+	* pasaffe/__init__.py:
+
+	- Change secrets logic
+
+2011-08-21  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* debian/changelog:
+	* pasaffe_lib/pasaffeconfig.py:
+	* setup.py:
+
+	New release
+
+2011-08-21  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	- Updated NEWS file
+
+2011-08-21  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+
+	- This should work on 10.04 now, remove item from TODO
+
+2011-08-21  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe_lib/gpassfile.py:
+	* pasaffe_lib/readdb.py:
+
+	- Get rid of some warnings
+
+2011-08-21  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe_lib/Builder.py:
+
+	- Use gobject instead of gi.repository for Lucid compatibility
+
+2011-08-21  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	- Updated NEWS file
+
+2011-08-21  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+	* pasaffe/PasaffeWindow.py:
+
+	- Implement confirmation dialog when entry is deleted
+
+2011-08-21  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+	* pasaffe/PasaffeWindow.py:
+
+	- Use case-insensitive sort in left pane
+
+2011-08-21  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+
+	Add some more TODOs
+
+2011-08-20  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+
+	- Added some TODOs
+
+2011-08-20  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	- Added a NEWS file
+
+2011-08-20  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe_lib/Window.py:
+
+	- pasaffe_lib/Window.py: disable launchpad integration since this isn't
+	being shipped in Ubuntu.
+
+2011-08-20  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* debian/changelog:
+	* pasaffe_lib/pasaffeconfig.py:
+	* setup.py:
+
+	New release
+
+2011-08-20  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/pasaffe.schemas.in:
+	* setup.cfg:
+
+	Added a gconf schema file
+
+2011-08-20  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+	* data/ui/PasaffeWindow.ui:
+	* pasaffe/PasaffeWindow.py:
+
+	- Add URL open to menu, and display URLs as links
+
+2011-08-20  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/PreferencesPasaffeDialog.ui:
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe/PreferencesPasaffeDialog.py:
+	* pasaffe/__init__.py:
+
+	- Add option to make notes be considered secret. With this option
+	checked, notes will be hidden when the password is hidden.
+
+2011-08-20  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+
+	update TODO
+
+2011-08-20  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	- Make window title reflect save status
+
+2011-08-20  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/PasaffeWindow.ui:
+	* pasaffe/PasaffeWindow.py:
+
+	- Make menu item a toggle also, and sync them
+
+2011-08-20  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* .quickly:
+	* data/ui/PasaffeWindow.ui:
+	* pasaffe/PasaffeWindow.py:
+
+	- make show password button a toggle
+
+2011-08-20  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	Fix dict/list typo
+
+2011-08-19  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+
+	Added stuff to TODO
+
+2011-08-17  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* debian/changelog:
+	* pasaffe_lib/pasaffeconfig.py:
+	* setup.py:
+
+	New release.
+
+2011-08-17  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe_lib/readdb.py:
+
+	- pasaffe_lib/readdb.py: fix problem starting from unity launcher because
+	of use of os.getlogin()
+
+2011-07-29  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/EditDetailsDialog.py:
+	* pasaffe/LockScreenDialog.py:
+	* pasaffe/NewDatabaseDialog.py:
+	* pasaffe/NewPasswordDialog.py:
+	* pasaffe/PasswordEntryDialog.py:
+	* pasaffe/SaveChangesDialog.py:
+
+	Fix inadvertent license snafu
+
+2011-07-27  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/AboutPasaffeDialog.ui:
+	* pasaffe/AboutPasaffeDialog.py:
+
+	- Add version number to about dialog
+	- Improve license in about dialog
+
+2011-07-27  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe_lib/pasaffeconfig.py:
+	* pasaffe_lib/readdb.py:
+
+	Use version from pasaffeconfig.py in database
+
+2011-07-27  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* setup.py:
+
+	Fill out some info in setup.py
+
+2011-07-26  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+
+	Update TODO list
+
+2011-07-26  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/NewPasswordDialog.ui:
+	* data/ui/PasaffeWindow.ui:
+
+	Use "master password" when referring to the password that
+	protects the database.
+
+2011-07-26  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	Don't copy to PRIMARY when selected from menu
+
+2011-07-26  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	also copy to PRIMARY clipboard
+
+2011-07-26  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe.desktop.in:
+
+	Better description in desktop file
+
+2011-07-26  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+
+	- added some TODOs
+
+2011-07-23  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+	* bin/pasaffe-import-gpass:
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe_lib/readdb.py:
+
+	- Implement saving to temp file
+
+2011-07-23  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe_lib/readdb.py:
+
+	readdb.py: move stuff around so we can have more than one instance
+
+2011-07-19  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+
+	Updated TODO file
+
+2011-07-19  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe_lib/preferences.py:
+	* setup.py:
+
+	Move gconf stuff out of __init__ so setup.py works
+
+2011-07-19  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* debian/control:
+	* debian/copyright:
+
+	- more packaging work
+
+2011-07-19  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* debian:
+	* debian/changelog:
+	* debian/compat:
+	* debian/control:
+	* debian/copyright:
+	* debian/rules:
+
+	Creating ubuntu package
+
+2011-07-16  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+	* data/ui/PasaffeWindow.ui:
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe_lib/readdb.py:
+
+	- Add information dialog
+	- Correctly remove deprecated username field
+
+2011-07-16  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+
+	Added stuff to TODO
+
+2011-07-16  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/NewPasswordDialog.ui:
+	* data/ui/new_password_dialog.xml:
+	* pasaffe/NewPasswordDialog.py:
+	* TODO:
+	* data/ui/PasaffeWindow.ui:
+	* pasaffe/PasaffeWindow.py:
+
+	Added change password dialog and menu item
+
+2011-07-16  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+
+	updated TODO
+
+2011-07-16  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/LockScreenDialog.ui:
+	* data/ui/lock_screen_dialog.xml:
+	* pasaffe/LockScreenDialog.py:
+
+	- added new lock screen files
+
+2011-07-16  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/PreferencesPasaffeDialog.ui:
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe/PreferencesPasaffeDialog.py:
+	* pasaffe/__init__.py:
+
+	- added inactivity timeout for lock screen
+	- added idle settings to preferences dialog
+
+2011-07-16  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/PasaffeWindow.ui:
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe_lib/readdb.py:
+
+	Added lock screen
+
+2011-07-15  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+	* pasaffe_lib/readdb.py:
+
+	- add more fields to database header on save
+	- bump database version to 0x302
+
+2011-07-15  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+	* pasaffe_lib/readdb.py:
+
+	Generate new database keys on each save
+
+2011-07-15  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	Don't fail if an entry doesn't have one of the timestamps
+
+2011-07-15  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe_lib/gpassfile.py:
+
+	passafe_lib/gpassfile.py: fix problem when there is no padding to
+	remove
+
+2011-07-15  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe/__init__.py:
+
+	- make database path configurable in gconf and via command line
+
+2011-07-15  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe_lib/Window.py:
+	* pasaffe_lib/preferences.py:
+
+	Hook up gconf callback
+
+2011-07-14  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+	* data/ui/PreferencesPasaffeDialog.ui:
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe/PreferencesPasaffeDialog.py:
+	* pasaffe/__init__.py:
+	* pasaffe_lib/PreferencesDialog.py:
+	* pasaffe_lib/Window.py:
+	* pasaffe_lib/preferences.py:
+
+	- Added gconf preference backend
+	- Added visible passwords as a preference
+
+2011-07-14  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+	* data/ui/PasaffeWindow.ui:
+	* pasaffe/PasaffeWindow.py:
+
+	Add display password item to menu
+
+2011-07-14  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+	* data/ui/PasaffeWindow.ui:
+	* pasaffe/PasaffeWindow.py:
+
+	Add copy URL item to menu
+
+2011-07-14  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+	* data/ui/PasaffeWindow.ui:
+
+	Clarified toolbar tooltips
+	Switch toolbar icons
+
+2011-07-14  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+
+	More TODOs
+
+2011-07-14  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+
+	More TODOs
+
+2011-07-14  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+
+	Added some TODOs
+
+2011-07-13  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+	* data/ui/PasaffeWindow.ui:
+	* pasaffe/PasaffeWindow.py:
+
+	- add display password button, and hide passwords by default
+
+2011-07-13  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/PasaffeWindow.ui:
+	* pasaffe/PasaffeWindow.py:
+
+	- added copy button to toolbar
+
+2011-07-13  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+	* data/ui/PasaffeWindow.ui:
+	* pasaffe/PasaffeWindow.py:
+
+	Implement copy and paste of username, password and text
+
+2011-07-12  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+
+	Added another TODO
+
+2011-07-12  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+
+	Added TODO file with list of things to do
+
+2011-07-11  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* bin/pasaffe-import-gpass:
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe_lib/readdb.py:
+
+	Restrict permissions on new databases
+	Handle missing databases when importing from gpass
+
+2011-07-11  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* bin/pasaffe-import-gpass:
+
+	bin/pasaffe-import-gpass: update for changes to password use
+
+2011-07-11  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	Make sure mainloop is running before calling gtk.main_quit()
+
+2011-07-11  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe_lib/readdb.py:
+
+	Don't keep password and stretched pass around longer than necessary
+
+2011-07-10  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe_lib/gpassfile.py:
+	* pasaffe_lib/readdb.py:
+
+	code cleanup: switch to proper logging facilities
+
+2011-07-10  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	- Fix problem when deleting an entry
+	- When adding a new entry, add it in the sorted list and default to it
+
+2011-07-10  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	- fixed bug when editing URL
+	- sort entries in main window by default
+
+2011-07-09  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/EditDetailsDialog.ui:
+
+	Add scrollbars to notes entry field
+
+2011-07-09  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/media/background.png:
+	* data/media/pasaffe.svg:
+
+	- removed unused background.png
+	- added new icon first draft
+
+2011-07-09  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* bin/pasaffe-import-gpass:
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe_lib/gpassfile.py:
+
+	improve handling of empty URL and notes
+	improve warning in gpass importation tool
+
+2011-07-08  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* bin/pasaffe-import-gpass:
+	* pasaffe_lib/blowfish.py:
+	* pasaffe_lib/gpassfile.py:
+	* AUTHORS:
+
+	Added tool to import GPass password databases
+
+2011-07-08  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe_lib/pytwofishcbc.py:
+	* AUTHORS:
+	* pasaffe_lib/readdb.py:
+
+	code cleanup: implement CBC into it's own class
+
+2011-07-07  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/EditDetailsDialog.ui:
+	* data/ui/PasaffeWindow.ui:
+
+	added tooltips to main window and entry edit window
+
+2011-07-07  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/__init__.py:
+	* pasaffe_lib/Window.py:
+	* pasaffe_lib/preferences.py:
+
+	Comment out couchdb preferences backend for now
+
+2011-07-07  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	hex encode uuid in left pane
+
+2011-07-06  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe_lib/readdb.py:
+
+	Fix bug when writing out long fields to DB
+
+2011-07-06  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/PasaffeWindow.ui:
+	* pasaffe/PasaffeWindow.py:
+
+	Greatly enhance layout of right pane
+
+2011-07-06  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/EditDetailsDialog.ui:
+	* pasaffe/PasaffeWindow.py:
+
+	Add URL field
+	Make notes field bigger
+	Reorder entries
+
+2011-07-06  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/EditDetailsDialog.ui:
+	* data/ui/NewDatabaseDialog.ui:
+	* data/ui/PasswordEntryDialog.ui:
+	* data/ui/SaveChangesDialog.ui:
+
+	Improve appearance of dialogs
+
+2011-07-06  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/SaveChangesDialog.ui:
+	* data/ui/save_changes_dialog.xml:
+	* pasaffe/SaveChangesDialog.py:
+	* pasaffe/PasaffeWindow.py:
+
+	Added save warning dialog on program exit
+
+2011-07-05  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* examples/test.psafe3:
+	* examples/pasaffe.psafe3:
+
+	- renamed example database
+
+2011-07-05  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/NewDatabaseDialog.ui:
+	* data/ui/new_database_dialog.xml:
+	* pasaffe/NewDatabaseDialog.py:
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe_lib/readdb.py:
+
+	Implement new database dialog
+
+2011-07-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe_lib/readdb.py:
+
+	- implement new db formatting
+	- exit properly
+
+2011-07-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/PasaffeWindow.ui:
+	* pasaffe/PasaffeWindow.py:
+
+	- implement some menu items
+
+2011-07-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/PasaffeWindow.ui:
+
+	- Removed status bar
+	- Removed unneeded menu entries
+	- Added "Add" menu entry
+
+2011-07-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/PasswordEntryDialog.ui:
+	* pasaffe/PasaffeWindow.py:
+
+	- reset dialog when wrong password is entered
+
+2011-07-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/PasswordEntryDialog.ui:
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe_lib/readdb.py:
+
+	- Implement password validation
+	- Implement exceptions in readdb backend
+
+2011-07-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/PasswordEntryDialog.ui:
+	* data/ui/password_entry_dialog.xml:
+	* pasaffe/PasswordEntryDialog.py:
+
+	Added password dialog
+
+2011-07-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	- Update timestamps when entry is modified
+
+2011-07-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe/__init__.py:
+	* pasaffe_lib/readdb.py:
+
+	- implement saving
+
+2011-07-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	- added last modification time to main window
+
+2011-07-03  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	- implement add, edit, and remove toolbar button functionnality
+
+2011-07-03  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/PasaffeWindow.ui:
+
+	- add more buttons to toolbar
+
+2011-07-03  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	- change name in tree if modified
+	- implement needs saving flag
+
+2011-07-03  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/EditDetailsDialog.ui:
+	* data/ui/edit_details_dialog.xml:
+	* pasaffe/EditDetailsDialog.py:
+	* pasaffe/PasaffeWindow.py:
+
+	- added details edit dialog
+
+2011-07-03  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/PasaffeWindow.ui:
+	* pasaffe/PasaffeWindow.py:
+
+	Use UUID when looking up records
+
+2011-07-03  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/PasaffeWindow.ui:
+	* pasaffe/PasaffeWindow.py:
+
+	- implement save toolbar callback
+
+2011-07-03  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/PasaffeWindow.ui:
+
+	text widget shouldn't be editable
+
+2011-07-03  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/PasaffeWindow.ui:
+	* pasaffe/PasaffeWindow.py:
+
+	Further work on data display
+
+2011-07-03  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/PasaffeWindow.ui:
+	* pasaffe/PasaffeWindow.py:
+
+	Start implementing data display
+
+2011-07-03  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* examples:
+	* examples/README:
+	* examples/test.psafe3:
+
+	- added example password safe database file for development purposes
+
+2011-07-03  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* docs:
+	* docs/formatV3.txt:
+	* AUTHORS:
+	* COPYING:
+
+	- added password safe database format documentation
+
+2011-07-03  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe_lib/pytwofish.py:
+	* pasaffe_lib/readdb.py:
+	* data/ui/PasaffeWindow.ui:
+	* pasaffe/PasaffeWindow.py:
+
+	- add library that reads and writes password safe files
+
+2011-07-03  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/PasaffeWindow.ui:
+	* pasaffe/PasaffeWindow.py:
+
+	Add stuff to left pane
+
+2011-07-01  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* help/C/index.page:
+	* help/C/preferences.page:
+	* help/C/topic1.page:
+
+	- Added copyright info to help pages
+
+2011-07-01  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/PasaffeWindow.ui:
+
+	- set horizontal window division to a sane default
+
+2011-07-01  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* COPYING:
+	* data/ui/PasaffeWindow.ui:
+
+	- added COPYING file
+	- Set default window size
+
+2011-07-01  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* AUTHORS:
+	* bin/pasaffe:
+	* data/ui/AboutPasaffeDialog.ui:
+	* pasaffe/AboutPasaffeDialog.py:
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe/PreferencesPasaffeDialog.py:
+	* pasaffe/__init__.py:
+	* pasaffe_lib/AboutDialog.py:
+	* pasaffe_lib/Builder.py:
+	* pasaffe_lib/PreferencesDialog.py:
+	* pasaffe_lib/Window.py:
+	* pasaffe_lib/__init__.py:
+	* pasaffe_lib/helpers.py:
+	* pasaffe_lib/pasaffeconfig.py:
+	* pasaffe_lib/preferences.py:
+	* setup.py:
+	* tests/test_example.py:
+	* tests/test_lint.py:
+
+	- Set license to GPL-3
+
+2011-07-01  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/PasaffeWindow.ui:
+
+	- added split panes to main window
+
+2011-06-30  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* .quickly:
+	* AUTHORS:
+	* bin:
+	* bin/pasaffe:
+	* data:
+	* data/media:
+	* data/media/background.png:
+	* data/media/pasaffe.svg:
+	* data/ui:
+	* data/ui/AboutPasaffeDialog.ui:
+	* data/ui/PasaffeWindow.ui:
+	* data/ui/PreferencesPasaffeDialog.ui:
+	* data/ui/about_pasaffe_dialog.xml:
+	* data/ui/pasaffe_window.xml:
+	* data/ui/preferences_pasaffe_dialog.xml:
+	* help:
+	* help/C:
+	* help/C/figures:
+	* help/C/figures/icon.png:
+	* help/C/index.page:
+	* help/C/preferences.page:
+	* help/C/topic1.page:
+	* pasaffe:
+	* pasaffe.desktop.in:
+	* pasaffe/AboutPasaffeDialog.py:
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe/PreferencesPasaffeDialog.py:
+	* pasaffe/__init__.py:
+	* pasaffe_lib:
+	* pasaffe_lib/AboutDialog.py:
+	* pasaffe_lib/Builder.py:
+	* pasaffe_lib/PreferencesDialog.py:
+	* pasaffe_lib/Window.py:
+	* pasaffe_lib/__init__.py:
+	* pasaffe_lib/helpers.py:
+	* pasaffe_lib/pasaffeconfig.py:
+	* pasaffe_lib/preferences.py:
+	* setup.py:
+	* tests:
+	* tests/test_example.py:
+	* tests/test_lint.py:
+
+	Initial project creation with Quickly!
+

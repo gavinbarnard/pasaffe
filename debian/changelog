@@ -1,0 +1,5 @@
+pasaffe (0.11-0ubuntu1) precise; urgency=low
+
+  * Initial release (LP: #902788)
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Sun, 11 Dec 2011 08:46:52 -0500

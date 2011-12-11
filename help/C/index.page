@@ -1,0 +1,41 @@
+<page xmlns="http://projectmallard.org/1.0/"
+      type="guide"
+      id="index">
+
+<info>
+  <!-- This shows in the title bar so does not show [icon] -->
+  <title type="text">Pasaffe Password Manager</title>
+  <desc>The <app>Pasaffe</app> help.</desc>
+  <credit type="author">
+    <name>Marc Deslauriers</name>
+    <email>marc.deslauriers@canonical.com</email>
+    <years>2011</years>
+  </credit>
+  <license href="http://creativecommons.org/licenses/by-sa/3.0/">
+  <p>Creative Commons Attribution-Share Alike 3.0 Unported License</p>
+  </license>
+</info>
+
+<title>
+<!-- This shows on the page in title font -->
+<!-- the icon only shows when installed -->
+<media type="image" mime="image/png" src="figures/icon.png">[icon]</media>
+<app>Pasaffe</app> Password Manager
+</title>
+
+<p>Welcome to the <app>Pasaffe</app> help guide!</p>
+<p><app>Pasaffe</app> is a simple to use password manager. You can use it to store
+usernames and passwords, and encrypt them with a single Master Password.</p>
+<p><app>Pasaffe's</app> main window is divided into two sections. The section on the
+left displays a list of your entries, and the one on the right displays the
+currently selected entry's contents.</p>
+<p>To get started using <app>Pasaffe</app>, visit the
+<link xref="new-entry">Adding a new entry</link> page.</p>
+
+<!-- This is the visible index -->
+<section id="contents" style="2column">
+<!-- other pages needs to have a link to index#contents for this to work -->
+<title>Contents</title>
+</section>
+
+</page>

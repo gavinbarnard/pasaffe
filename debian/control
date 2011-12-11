@@ -1,0 +1,25 @@
+Source: pasaffe
+Section: python
+Priority: extra
+Build-Depends: cdbs (>= 0.4.90~),
+ debhelper (>= 6),
+ python (>= 2.6.6-3~),
+ python-distutils-extra (>= 2.10)
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+XSBC-Original-Maintainer: Marc Deslauriers <marc.deslauriers@canonical.com>
+Standards-Version: 3.9.2
+
+Package: pasaffe
+Architecture: all
+Depends: ${misc:Depends},
+ ${python:Depends},
+ python-gconf,
+ python-gobject,
+ python-launchpad-integration,
+ python-gtk2,
+ yelp
+Description: Password manager for GNOME
+ Pasaffe is an easy to use password manager for GNOME. You can use it
+ to safely store all your usernames and passwords into a single encrypted
+ database protected by as master password. The database is encrypted with
+ Twofish and is PasswordSafe v3 compatible.

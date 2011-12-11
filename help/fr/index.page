@@ -1,0 +1,42 @@
+<page xmlns="http://projectmallard.org/1.0/"
+      type="guide"
+      id="index">
+
+<info>
+  <!-- This shows in the title bar so does not show [icon] -->
+  <title type="text">Gestionnaire de mots de passe Pasaffe</title>
+  <desc>Manuel d'aide <app>Pasaffe</app>.</desc>
+  <credit type="author">
+    <name>Marc Deslauriers</name>
+    <email>marc.deslauriers@canonical.com</email>
+    <years>2011</years>
+  </credit>
+  <license href="http://creativecommons.org/licenses/by-sa/3.0/">
+  <p>Creative Commons Attribution-Share Alike 3.0 Unported License</p>
+  </license>
+</info>
+
+<title>
+<!-- This shows on the page in title font -->
+<!-- the icon only shows when installed -->
+<media type="image" mime="image/png" src="figures/icon.png">[icon]</media>
+Gestionnaire de mots de passe <app>Pasaffe</app>
+</title>
+
+<p>Bienvenue dans le manuel d'aide de <app>Pasaffe!</app></p>
+<p><app>Pasaffe</app> est un gestionnaire de mots de passe facile à utiliser.
+Vous pouvez l'utiliser pour entreposer des noms d'utilisateur et des mots de
+passe, et les chiffrer avec un mot de passe principal.</p>
+<p>La fenêtre principale de <app>Pasaffe</app> est divisée en deux sections.
+La section de gauche affiche une liste d'entrées, et celle de droite affiche
+les données de l'entrée sélectionnée.</p>
+<p>Pour démarrer avec <app>Pasaffe</app>, visitez la page
+<link xref="new-entry">Ajout d'une nouvelle entrée</link>.</p>
+
+<!-- This is the visible index -->
+<section id="contents" style="2column">
+<!-- other pages needs to have a link to index#contents for this to work -->
+<title>Contenu</title>
+</section>
+
+</page>
