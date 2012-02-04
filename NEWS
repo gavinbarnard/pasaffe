@@ -1,6 +1,24 @@
 This file summarizes the major and interesting changes for each release.
 For a detailed list of changes, please see ChangeLog.
 
+0.12 (2012-02-04):
+
+ * Enhancements:
+   - Updated translations
+   - Added a TODO item
+   - Migrated to PyGObject and GSettings, thanks to Francesco Marella
+
+ * Bug fixes (related to PyGObject and GSettings migration):
+   - Get rid of traceback when quitting without a selection
+   - Restore click on URL functionality
+   - Fix initial size of notes field
+   - Fix about dialog layout
+   - Updated requirements in README file
+   - Refactor and simplify GSettings code to use bindings
+   - Add database path description to GSettings schema file
+   - Add GConf to GSettings migration file
+   - Fix crasher when sometimes adding a new entry
+
 0.11 (2011-12-11):
 
  * Enhancements:

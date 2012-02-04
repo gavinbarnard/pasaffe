@@ -1,6 +1,6 @@
 # -*- Mode: Python; coding: utf-8; indent-tabs-mode: nil; tab-width: 4 -*-
 ### BEGIN LICENSE
-# Copyright (C) 2011 Marc Deslauriers <marc.deslauriers@canonical.com>
+# Copyright (C) 2011-2012 Marc Deslauriers <marc.deslauriers@canonical.com>
 # This program is free software: you can redistribute it and/or modify it 
 # under the terms of the GNU General Public License version 3, as published 
 # by the Free Software Foundation.
@@ -18,7 +18,7 @@ import gettext
 from gettext import gettext as _
 gettext.textdomain('pasaffe')
 
-import gtk, pango, glib
+from gi.repository import GObject, Gio, Gtk, Gdk, Pango, GLib # pylint: disable=E0611
 import os, struct, time, sys, webbrowser
 import logging
 logger = logging.getLogger('pasaffe')
@@ -33,7 +33,6 @@ from pasaffe.NewDatabaseDialog import NewDatabaseDialog
 from pasaffe.NewPasswordDialog import NewPasswordDialog
 from pasaffe.PreferencesPasaffeDialog import PreferencesPasaffeDialog
 from pasaffe_lib.readdb import PassSafeFile
-from pasaffe_lib import preferences
 
 # See pasaffe_lib.Window.py for more details about how this class works
 class PasaffeWindow(Window):
@@ -61,14 +60,17 @@ class PasaffeWindow(Window):
         self.is_locked = False
         self.idle_id = None
 
+        self.settings = Gio.Settings("apps.pasaffe")
+        self.settings.connect('changed', self.on_preferences_changed)
+
         # If database doesn't exists, make a new one
-        if os.path.exists(preferences['database-path']):
+        if os.path.exists(self.settings.get_string('database-path')):
             success = self.fetch_password()
         else:
             success = self.new_database()
 
         if success == False:
-            self.connect('event-after', gtk.main_quit)
+            self.connect('event-after', Gtk.main_quit)
         else:
             self.display_entries()
             self.display_welcome()
@@ -83,9 +85,9 @@ class PasaffeWindow(Window):
         if self.get_save_status() == True:
             savechanges_dialog = self.SaveChangesDialog()
             response = savechanges_dialog.run()
-            if response == gtk.RESPONSE_OK:
+            if response == Gtk.ResponseType.OK:
                 self.save_db()
-            elif response != gtk.RESPONSE_CLOSE:
+            elif response != Gtk.ResponseType.CLOSE:
                 savechanges_dialog.destroy()
                 return True
         return False
@@ -95,10 +97,10 @@ class PasaffeWindow(Window):
         password_dialog = self.PasswordEntryDialog()
         while self.passfile == None:
             response = password_dialog.run()
-            if response == gtk.RESPONSE_OK:
+            if response == Gtk.ResponseType.OK:
                 password = password_dialog.ui.password_entry.get_text()
                 try:
-                    self.passfile = PassSafeFile(preferences['database-path'], password)
+                    self.passfile = PassSafeFile(self.settings.get_string('database-path'), password)
                 except ValueError:
                     password_dialog.ui.password_error_label.set_property("visible", True)
                     password_dialog.ui.password_entry.set_text("")
@@ -114,7 +116,7 @@ class PasaffeWindow(Window):
         newdb_dialog = self.NewDatabaseDialog()
         while success == False:
             response = newdb_dialog.run()
-            if response == gtk.RESPONSE_OK:
+            if response == Gtk.ResponseType.OK:
                 passwordA = newdb_dialog.ui.entry1.get_text()
                 passwordB = newdb_dialog.ui.entry2.get_text()
                 if passwordA != passwordB:
@@ -149,14 +151,14 @@ class PasaffeWindow(Window):
 
                 contents = ''
                 if show_secrets == False and \
-                   preferences['only-passwords-are-secret'] == False and \
-                   preferences['visible-secrets'] == False:
+                   self.settings.get_boolean('only-passwords-are-secret') == False and \
+                   self.settings.get_boolean('visible-secrets') == False:
                     contents += _("Secrets are currently hidden.")
                 else:
                     if record.has_key(5):
                             contents += "%s\n\n" % record.get(5)
                     contents += _("Username: %s\n") % record.get(4)
-                    if show_secrets == True or preferences['visible-secrets'] == True:
+                    if show_secrets == True or self.settings.get_boolean('visible-secrets') == True:
                         contents += _("Password: %s\n\n") % record.get(6)
                     else:
                         contents += _("Password: *****\n\n")
@@ -178,19 +180,19 @@ class PasaffeWindow(Window):
                           _("Pasaffe is an easy to use\npassword manager for Gnome."))
 
     def fill_display(self, title, url, contents):
-        texttagtable = gtk.TextTagTable()
-        texttag_big = gtk.TextTag("big")
-        texttag_big.set_property("weight", pango.WEIGHT_BOLD)
-        texttag_big.set_property("scale", pango.SCALE_LARGE)
+        texttagtable = Gtk.TextTagTable()
+        texttag_big = Gtk.TextTag.new("big")
+        texttag_big.set_property("weight", Pango.Weight.BOLD)
+        texttag_big.set_property("size", 12 * Pango.SCALE)
         texttagtable.add(texttag_big)
 
-        texttag_url = gtk.TextTag("url")
+        texttag_url = Gtk.TextTag.new("url")
         texttag_url.set_property("foreground", "blue")
-        texttag_url.set_property("underline", pango.UNDERLINE_SINGLE)
+        texttag_url.set_property("underline", Pango.Underline.SINGLE)
         texttag_url.connect("event", self.url_event_handler)
         texttagtable.add(texttag_url)
 
-        data_buffer = gtk.TextBuffer(texttagtable)
+        data_buffer = Gtk.TextBuffer.new(texttagtable)
         data_buffer.insert_with_tags(data_buffer.get_start_iter(), "\n" + title + "\n\n", texttag_big)
         if url != None:
             data_buffer.insert(data_buffer.get_end_iter(), "\n")
@@ -201,19 +203,21 @@ class PasaffeWindow(Window):
         self.ui.textview1.set_buffer(data_buffer)
 
     def url_event_handler(self, tag, widget, event, iter):
-        if event.type == gtk.gdk.BUTTON_RELEASE and event.button == 1:
+        # We also used to check event.button == 1 here, but event.button
+        # doesn't seem to get set by PyGObject anymore.
+        if event.type == Gdk.EventType.BUTTON_RELEASE:
             self.open_url()
         return False
 
     def textview_event_handler(self, textview, event):
-        x, y = textview.window_to_buffer_coords(gtk.TEXT_WINDOW_WIDGET, int(event.x), int(event.y))
+        x, y = textview.window_to_buffer_coords(Gtk.TextWindowType.WIDGET, int(event.x), int(event.y))
         iter = textview.get_iter_at_location(x, y)
-        cursor = gtk.gdk.Cursor(gtk.gdk.XTERM)
+        cursor = Gdk.Cursor.new(Gdk.CursorType.XTERM)
         for tag in iter.get_tags():
             if tag.get_property('name') == 'url':
-                cursor = gtk.gdk.Cursor(gtk.gdk.HAND2)
+                cursor = Gdk.Cursor.new(Gdk.CursorType.HAND2)
                 break
-        textview.get_window(gtk.TEXT_WINDOW_TEXT).set_cursor(cursor)
+        textview.get_window(Gtk.TextWindowType.TEXT).set_cursor(cursor)
         return False
 
     def open_url(self):
@@ -233,12 +237,15 @@ class PasaffeWindow(Window):
 
     def on_treeview1_cursor_changed(self, treeview):
         self.set_idle_timeout()
-        treemodel, treeiter = treeview.get_selection().get_selected()
-        entry_uuid = treemodel.get_value(treeiter, 1)
-        self.display_data(entry_uuid)
-        # Reset the show password button and menu item
-        self.ui.display_secrets.set_active(False)
-        self.ui.mnu_display_secrets.set_active(False)
+        selection = treeview.get_selection()
+        if selection is not None:
+            treemodel, treeiter = selection.get_selected()
+            if treemodel is not None and treeiter is not None:
+                entry_uuid = treemodel.get_value(treeiter, 1)
+                self.display_data(entry_uuid)
+                # Reset the show password button and menu item
+                self.ui.display_secrets.set_active(False)
+                self.ui.mnu_display_secrets.set_active(False)
 
     def on_treeview1_button_press_event(self, treeview, event):
         if event.button == 3:
@@ -268,7 +275,7 @@ class PasaffeWindow(Window):
         self.passfile.records.append(new_entry)
 
         response = self.edit_entry(uuid_hex)
-        if response != gtk.RESPONSE_OK:
+        if response != Gtk.ResponseType.OK:
             self.delete_entry(uuid_hex, save=False)
         else:
             self.display_entries()
@@ -281,7 +288,7 @@ class PasaffeWindow(Window):
                 else:
                     item = self.ui.treeview1.get_model().iter_next(item)
             self.set_save_status(True)
-            if preferences['auto-save'] == True:
+            if self.settings.get_boolean('auto-save') == True:
                 self.save_db()
         self.set_idle_timeout()
 
@@ -310,7 +317,7 @@ class PasaffeWindow(Window):
         self.passfile.records.append(new_entry)
 
         response = self.edit_entry(uuid_hex)
-        if response != gtk.RESPONSE_OK:
+        if response != Gtk.ResponseType.OK:
             self.delete_entry(uuid_hex, save=False)
         else:
             self.display_entries()
@@ -323,7 +330,7 @@ class PasaffeWindow(Window):
                 else:
                     item = self.ui.treeview1.get_model().iter_next(item)
             self.set_save_status(True)
-            if preferences['auto-save'] == True:
+            if self.settings.get_boolean('auto-save') == True:
                 self.save_db()
         self.set_idle_timeout()
 
@@ -336,12 +343,12 @@ class PasaffeWindow(Window):
             information = _('<big><b>Are you sure you wish to remove "%s"?</b></big>\n\n') % entry_name
             information += _('Contents of the entry will be lost.\n')
 
-            info_dialog = gtk.MessageDialog(parent=self, flags=gtk.DIALOG_MODAL, type=gtk.MESSAGE_QUESTION, buttons=gtk.BUTTONS_YES_NO)
+            info_dialog = Gtk.MessageDialog(parent=self, flags=Gtk.DialogFlags.MODAL, type=Gtk.MessageType.QUESTION, buttons=Gtk.ButtonsType.YES_NO)
             info_dialog.set_markup(information)
             result = info_dialog.run()
             info_dialog.destroy()
 
-            if result == gtk.RESPONSE_YES:
+            if result == Gtk.ResponseType.YES:
                 self.delete_entry(entry_uuid)
 
     def edit_entry(self, entry_uuid):
@@ -368,12 +375,12 @@ class PasaffeWindow(Window):
                     break
 
             response = self.editdetails_dialog.run()
-            if response == gtk.RESPONSE_OK:
+            if response == Gtk.ResponseType.OK:
                 data_changed = False
                 timestamp = struct.pack("<I", int(time.time()))
                 for record_type, widget_name in record_dict.items():
                     if record_type == 5:
-                        new_value = self.editdetails_dialog.builder.get_object(widget_name).get_text(*self.editdetails_dialog.builder.get_object(widget_name).get_bounds())
+                        new_value = self.editdetails_dialog.builder.get_object(widget_name).get_text(self.editdetails_dialog.builder.get_object(widget_name).get_start_iter(), self.editdetails_dialog.builder.get_object(widget_name).get_end_iter(), True)
                     else:
                         new_value = self.editdetails_dialog.builder.get_object(widget_name).get_text()
 
@@ -400,7 +407,7 @@ class PasaffeWindow(Window):
                 if data_changed == True:
                     self.set_save_status(True)
                     record[12] = timestamp
-                    if preferences['auto-save'] == True:
+                    if self.settings.get_boolean('auto-save') == True:
                         self.save_db()
 
             self.editdetails_dialog.destroy()
@@ -436,7 +443,7 @@ class PasaffeWindow(Window):
 
         if save == True:
             self.set_save_status(True)
-            if preferences['auto-save'] == True:
+            if self.settings.get_boolean('auto-save') == True:
                 self.save_db()
 
         treemodel, treeiter = self.ui.treeview1.get_selection().get_selected()
@@ -447,8 +454,8 @@ class PasaffeWindow(Window):
             self.display_welcome()
 
     def model_get_iter_last(self, model, parent=None):
-        """Returns a gtk.TreeIter to the last row or None if there aren't any rows.
-        If parent is None, returns a gtk.TreeIter to the last root row."""
+        """Returns a Gtk.TreeIter to the last row or None if there aren't any rows.
+        If parent is None, returns a Gtk.TreeIter to the last root row."""
         n = model.iter_n_children( parent )
         return n and model.iter_nth_child( parent, n - 1 )
 
@@ -459,7 +466,7 @@ class PasaffeWindow(Window):
 
     def save_db(self):
         if self.get_save_status() == True:
-            self.passfile.writefile(preferences['database-path'], backup=True)
+            self.passfile.writefile(self.settings.get_string('database-path'), backup=True)
             self.set_save_status(False)
 
     def on_save_clicked(self, toolbutton):
@@ -472,10 +479,10 @@ class PasaffeWindow(Window):
 
     def on_mnu_close_activate(self, menuitem):
         self.disable_idle_timeout()
-        if preferences['auto-save'] == True:
+        if self.settings.get_boolean('auto-save') == True:
             self.save_db()
         if self.save_warning() == False:
-            gtk.main_quit()
+            Gtk.main_quit()
         else:
             self.set_idle_timeout()
 
@@ -525,9 +532,9 @@ class PasaffeWindow(Window):
 
             for record in self.passfile.records:
                 if record[1] == entry_uuid.decode("hex") and record.has_key(item):
-                    for atom in ['CLIPBOARD', 'PRIMARY']:
-                        clipboard = gtk.clipboard_get(selection=atom)
-                        clipboard.set_text(record[item])
+                    for atom in [Gdk.SELECTION_CLIPBOARD, Gdk.SELECTION_PRIMARY]:
+                        clipboard = Gtk.Clipboard.get(atom)
+                        clipboard.set_text(record[item], len(record[item]))
                         clipboard.store()
 
     def on_mnu_add_activate(self, menuitem):
@@ -561,7 +568,7 @@ class PasaffeWindow(Window):
         if 6 in self.passfile.header:
             information += _('Application used: %s\n') % self.passfile.header[6]
 
-        info_dialog = gtk.MessageDialog(type=gtk.MESSAGE_INFO, buttons=gtk.BUTTONS_OK)
+        info_dialog = Gtk.MessageDialog(type=Gtk.MessageType.INFO, buttons=Gtk.ButtonsType.OK)
         info_dialog.set_markup(information)
         info_dialog.run()
         info_dialog.destroy()
@@ -577,7 +584,7 @@ class PasaffeWindow(Window):
         newpass_dialog = self.NewPasswordDialog()
         while success == False:
             response = newpass_dialog.run()
-            if response == gtk.RESPONSE_OK:
+            if response == Gtk.ResponseType.OK:
                 old_password = newpass_dialog.ui.pass_entry1.get_text()
                 passwordA = newpass_dialog.ui.pass_entry2.get_text()
                 passwordB = newpass_dialog.ui.pass_entry3.get_text()
@@ -611,7 +618,7 @@ class PasaffeWindow(Window):
         lock_dialog = self.LockScreenDialog()
         while success == False:
             response = lock_dialog.run()
-            if response == gtk.RESPONSE_OK:
+            if response == Gtk.ResponseType.OK:
                 password = lock_dialog.ui.locked_entry.get_text()
                 success = self.passfile.check_password(password)
                 if success == False:
@@ -621,7 +628,7 @@ class PasaffeWindow(Window):
             else:
                 lock_dialog.hide()
                 if self.save_warning() == False:
-                    gtk.main_quit()
+                    Gtk.main_quit()
                     return
                 else:
                     lock_dialog.show()
@@ -644,21 +651,21 @@ class PasaffeWindow(Window):
 
     def set_idle_timeout(self):
         if self.idle_id != None:
-            glib.source_remove(self.idle_id)
+            GObject.source_remove(self.idle_id)
             self.idle_id == None
-        if preferences['lock-on-idle'] == True and preferences['idle-timeout'] != 0:
-            idle_time = int(preferences['idle-timeout']*1000*60)
-            self.idle_id = glib.timeout_add(idle_time, self.idle_timeout_reached)
+        if self.settings.get_boolean('lock-on-idle') == True and self.settings.get_int('idle-timeout') != 0:
+            idle_time = int(self.settings.get_int('idle-timeout')*1000*60)
+            self.idle_id = GObject.timeout_add(idle_time, self.idle_timeout_reached)
 
     def idle_timeout_reached(self):
         if self.is_locked == False:
             self.lock_screen()
-        glib.source_remove(self.idle_id)
+        GObject.source_remove(self.idle_id)
         self.idle_id = None
 
     def disable_idle_timeout(self):
         if self.idle_id != None:
-            glib.source_remove(self.idle_id)
+            GObject.source_remove(self.idle_id)
             self.idle_id == None
 
     def set_save_status(self, needed=False):

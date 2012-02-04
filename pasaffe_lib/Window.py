@@ -1,6 +1,6 @@
 # -*- Mode: Python; coding: utf-8; indent-tabs-mode: nil; tab-width: 4 -*-
 ### BEGIN LICENSE
-# Copyright (C) 2011 Marc Deslauriers <marc.deslauriers@canonical.com>
+# Copyright (C) 2011-2012 Marc Deslauriers <marc.deslauriers@canonical.com>
 # This program is free software: you can redistribute it and/or modify it 
 # under the terms of the GNU General Public License version 3, as published 
 # by the Free Software Foundation.
@@ -14,16 +14,15 @@
 # with this program.  If not, see <http://www.gnu.org/licenses/>.
 ### END LICENSE
 
-import gtk
+from gi.repository import Gio, Gtk # pylint: disable=E0611
 import logging
 logger = logging.getLogger('pasaffe_lib')
 
 from . helpers import get_builder, show_uri, get_help_uri
-from . preferences import preferences
 
 # This class is meant to be subclassed by PasaffeWindow.  It provides
 # common functions and some boilerplate.
-class Window(gtk.Window):
+class Window(Gtk.Window):
     __gtype_name__ = "Window"
 
     # To construct a new instance of this method, the following notable 
@@ -61,14 +60,15 @@ class Window(gtk.Window):
         self.preferences_dialog = None # instance
         self.AboutDialog = None # class
 
-        preferences.connect('changed', self.on_preferences_changed)
+        self.settings = Gio.Settings("apps.pasaffe")
+        self.settings.connect('changed', self.on_preferences_changed)
 
         # Optional Launchpad integration
         # This shouldn't crash if not found as it is simply used for bug reporting.
         # See https://wiki.ubuntu.com/UbuntuDevelopment/Internationalisation/Coding
         # for more information about Launchpad integration.
         try:
-            import LaunchpadIntegration
+            from gi.repository import LaunchpadIntegration
             LaunchpadIntegration.add_items(self.ui.helpMenu, 1, True, True)
             LaunchpadIntegration.set_sourcepackagename('pasaffe')
         except ImportError:
@@ -122,19 +122,15 @@ class Window(gtk.Window):
     def on_destroy(self, widget, data=None):
         """Called when the PasaffeWindow is closed."""
         # Clean up code for saving application state should be added here.
-        gtk.main_quit()
+        Gtk.main_quit()
 
-    def on_preferences_changed(self, widget, data=None):
-        logger.debug('main window received preferences changed')
-        for key in data:
-            logger.debug('preference changed: %s = %s' % (key, preferences[key]))
-            if self.preferences_dialog is not None:
-                self.preferences_dialog.set_widget_from_preference(key)
-            if key == 'visible-secrets':
-                treemodel, treeiter = self.ui.treeview1.get_selection().get_selected()
-                if treeiter != None:
-                    entry_uuid = treemodel.get_value(treeiter, 1)
-                    self.display_data(entry_uuid, show_secrets=preferences[key])
+    def on_preferences_changed(self, settings, key, data=None):
+        logger.debug('preference changed: %s = %s' % (key, str(settings.get_value(key))))
+        if key == 'visible-secrets':
+            treemodel, treeiter = self.ui.treeview1.get_selection().get_selected()
+            if treeiter != None:
+                entry_uuid = treemodel.get_value(treeiter, 1)
+                self.display_data(entry_uuid, show_secrets=settings.get_boolean(key))
 
     def on_preferences_dialog_destroyed(self, widget, data=None):
         '''only affects gui

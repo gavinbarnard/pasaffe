@@ -16,7 +16,8 @@ bin/pasaffe-dump-db
 bin/pasaffe-import-entry
 bin/pasaffe-import-figaroxml
 bin/pasaffe-import-gpass
-data/pasaffe.schemas.in
+data/apps.pasaffe.gschema.xml
+data/pasaffe.convert
 data/media/pasaffe.svg
 data/ui/AboutPasaffeDialog.ui
 data/ui/EditDetailsDialog.ui
@@ -71,13 +72,14 @@ pasaffe_lib/figaroxml.py
 pasaffe_lib/gpassfile.py
 pasaffe_lib/helpers.py
 pasaffe_lib/pasaffeconfig.py
-pasaffe_lib/preferences.py
 pasaffe_lib/pytwofish.py
 pasaffe_lib/pytwofishcbc.py
 pasaffe_lib/readdb.py
+po/de.po
 po/fr.po
 po/it.po
 po/nl.po
 po/pasaffe.pot
+po/ru.po
 tests/test_example.py
 tests/test_lint.py

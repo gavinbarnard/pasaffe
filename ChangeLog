@@ -1,3 +1,262 @@
+2012-02-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.12
+
+2012-02-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* pasaffe/PasaffeWindow.py:
+
+	- Fix crasher when adding a new item
+
+2012-02-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	- Fix typo in settings name
+
+2012-02-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/GConf:
+	* data/GConf/gsettings:
+	* data/glib-2.0:
+	* data/glib-2.0/schemas:
+	* setup.cfg:
+	* setup.py:
+	* data/GConf/gsettings/pasaffe.convert:
+	* data/pasaffe.convert:
+	* data/glib-2.0/schemas/apps.pasaffe.gschema.xml:
+	* data/apps.pasaffe.gschema.xml:
+
+	- Properly fix gsettings and gconf convert script locations
+
+2012-02-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/GConf:
+	* data/GConf/gsettings:
+	* data/GConf/gsettings/pasaffe.convert:
+	* data/glib-2.0:
+	* data/glib-2.0/schemas:
+	* data/glib-2.0/schemas/apps.pasaffe.gschema.xml:
+	* data/apps.pasaffe.gschema.xml:
+	* setup.cfg:
+
+	- Move gsettings schema file to better location
+	- Add a gconf migration file
+
+2012-02-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* data/apps.pasaffe.gschema.xml:
+
+	Add database path description to GSettings schema file
+
+2012-02-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe_lib/preferences.py:
+	* NEWS:
+	* bin/pasaffe:
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe/PreferencesPasaffeDialog.py:
+	* pasaffe/__init__.py:
+	* pasaffe_lib/PreferencesDialog.py:
+	* pasaffe_lib/Window.py:
+	* pasaffe_lib/__init__.py:
+
+	- Refactor GSettings code to use bindings
+
+2012-02-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* README:
+
+	- Updated requirements in README file
+
+2012-02-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* AUTHORS:
+	* data/ui/AboutPasaffeDialog.ui:
+	* pasaffe/PasaffeWindow.py:
+
+	- Added 2012 to copyright notice
+
+2012-02-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* data/ui/AboutPasaffeDialog.ui:
+
+	Fix about dialog layout
+
+2012-02-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* data/ui/EditDetailsDialog.ui:
+
+	Fix initial size of notes field
+
+2012-02-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* pasaffe/PasaffeWindow.py:
+
+	- Fix click on URL functionality
+
+2012-02-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/de.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	- merged translations
+
+2012-02-02  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2012-02-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* pasaffe/PasaffeWindow.py:
+
+	- Get rid of traceback when quitting without a selection
+
+2012-02-01  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/__init__.py:
+
+	pasaffe/__init__.py: set default filename on first run
+
+2012-02-01  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe_lib/Window.py:
+
+	pasaffe_lib/Window.py: fix launchpadlib integration
+
+2012-02-01  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* setup.cfg:
+
+	setup.cfg: install GSettings Schema file
+
+2012-02-01  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/apps.pasaffe.gschema.xml:
+	* po/ru.po:
+	* data/pasaffe.schemas.in:
+	* NEWS:
+	* pasaffe/EditDetailsDialog.py:
+	* pasaffe/LockScreenDialog.py:
+	* pasaffe/NewDatabaseDialog.py:
+	* pasaffe/NewPasswordDialog.py:
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe/PasswordEntryDialog.py:
+	* pasaffe/SaveChangesDialog.py:
+	* pasaffe/__init__.py:
+	* pasaffe_lib/AboutDialog.py:
+	* pasaffe_lib/Builder.py:
+	* pasaffe_lib/PreferencesDialog.py:
+	* pasaffe_lib/Window.py:
+	* pasaffe_lib/helpers.py:
+	* pasaffe_lib/preferences.py:
+
+	- Merged Francesco Marella's PyGI and GSettings branch
+
+2012-01-29  Francesco Marella  <francesco.marella@gmail.com>
+
+	* data/apps.pasaffe.gschema.xml:
+	* data/pasaffe.schemas.in:
+	* pasaffe/EditDetailsDialog.py:
+	* pasaffe/LockScreenDialog.py:
+	* pasaffe/NewDatabaseDialog.py:
+	* pasaffe/NewPasswordDialog.py:
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe/PasswordEntryDialog.py:
+	* pasaffe/SaveChangesDialog.py:
+	* pasaffe/__init__.py:
+	* pasaffe_lib/AboutDialog.py:
+	* pasaffe_lib/Builder.py:
+	* pasaffe_lib/PreferencesDialog.py:
+	* pasaffe_lib/Window.py:
+	* pasaffe_lib/helpers.py:
+	* pasaffe_lib/preferences.py:
+
+	Port Pasaffe to pygi and GSettings.
+
+2012-01-14  Launchpad Translations on behalf of mdeslaur
+
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2012-01-13  Launchpad Translations on behalf of mdeslaur
+
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2012-01-12  Launchpad Translations on behalf of mdeslaur
+
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2012-01-11  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* TODO:
+
+	- Added a TODO item
+
+2012-01-04  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+
+	Launchpad automatic translations update.
+
+2012-01-03  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+
+	Launchpad automatic translations update.
+
+2011-12-14  Launchpad Translations on behalf of mdeslaur
+
+	* po/it.po:
+
+	Launchpad automatic translations update.
+
+2011-12-13  Launchpad Translations on behalf of mdeslaur
+
+	* po/it.po:
+
+	Launchpad automatic translations update.
+
+2011-12-12  Launchpad Translations on behalf of mdeslaur
+
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+
+	Launchpad automatic translations update.
+
+2011-12-11  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	Prepared NEWS file for next release
+
 2011-12-11  Marc Deslauriers  <marc.deslauriers@canonical.com>
 
 	* NEWS:

@@ -111,13 +111,14 @@ class BuildHelp(DistUtilsExtra.auto.build_help_auto):
 
 DistUtilsExtra.auto.setup(
     name='pasaffe',
-    version='0.11',
+    version='0.12',
     license='GPL-3',
     author='Marc Deslauriers',
     author_email='marc.deslauriers@canonical.com',
     description='Password manager for GNOME',
     long_description='Pasaffe is an easy to use password manager for GNOME.',
     url='https://launchpad.net/pasaffe',
+    data_files=[("share/GConf/gsettings", ("data/pasaffe.convert",))],
     cmdclass={'install': InstallAndUpdateDataDirectory,
               'build_help' : BuildHelp}
     )
