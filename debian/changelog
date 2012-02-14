@@ -1,3 +1,13 @@
+pasaffe (0.13-0ubuntu1) precise; urgency=low
+
+  * New upstream release
+    - Added random password generation
+    - Lock now uses the main window to prevent a window from showing up
+      on another workspace when the timeout occurs
+  * debian/control: added apg depends
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Tue, 14 Feb 2012 17:23:32 -0500
+
 pasaffe (0.12-0ubuntu1) precise; urgency=low
 
   * New upstream release

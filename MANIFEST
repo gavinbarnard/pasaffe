@@ -21,7 +21,6 @@ data/pasaffe.convert
 data/media/pasaffe.svg
 data/ui/AboutPasaffeDialog.ui
 data/ui/EditDetailsDialog.ui
-data/ui/LockScreenDialog.ui
 data/ui/NewDatabaseDialog.ui
 data/ui/NewPasswordDialog.ui
 data/ui/PasaffeWindow.ui
@@ -30,7 +29,6 @@ data/ui/PreferencesPasaffeDialog.ui
 data/ui/SaveChangesDialog.ui
 data/ui/about_pasaffe_dialog.xml
 data/ui/edit_details_dialog.xml
-data/ui/lock_screen_dialog.xml
 data/ui/new_database_dialog.xml
 data/ui/new_password_dialog.xml
 data/ui/pasaffe_window.xml
@@ -54,7 +52,6 @@ help/fr/show-secrets.page
 help/fr/figures/icon.png
 pasaffe/AboutPasaffeDialog.py
 pasaffe/EditDetailsDialog.py
-pasaffe/LockScreenDialog.py
 pasaffe/NewDatabaseDialog.py
 pasaffe/NewPasswordDialog.py
 pasaffe/PasaffeWindow.py

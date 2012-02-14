@@ -1,6 +1,15 @@
 This file summarizes the major and interesting changes for each release.
 For a detailed list of changes, please see ChangeLog.
 
+0.13 (2012-02-14):
+
+ * Enhancements:
+   - Added random password generation
+   - Lock now uses the main window to prevent a window from showing up
+     on another workspace when the timeout occurs
+
+ * Bug fixes:
+
 0.12 (2012-02-04):
 
  * Enhancements:

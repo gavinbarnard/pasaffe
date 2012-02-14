@@ -27,7 +27,6 @@ from pasaffe_lib import Window
 from pasaffe.AboutPasaffeDialog import AboutPasaffeDialog
 from pasaffe.EditDetailsDialog import EditDetailsDialog
 from pasaffe.PasswordEntryDialog import PasswordEntryDialog
-from pasaffe.LockScreenDialog import LockScreenDialog
 from pasaffe.SaveChangesDialog import SaveChangesDialog
 from pasaffe.NewDatabaseDialog import NewDatabaseDialog
 from pasaffe.NewPasswordDialog import NewPasswordDialog
@@ -47,7 +46,6 @@ class PasaffeWindow(Window):
         self.editdetails_dialog = None
         self.PreferencesDialog = PreferencesPasaffeDialog
         self.PasswordEntryDialog = PasswordEntryDialog
-        self.LockScreenDialog = LockScreenDialog
         self.SaveChangesDialog = SaveChangesDialog
         self.NewDatabaseDialog = NewDatabaseDialog
         self.NewPasswordDialog = NewPasswordDialog
@@ -613,29 +611,59 @@ class PasaffeWindow(Window):
     def lock_screen(self):
         self.disable_idle_timeout()
         self.is_locked = True
-        self.hide()
+        self.ui.pasaffe_vbox.reparent(self.ui.empty_window)
+        self.ui.lock_vbox.reparent(self.ui.pasaffe_window)
+        self.set_menu_sensitive(False)
+        self.ui.lock_unlock_button.grab_focus()
+
+    def on_lock_unlock_button_clicked(self, button):
         success = False
-        lock_dialog = self.LockScreenDialog()
+        password_dialog = self.PasswordEntryDialog()
+        password_dialog.set_transient_for(self)
+        password_dialog.set_modal(True)
         while success == False:
-            response = lock_dialog.run()
+            response = password_dialog.run()
             if response == Gtk.ResponseType.OK:
-                password = lock_dialog.ui.locked_entry.get_text()
+                password = password_dialog.ui.password_entry.get_text()
                 success = self.passfile.check_password(password)
                 if success == False:
-                    lock_dialog.ui.locked_error_label.set_property("visible", True)
-                    lock_dialog.ui.locked_entry.set_text("")
-                    lock_dialog.ui.locked_entry.grab_focus()
+                    password_dialog.ui.password_error_label.set_property("visible", True)
+                    password_dialog.ui.password_entry.set_text("")
+                    password_dialog.ui.password_entry.grab_focus()
             else:
-                lock_dialog.hide()
-                if self.save_warning() == False:
-                    Gtk.main_quit()
-                    return
-                else:
-                    lock_dialog.show()
-        lock_dialog.destroy()
-        self.show()
+                password_dialog.destroy()
+                return
+        password_dialog.destroy()
+        self.ui.lock_vbox.reparent(self.ui.lock_window)
+        self.ui.pasaffe_vbox.reparent(self.ui.pasaffe_window)
+        self.set_menu_sensitive(True)
         self.is_locked = False
         self.set_idle_timeout()
+
+    def on_lock_quit_button_clicked(self, button):
+        if self.save_warning() == False:
+            Gtk.main_quit()
+            return
+
+    def set_menu_sensitive(self, status):
+        # There's got to be a better way to do this
+        self.ui.mnu_lock.set_sensitive(status)
+        self.ui.mnu_chg_password.set_sensitive(status)
+        self.ui.mnu_add.set_sensitive(status)
+        self.ui.mnu_clone.set_sensitive(status)
+        self.ui.mnu_delete.set_sensitive(status)
+        self.ui.url_copy.set_sensitive(status)
+        self.ui.username_copy.set_sensitive(status)
+        self.ui.password_copy.set_sensitive(status)
+        self.ui.mnu_preferences.set_sensitive(status)
+        self.ui.mnu_display_secrets.set_sensitive(status)
+        self.ui.mnu_open_url.set_sensitive(status)
+        self.ui.mnu_info.set_sensitive(status)
+
+        if status == True and self.needs_saving == True:
+            self.ui.mnu_save.set_sensitive(True)
+        else:
+            self.ui.mnu_save.set_sensitive(False)
 
     def on_add_clicked(self, toolbutton):
         self.add_entry()
