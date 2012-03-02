@@ -1,3 +1,13 @@
+pasaffe (0.14-0ubuntu1) precise; urgency=low
+
+  * New upstream release (LP: #944789)
+    - Updated translations
+    - Slightly improved appearance of main icon
+    - Implemented search
+    - Bugfix: Set proper window titles
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Fri, 02 Mar 2012 09:15:26 -0500
+
 pasaffe (0.13-0ubuntu1) precise; urgency=low
 
   * New upstream release

@@ -19,7 +19,7 @@ from gettext import gettext as _
 gettext.textdomain('pasaffe')
 
 from gi.repository import GObject, Gio, Gtk, Gdk, Pango, GLib # pylint: disable=E0611
-import os, struct, time, sys, webbrowser
+import os, struct, time, sys, webbrowser, re
 import logging
 logger = logging.getLogger('pasaffe')
 
@@ -57,6 +57,9 @@ class PasaffeWindow(Window):
         self.passfile = None
         self.is_locked = False
         self.idle_id = None
+        self.find_results = []
+        self.find_results_index = None
+        self.find_value = ""
 
         self.settings = Gio.Settings("apps.pasaffe")
         self.settings.connect('changed', self.on_preferences_changed)
@@ -282,6 +285,8 @@ class PasaffeWindow(Window):
                 if self.ui.liststore1.get_value(item, 1) == uuid_hex:
                     self.ui.treeview1.get_selection().select_iter(item)
                     self.display_data(uuid_hex)
+                    path = self.ui.treeview1.get_model().get_path(item)
+                    self.ui.treeview1.scroll_to_cell(path)
                     break
                 else:
                     item = self.ui.treeview1.get_model().iter_next(item)
@@ -289,6 +294,7 @@ class PasaffeWindow(Window):
             if self.settings.get_boolean('auto-save') == True:
                 self.save_db()
         self.set_idle_timeout()
+        self.update_find_results(force=True)
 
     def clone_entry(self, entry_uuid):
         record_list = ( 3, 4, 5, 6, 13 )
@@ -324,6 +330,8 @@ class PasaffeWindow(Window):
                 if self.ui.liststore1.get_value(item, 1) == uuid_hex:
                     self.ui.treeview1.get_selection().select_iter(item)
                     self.display_data(uuid_hex)
+                    path = self.ui.treeview1.get_model().get_path(item)
+                    self.ui.treeview1.scroll_to_cell(path)
                     break
                 else:
                     item = self.ui.treeview1.get_model().iter_next(item)
@@ -331,6 +339,7 @@ class PasaffeWindow(Window):
             if self.settings.get_boolean('auto-save') == True:
                 self.save_db()
         self.set_idle_timeout()
+        self.update_find_results(force=True)
 
     def remove_entry(self):
         treemodel, treeiter = self.ui.treeview1.get_selection().get_selected()
@@ -417,6 +426,7 @@ class PasaffeWindow(Window):
                 self.display_data(entry_uuid)
 
             self.set_idle_timeout()
+            self.update_find_results(force=True)
             return response
 
     def delete_entry(self, entry_uuid, save=True):
@@ -450,6 +460,8 @@ class PasaffeWindow(Window):
             self.display_data(entry_uuid)
         else:
             self.display_welcome()
+
+        self.update_find_results(force=True)
 
     def model_get_iter_last(self, model, parent=None):
         """Returns a Gtk.TreeIter to the last row or None if there aren't any rows.
@@ -574,6 +586,114 @@ class PasaffeWindow(Window):
     def on_mnu_open_url_activate(self, menuitem):
         self.open_url()
 
+    def on_mnu_find_toggled(self, menuitem):
+        is_active = menuitem.get_active()
+        self.show_find(is_active)
+        self.ui.toolbar_find.set_active(is_active)
+
+    def on_toolbar_find_toggled(self, toolbutton):
+        is_active = toolbutton.get_active()
+        self.show_find(is_active)
+        self.ui.mnu_find.set_active(is_active)
+
+    def on_find_btn_close_clicked(self, button):
+        self.show_find(False)
+        self.ui.toolbar_find.set_active(False)
+        self.ui.mnu_find.set_active(False)
+
+    def on_find_btn_prev_clicked(self, button):
+        self.update_find_results()
+        self.goto_next_find_result(backwards=True)
+
+    def on_find_btn_next_clicked(self, button):
+        self.update_find_results()
+        self.goto_next_find_result()
+
+    def update_find_results(self, force=False):
+
+        if self.ui.find_box.get_property("visible") == False:
+            return
+
+        find = self.ui.find_entry.get_text()
+
+        if find == "":
+            self.find_results = []
+            self.find_results_index = None
+            self.find_value = ""
+            return
+
+        if find == self.find_value and force == False:
+            return
+
+        record_list = ( 3, 5, 13 )
+        pat = re.compile(find, re.IGNORECASE)
+        results = []
+
+        for record in self.passfile.records:
+            found = False
+            for record_type in record_list:
+                if record.has_key(record_type):
+                    if pat.search(record.get(record_type)):
+                        found = True
+                        break
+
+            if found == True:
+                results.append([record[3],record[1].encode("hex")])
+
+        self.find_results = sorted(results, key=lambda results: results[0].lower())
+        self.find_results_index = None
+        self.find_value = find
+
+    def goto_next_find_result(self, backwards=False):
+
+        if len(self.find_results) == 0:
+            return
+
+        if self.find_results_index == None:
+            self.find_results_index = 0
+        elif backwards == False:
+            self.find_results_index += 1
+            if self.find_results_index == len(self.find_results):
+                self.find_results_index = 0
+        else:
+            if self.find_results_index == 0:
+                self.find_results_index = len(self.find_results) - 1
+            else:
+                self.find_results_index -= 1
+
+        result = self.find_results[self.find_results_index]
+        uuid_hex = result[1]
+
+        item = self.ui.treeview1.get_model().get_iter_first()
+        while (item != None):
+            if self.ui.liststore1.get_value(item, 1) == uuid_hex:
+                self.ui.treeview1.get_selection().select_iter(item)
+                self.display_data(uuid_hex)
+                path = self.ui.treeview1.get_model().get_path(item)
+                self.ui.treeview1.scroll_to_cell(path)
+                break
+            else:
+                item = self.ui.treeview1.get_model().iter_next(item)
+
+    def on_find_entry_activate(self, entry):
+        self.update_find_results()
+        self.goto_next_find_result()
+
+    def show_find(self, show):
+
+        if self.ui.find_box.get_property("visible") == show:
+            return
+
+        if show == True:
+            self.ui.find_entry.set_text("")
+            self.find_value = ""
+            self.ui.find_box.set_property("visible", True)
+            self.ui.find_entry.grab_focus()
+        else:
+            self.ui.find_box.set_property("visible", False)
+            self.find_results = []
+            self.find_results_index = None
+
     def on_open_url_clicked(self, toolbutton):
         self.open_url()
 
@@ -652,6 +772,7 @@ class PasaffeWindow(Window):
         self.ui.mnu_add.set_sensitive(status)
         self.ui.mnu_clone.set_sensitive(status)
         self.ui.mnu_delete.set_sensitive(status)
+        self.ui.mnu_find.set_sensitive(status)
         self.ui.url_copy.set_sensitive(status)
         self.ui.username_copy.set_sensitive(status)
         self.ui.password_copy.set_sensitive(status)

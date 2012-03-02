@@ -1,3 +1,113 @@
+2012-02-29  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.14
+
+2012-02-27  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2012-02-26  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	Updated NEWS
+
+2012-02-26  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/EditDetailsDialog.ui:
+	* data/ui/NewDatabaseDialog.ui:
+	* data/ui/NewPasswordDialog.ui:
+	* data/ui/PasswordEntryDialog.ui:
+	* data/ui/SaveChangesDialog.ui:
+
+	Set proper window titles
+
+2012-02-26  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/pasaffe.pot:
+
+	- Updated po files
+
+2012-02-26  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/PasaffeWindow.ui:
+
+	- Add tooltips
+
+2012-02-26  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	- Reset search results if search field changed before hitting buttons
+
+2012-02-26  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	- Scroll left window to selected item
+
+2012-02-26  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/PasaffeWindow.ui:
+	* pasaffe/PasaffeWindow.py:
+
+	- Add find toolbar button
+	- Make find menu entry a checkmenuitem
+
+2012-02-25  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* TODO:
+	* data/ui/PasaffeWindow.ui:
+	* pasaffe/PasaffeWindow.py:
+
+	- Implemented search functionality
+
+2012-02-24  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* data/media/pasaffe.svg:
+
+	Slightly improve appearance of main icon
+
+2012-02-18  Launchpad Translations on behalf of mdeslaur
+
+	* po/fr.po:
+
+	Launchpad automatic translations update.
+
+2012-02-17  Launchpad Translations on behalf of mdeslaur
+
+	* po/fr.po:
+
+	Launchpad automatic translations update.
+
+2012-02-15  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2012-02-14  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	- Updated NEWS file for next release
+
 2012-02-14  Marc Deslauriers  <marc.deslauriers@canonical.com>
 
 	* NEWS:
