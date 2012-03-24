@@ -1,3 +1,164 @@
+2012-03-24  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.16
+
+2012-03-24  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/de.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	- merged translations
+
+2012-03-23  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2012-03-24  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe_lib/Window.py:
+
+	- deactivate display secrets button when not needed
+
+2012-03-22  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* pasaffe/PasaffeWindow.py:
+
+	- fix right-click context menu
+
+2012-03-22  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	Prepare NEWS for 0.16
+
+2012-03-22  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.15
+
+2012-03-22  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	added to NEWS
+
+2012-03-22  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* README:
+
+	- Added details to README file
+
+2012-03-22  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	Updated NEWS file
+
+2012-03-22  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* bin/pasaffe-import-figaroxml:
+	* pasaffe_lib/figaroxml.py:
+
+	- print warning about skipped fields in figaro importer
+	- properly handle utf-8 in figaro xml file
+
+2012-03-22  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* README:
+	* bin/pasaffe-import-keepassx:
+	* pasaffe_lib/keepassx.py:
+
+	- Added warning about certain fields not being imported
+	- Properly handle keepassx utf-8
+
+2012-03-21  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe_lib/keepassx.py:
+
+	- Fix string issue in keepassx import
+
+2012-03-18  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* AUTHORS:
+	* NEWS:
+
+	- Updated AUTHORS and NEWS files
+
+2012-03-18  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* bin/pasaffe-import-figaroxml:
+	* bin/pasaffe-import-keepassx:
+	* pasaffe_lib/figaroxml.py:
+	* pasaffe_lib/keepassx.py:
+
+	- Clean up unused parameters
+
+2012-03-17  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* bin/pasaffe-import-figaroxml:
+
+	- Give proper error in figaro XML import script
+
+2012-03-17  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* bin/pasaffe-import-keepassx:
+	* pasaffe_lib/keepassx.py:
+	* NEWS:
+	* TODO:
+
+	- Added KeePassX import script
+
+2012-03-04  Launchpad Translations on behalf of mdeslaur
+
+	* po/es.po:
+
+	Launchpad automatic translations update.
+
+2012-03-03  Launchpad Translations on behalf of mdeslaur
+
+	* po/es.po:
+
+	Launchpad automatic translations update.
+
+2012-03-01  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2012-02-29  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	Prepared NEWS file for next release
+
 2012-02-29  Marc Deslauriers  <marc.deslauriers@canonical.com>
 
 	* NEWS:

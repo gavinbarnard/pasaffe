@@ -1,6 +1,27 @@
 This file summarizes the major and interesting changes for each release.
 For a detailed list of changes, please see ChangeLog.
 
+0.16 (2012-03-24):
+
+ * Enhancements:
+   - Updated translations
+
+ * Bug fixes:
+   - Fix right click context menu (LP: #945861)
+   - Deactivate "Display secrets" button when not needed
+
+0.15 (2012-03-22):
+
+ * Enhancements:
+   - Updated translations
+   - Added KeePassX XML import script
+   - Import scripts now warn about skipped fields
+
+ * Bug fixes:
+   - Give proper error when not specifying file to Figaro import script
+   - Various cleanups
+   - Properly handle utf-8 characters when importing Figaro xml file
+
 0.14 (2012-02-29):
 
  * Enhancements:

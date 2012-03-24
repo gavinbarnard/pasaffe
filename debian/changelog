@@ -1,3 +1,19 @@
+pasaffe (0.16-0ubuntu1) precise; urgency=low
+
+  * New upstream release (LP: #963913)
+    - Updated translations
+    - Added KeePassX XML import script
+    - Import scripts now warn about skipped fields
+    - Give proper error when not specifying file to Figaro import script
+    - Various cleanups
+    - Properly handle utf-8 characters when importing Figaro xml file
+    - Fix right click context menu (LP: #945861)
+    - Deactivate "Display secrets" button when not needed
+  * debian/control: depend on python-gi instead of transitional
+    python-gobject package.
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Sat, 24 Mar 2012 10:23:39 -0400
+
 pasaffe (0.14-0ubuntu1) precise; urgency=low
 
   * New upstream release (LP: #944789)

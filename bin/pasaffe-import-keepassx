@@ -2,7 +2,6 @@
 # -*- Mode: Python; coding: utf-8; indent-tabs-mode: nil; tab-width: 4 -*-
 ### BEGIN LICENSE
 # Copyright (C) 2011 Marc Deslauriers <marc.deslauriers@canonical.com>
-# Copyright (C) 2011 Francesco Marella <francesco.marella@gmail.com>
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU General Public License version 3, as published
 # by the Free Software Foundation.
@@ -44,12 +43,12 @@ if (os.path.exists(os.path.join(PROJECT_ROOT_DIRECTORY, 'pasaffe'))
 if python_path:
     os.putenv('PYTHONPATH', "%s:%s" % (os.getenv('PYTHONPATH', ''), ':'.join(python_path)))  # for subprocess
 
-from pasaffe_lib import figaroxml
+from pasaffe_lib import keepassx
 from pasaffe_lib import readdb
 
 parser = OptionParser()
 parser.add_option("-f", "--file", dest="filename",
-                  help="specify FPM2 XML file", metavar="FILE")
+                  help="specify KeePassX XML file", metavar="FILE")
 parser.add_option("-o", "--overwrite", dest="overwrite", action="store_true",
                   default=False, help="overwrite existing Pasaffe password store")
 
@@ -96,13 +95,13 @@ def confirm(prompt=None, resp=False):
             return False
 
 if options.filename == None:
-    print "You must specify the name of the FPM2 XML file!\n"
+    print "You must specify the name of the KeePassX XML file!\n"
     parser.print_help()
     sys.exit(1)
 else:
     filename = options.filename
 
-print "Attempting to import FPM2 passwords..."
+print "Attempting to import KeePassX passwords..."
 print "Database filename is %s" % filename
 print
 
@@ -120,9 +119,9 @@ if not os.path.exists(basedir):
 
 db_filename = os.path.join(basedir, 'pasaffe.psafe3')
 
-fpmxml = figaroxml.FigaroXML(filename)
+keepassx = keepassx.KeePassX(filename)
 
-items = len(fpmxml.records)
+items = len(keepassx.records)
 
 if items == 0:
     print "Database was empty!"
@@ -131,10 +130,10 @@ else:
     print "Located %s passwords in the database!" % items
     print
 
-if len(fpmxml.skipped) > 0:
+if len(keepassx.skipped) > 0:
     print "WARNING: The following fields will be ignored by this script:"
-    print " ".join(fpmxml.skipped)
-    print "Please keep a copy of your original FPM2 database, as the"
+    print " ".join(keepassx.skipped)
+    print "Please keep a copy of your original KeePassX database, as the"
     print "content of those fields will not be imported into Pasaffe."
     print
 
@@ -173,7 +172,7 @@ if options.overwrite == True:
             break
     passsafe = readdb.PassSafeFile()
     passsafe.new_db(password)
-    passsafe.records = fpmxml.records
+    passsafe.records = keepassx.records
     passsafe.writefile(db_filename)
 
 else:
@@ -181,7 +180,7 @@ else:
     password = getpass.getpass()
 
     passsafe = readdb.PassSafeFile(db_filename, password)
-    for entry in fpmxml.records:
+    for entry in keepassx.records:
         passsafe.records.append(entry)
     passsafe.writefile(db_filename, backup=True)
 
