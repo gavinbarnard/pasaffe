@@ -1,3 +1,16 @@
+pasaffe (0.17-0ubuntu1) quantal; urgency=low
+
+  * New upstream release
+   - Add command-line option to specify default database
+   - Don't save database specified on command line as default
+   - Properly handle entries that have no URL specified (LP: #980608)
+   - Fix logging in pasaffe-import scripts so we can debug failures
+     (LP: #991143)
+   - Correctly strip gpass database padding (LP: #991204)
+   - Properly handle unicode characters with optparse (LP: #983210)
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Thu, 03 May 2012 20:37:15 -0400
+
 pasaffe (0.16-0ubuntu1) precise; urgency=low
 
   * New upstream release (LP: #963913)
