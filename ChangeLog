@@ -1,3 +1,108 @@
+2012-05-17  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.19
+
+2012-05-17  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	- added NEWS
+
+2012-05-17  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* do-release:
+
+	- Remove backup files in directories when doing a release
+
+2012-05-17  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	- prepare for next release
+
+2012-05-17  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.18
+
+2012-05-15  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* pasaffe_lib/Window.py:
+
+	- Robert Ancell 2012-05-15 Disable Launchpad integration
+
+2012-05-15  Robert Ancell  <robert.ancell@canonical.com>
+
+	* NEWS:
+	* pasaffe_lib/Window.py:
+
+	Disable Launchpad integration (no longer supported)
+
+2012-05-13  Launchpad Translations on behalf of mdeslaur
+
+	* po/fr.po:
+
+	Launchpad automatic translations update.
+
+2012-05-07  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* README:
+	* bin/pasaffe-import-keepassx:
+	* pasaffe_lib/keepassx.py:
+
+	- Can now import KeePass2 XML files
+	(Thanks to Mathieu Trudel-Lapierre!)
+
+2012-05-07  Mathieu Trudel-Lapierre  <mathieu-tl@ubuntu.com>
+
+	* bin/pasaffe-import-keepassx:
+	* pasaffe_lib/keepassx.py:
+
+	Allow importing KeePass2 XML files as well.
+
+2012-05-07  Launchpad Translations on behalf of mdeslaur
+
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2012-05-05  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2012-05-04  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2012-05-03  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	- Prepare for next release
+
 2012-05-03  Marc Deslauriers  <marc.deslauriers@canonical.com>
 
 	* NEWS:

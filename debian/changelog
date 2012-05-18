@@ -1,3 +1,13 @@
+pasaffe (0.19-0ubuntu1) quantal; urgency=low
+
+  * New upstream release
+   - Can now import KeePass2 XML files
+     (Thanks to Mathieu Trudel-Lapierre!)
+   - Disable Launchpad integration (LP: #999413)
+  * debian/control: remove gir1.2-launchpad-integration-3.0 depends.
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Thu, 17 May 2012 20:49:19 -0400
+
 pasaffe (0.17-0ubuntu1) quantal; urgency=low
 
   * New upstream release
