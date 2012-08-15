@@ -1,6 +1,15 @@
 This file summarizes the major and interesting changes for each release.
 For a detailed list of changes, please see ChangeLog.
 
+0.20 (2012-08-14):
+
+ * Enhancements:
+   - Made password length configurable (Thanks to Mathieu Trudel-Lapierre!)
+   - Automatically clears clipboard after 20 seconds
+
+ * Bug fixes:
+   - Moved gsettings schema from apps.pasaffe to net.launchpad.pasaffe
+
 0.19 (2012-05-17):
 
  * Enhancements:

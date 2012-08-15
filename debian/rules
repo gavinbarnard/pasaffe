@@ -1,6 +1,4 @@
 #!/usr/bin/make -f
-DEB_PYTHON2_MODULE_PACKAGES = pasaffe
+%:
+	dh $@ --with python2,translations,migrations
 
-include /usr/share/cdbs/1/rules/debhelper.mk
-include /usr/share/cdbs/1/class/python-distutils.mk
--include /usr/share/cdbs/1/rules/langpack.mk

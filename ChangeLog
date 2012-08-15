@@ -1,3 +1,174 @@
+2012-08-14  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.20
+
+2012-08-14  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* do-release:
+
+	do-release: remove compiled gschema file before building tarball
+
+2012-08-11  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/PreferencesPasaffeDialog.ui:
+
+	Improve preference dialog layout
+
+2012-08-11  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/AboutPasaffeDialog.ui:
+	* data/ui/EditDetailsDialog.ui:
+	* data/ui/NewDatabaseDialog.ui:
+	* data/ui/NewPasswordDialog.ui:
+	* data/ui/PasaffeWindow.ui:
+	* data/ui/PasswordEntryDialog.ui:
+	* data/ui/PreferencesPasaffeDialog.ui:
+	* data/ui/SaveChangesDialog.ui:
+
+	- updated glade files to gtk 3
+
+2012-08-11  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* TODO:
+	* data/glib-2.0/schemas/net.launchpad.pasaffe.gschema.xml:
+	* pasaffe/PasaffeWindow.py:
+
+	- Automatically clear clipboard
+
+2012-08-11  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* .bzrignore:
+	* data/glib-2.0:
+	* data/glib-2.0/schemas:
+	* data/pasaffe.convert:
+	* setup.cfg:
+	* pasaffe_lib/__init__.py:
+	* setup.py:
+	* data/net.launchpad.pasaffe.gschema.xml:
+	* data/glib-2.0/schemas/net.launchpad.pasaffe.gschema.xml:
+
+	- Removed lucid compatibility
+	- Moved schema file to location where quickly can find it
+
+2012-08-11  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	- Updated NEWS
+
+2012-08-11  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/pasaffe.convert:
+	* pasaffe/EditDetailsDialog.py:
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe/PreferencesPasaffeDialog.py:
+	* pasaffe/__init__.py:
+	* pasaffe_lib/Window.py:
+	* setup.cfg:
+	* data/apps.pasaffe.gschema.xml:
+	* data/net.launchpad.pasaffe.gschema.xml:
+
+	- Move gsettings schema from apps.pasaffe to net.launchpad.pasaffe
+
+2012-08-11  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* .quickly:
+
+	- Update quickly
+
+2012-08-10  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+
+	Added clipboard TODO item
+
+2012-07-22  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2012-07-14  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/EditDetailsDialog.py:
+
+	- Set a fixed password length
+
+2012-07-14  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* data/apps.pasaffe.gschema.xml:
+	* data/ui/PreferencesPasaffeDialog.ui:
+	* pasaffe/EditDetailsDialog.py:
+	* pasaffe/PreferencesPasaffeDialog.py:
+
+	- Make password length configurable
+
+2012-07-10  Mathieu Trudel-Lapierre  <mathieu-tl@ubuntu.com>
+
+	* pasaffe/EditDetailsDialog.py:
+
+	- Must import Gio for access to gsettings.
+	- password_length must be passed to check_output as string.
+
+2012-07-10  Mathieu Trudel-Lapierre  <mathieu-tl@ubuntu.com>
+
+	* data/ui/PreferencesPasaffeDialog.ui:
+
+	Add the UI bits for password length selection.
+
+2012-07-10  Mathieu Trudel-Lapierre  <mathieu-tl@ubuntu.com>
+
+	* data/apps.pasaffe.gschema.xml:
+	* pasaffe/EditDetailsDialog.py:
+	* pasaffe/PreferencesPasaffeDialog.py:
+
+	Add support for setting password length.
+
+2012-05-20  Launchpad Translations on behalf of mdeslaur
+
+	* po/it.po:
+
+	Launchpad automatic translations update.
+
+2012-05-19  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2012-05-18  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2012-05-17  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	- updated NEWS for next release
+
 2012-05-17  Marc Deslauriers  <marc.deslauriers@canonical.com>
 
 	* NEWS:

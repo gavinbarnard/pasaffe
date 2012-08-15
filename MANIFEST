@@ -9,7 +9,6 @@ README
 TODO
 do-release
 pasaffe.desktop.in
-setup.cfg
 setup.py
 bin/pasaffe
 bin/pasaffe-dump-db
@@ -17,8 +16,7 @@ bin/pasaffe-import-entry
 bin/pasaffe-import-figaroxml
 bin/pasaffe-import-gpass
 bin/pasaffe-import-keepassx
-data/apps.pasaffe.gschema.xml
-data/pasaffe.convert
+data/glib-2.0/schemas/net.launchpad.pasaffe.gschema.xml
 data/media/pasaffe.svg
 data/ui/AboutPasaffeDialog.ui
 data/ui/EditDetailsDialog.ui

@@ -1,3 +1,19 @@
+pasaffe (0.20-0ubuntu1) quantal; urgency=low
+
+  * New upstream release
+   - Made password length configurable (Thanks to Mathieu Trudel-Lapierre!)
+   - Automatically clears clipboard after 20 seconds
+  * Moved gsettings schema from apps.pasaffe to net.launchpad.pasaffe:
+    - debian/rules: use dh_migrations
+    - debian/control: add dh-migrations build-depends, add dconf-tools
+      depends.
+    - debian/01_pasaffe_change_dconf_path: migration script
+    - debian/migrations: install migrations script
+  * debian/control: use standards 3.9.3
+  * debian/rules: migrate to debhelper
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Tue, 14 Aug 2012 20:06:16 -0400
+
 pasaffe (0.19-0ubuntu1) quantal; urgency=low
 
   * New upstream release
