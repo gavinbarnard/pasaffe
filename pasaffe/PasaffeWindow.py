@@ -1,16 +1,16 @@
 # -*- Mode: Python; coding: utf-8; indent-tabs-mode: nil; tab-width: 4 -*-
 ### BEGIN LICENSE
 # Copyright (C) 2011-2012 Marc Deslauriers <marc.deslauriers@canonical.com>
-# This program is free software: you can redistribute it and/or modify it 
-# under the terms of the GNU General Public License version 3, as published 
+# This program is free software: you can redistribute it and/or modify it
+# under the terms of the GNU General Public License version 3, as published
 # by the Free Software Foundation.
-# 
-# This program is distributed in the hope that it will be useful, but 
-# WITHOUT ANY WARRANTY; without even the implied warranties of 
-# MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR 
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranties of
+# MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
 # PURPOSE.  See the GNU General Public License for more details.
-# 
-# You should have received a copy of the GNU General Public License along 
+#
+# You should have received a copy of the GNU General Public License along
 # with this program.  If not, see <http://www.gnu.org/licenses/>.
 ### END LICENSE
 
@@ -18,9 +18,16 @@ import gettext
 from gettext import gettext as _
 gettext.textdomain('pasaffe')
 
-from gi.repository import GObject, Gio, Gtk, Gdk, Pango, GLib # pylint: disable=E0611
-import os, struct, time, sys, webbrowser, re
+from gi.repository import GObject, Gio, Gtk  # pylint: disable=E0611
+from gi.repository import Gdk, Pango, GLib  # pylint: disable=E0611
 import logging
+import os
+import re
+import struct
+import sys
+import time
+import webbrowser
+
 logger = logging.getLogger('pasaffe')
 
 from pasaffe_lib import Window
@@ -34,12 +41,13 @@ from pasaffe.PreferencesPasaffeDialog import PreferencesPasaffeDialog
 from pasaffe_lib.readdb import PassSafeFile
 from pasaffe_lib.helpers import get_builder
 
+
 # See pasaffe_lib.Window.py for more details about how this class works
 class PasaffeWindow(Window):
     __gtype_name__ = "PasaffeWindow"
 
     def __new__(cls, database=None):
-        """Special static method that's automatically called by Python when 
+        """Special static method that's automatically called by Python when
         constructing a new instance of this class.
 
         Returns a fully instantiated BasePasaffeWindow object.
@@ -49,8 +57,7 @@ class PasaffeWindow(Window):
         new_object.finish_initializing(builder, database)
         return new_object
 
-
-    def finish_initializing(self, builder, database): # pylint: disable=E1002
+    def finish_initializing(self, builder, database):  # pylint: disable=E1002
         """Set up the main window"""
         super(PasaffeWindow, self).finish_initializing(builder)
 
@@ -63,8 +70,9 @@ class PasaffeWindow(Window):
         self.NewDatabaseDialog = NewDatabaseDialog
         self.NewPasswordDialog = NewPasswordDialog
 
-        self.connect("delete-event",self.on_delete_event)
-        self.ui.textview1.connect("motion-notify-event", self.textview_event_handler)
+        self.connect("delete-event", self.on_delete_event)
+        self.ui.textview1.connect("motion-notify-event",
+                                  self.textview_event_handler)
 
         self.set_save_status(False)
         self.passfile = None
@@ -83,6 +91,8 @@ class PasaffeWindow(Window):
         self.settings = Gio.Settings("net.launchpad.pasaffe")
         self.settings.connect('changed', self.on_preferences_changed)
 
+        self.state = Gio.Settings("net.launchpad.pasaffe.state")
+
         # If database doesn't exists, make a new one
         if os.path.exists(self.database):
             success = self.fetch_password()
@@ -92,6 +102,7 @@ class PasaffeWindow(Window):
         if success == False:
             self.connect('event-after', Gtk.main_quit)
         else:
+            self.set_window_size()
             self.set_show_password_status()
             self.display_entries()
             self.display_welcome()
@@ -100,7 +111,32 @@ class PasaffeWindow(Window):
         self.set_idle_timeout()
 
     def on_delete_event(self, widget, event):
+        self.save_window_size()
         return self.save_warning()
+
+    def set_window_size(self):
+        width = self.state.get_int('main-size-width')
+        height = self.state.get_int('main-size-height')
+        split = self.state.get_int('main-split')
+        self.ui.pasaffe_window.resize(width, height)
+        self.ui.hpaned1.set_position(split)
+
+    def save_window_size(self):
+        (width, height) = self.ui.pasaffe_window.get_size()
+        split = self.ui.hpaned1.get_position()
+        self.state.set_int('main-size-width', width)
+        self.state.set_int('main-size-height', height)
+        self.state.set_int('main-split', split)
+
+    def set_entry_window_size(self):
+        width = self.state.get_int('entry-size-width')
+        height = self.state.get_int('entry-size-height')
+        self.editdetails_dialog.ui.edit_details_dialog.resize(width, height)
+
+    def save_entry_window_size(self):
+        (width, height) = self.editdetails_dialog.ui.edit_details_dialog.get_size()
+        self.state.set_int('entry-size-width', width)
+        self.state.set_int('entry-size-height', height)
 
     def save_warning(self):
         if self.get_save_status() == True:
@@ -155,46 +191,43 @@ class PasaffeWindow(Window):
 
     def display_entries(self):
         entries = []
-        for record in self.passfile.records:
-            entries.append([record[3],record[1].encode("hex")])
+        for uuid in self.passfile.records:
+            entries.append([self.passfile.records[uuid][3], uuid])
         self.ui.liststore1.clear()
         for record in sorted(entries, key=lambda entry: entry[0].lower()):
             self.ui.liststore1.append(record)
 
     def display_data(self, entry_uuid, show_secrets=False):
-        for record in self.passfile.records:
-            if record[1] == entry_uuid.decode("hex"):
-                title = record.get(3)
+        title = self.passfile.records[entry_uuid].get(3)
 
-                url = None
-                if record.has_key(13):
-                    url = "%s\n\n" % record.get(13)
+        url = None
+        if 13 in self.passfile.records[entry_uuid]:
+            url = "%s\n\n" % self.passfile.records[entry_uuid].get(13)
 
-                contents = ''
-                if show_secrets == False and \
-                   self.settings.get_boolean('only-passwords-are-secret') == False and \
-                   self.settings.get_boolean('visible-secrets') == False:
-                    contents += _("Secrets are currently hidden.")
-                else:
-                    if record.has_key(5):
-                            contents += "%s\n\n" % record.get(5)
-                    contents += _("Username: %s\n") % record.get(4)
-                    if show_secrets == True or self.settings.get_boolean('visible-secrets') == True:
-                        contents += _("Password: %s\n\n") % record.get(6)
-                    else:
-                        contents += _("Password: *****\n\n")
-                    if record.has_key(12):
-                        last_updated = time.strftime("%a, %d %b %Y %H:%M:%S",
-                                       time.localtime(struct.unpack("<I",
-                                       record[12])[0]))
-                        contents += _("Last updated: %s\n") % last_updated
-                    if record.has_key(8):
-                        pass_updated = time.strftime("%a, %d %b %Y %H:%M:%S",
-                                       time.localtime(struct.unpack("<I",
-                                           record[8])[0]))
-                        contents += _("Password updated: %s\n") % pass_updated
-                self.fill_display(title, url, contents)
-                break
+        contents = ''
+        if show_secrets == False and \
+           self.settings.get_boolean('only-passwords-are-secret') == False and \
+           self.settings.get_boolean('visible-secrets') == False:
+            contents += _("Secrets are currently hidden.")
+        else:
+            if 5 in self.passfile.records[entry_uuid]:
+                    contents += "%s\n\n" % self.passfile.records[entry_uuid].get(5)
+            contents += _("Username: %s\n") % self.passfile.records[entry_uuid].get(4)
+            if show_secrets == True or self.settings.get_boolean('visible-secrets') == True:
+                contents += _("Password: %s\n\n") % self.passfile.records[entry_uuid].get(6)
+            else:
+                contents += _("Password: *****\n\n")
+            if 12 in self.passfile.records[entry_uuid]:
+                last_updated = time.strftime("%a, %d %b %Y %H:%M:%S",
+                               time.localtime(struct.unpack("<I",
+                               self.passfile.records[entry_uuid][12])[0]))
+                contents += _("Last updated: %s\n") % last_updated
+            if 8 in self.passfile.records[entry_uuid]:
+                pass_updated = time.strftime("%a, %d %b %Y %H:%M:%S",
+                               time.localtime(struct.unpack("<I",
+                                   self.passfile.records[entry_uuid][8])[0]))
+                contents += _("Password updated: %s\n") % pass_updated
+        self.fill_display(title, url, contents)
 
     def display_welcome(self):
         self.fill_display(_("Welcome to Pasaffe!"), None,
@@ -242,14 +275,11 @@ class PasaffeWindow(Window):
         return False
 
     def open_url(self):
-        url = None 
+        url = None
         treemodel, treeiter = self.ui.treeview1.get_selection().get_selected()
         if treeiter != None:
             entry_uuid = treemodel.get_value(treeiter, 1)
-            for record in self.passfile.records:
-                if record[1] == entry_uuid.decode("hex") and record.has_key(13):
-                    url = record[13]
-                    break
+            url = self.passfile.records[entry_uuid].get(13)
         if url != None:
             if not url.startswith('http://') and \
                not url.startswith('https://'):
@@ -288,12 +318,7 @@ class PasaffeWindow(Window):
             self.editdetails_dialog.present()
             return
 
-        uuid = os.urandom(16)
-        uuid_hex = uuid.encode("hex")
-        timestamp = struct.pack("<I", int(time.time()))
-        new_entry = {1: uuid, 3: '', 4: '', 5: '', 6: '',
-                     7: timestamp, 8: timestamp, 12: timestamp, 13: ''}
-        self.passfile.records.append(new_entry)
+        uuid_hex = self.passfile.new_entry()
 
         response = self.edit_entry(uuid_hex)
         if response != Gtk.ResponseType.OK:
@@ -317,7 +342,7 @@ class PasaffeWindow(Window):
         self.update_find_results(force=True)
 
     def clone_entry(self, entry_uuid):
-        record_list = ( 3, 4, 5, 6, 13 )
+        record_list = (3, 4, 5, 6, 13)
         self.disable_idle_timeout()
 
         # Make sure dialog isn't already open
@@ -325,20 +350,11 @@ class PasaffeWindow(Window):
             self.editdetails_dialog.present()
             return
 
-        uuid = os.urandom(16)
-        uuid_hex = uuid.encode("hex")
-        timestamp = struct.pack("<I", int(time.time()))
-        new_entry = {1: uuid, 3: '', 4: '', 5: '', 6: '',
-                     7: timestamp, 8: timestamp, 12: timestamp, 13: ''}
+        uuid_hex = self.passfile.new_entry()
 
-        for record in self.passfile.records:
-            if record[1] == entry_uuid.decode("hex"):
-                for record_type in record_list:
-                    if record.has_key(record_type):
-                        new_entry[record_type] = record[record_type]
-                break
-
-        self.passfile.records.append(new_entry)
+        for record_type in record_list:
+            if record_type in self.passfile.records[entry_uuid]:
+                self.passfile.records[uuid_hex][record_type] = self.passfile.records[entry_uuid][record_type]
 
         response = self.edit_entry(uuid_hex)
         if response != Gtk.ResponseType.OK:
@@ -379,11 +395,11 @@ class PasaffeWindow(Window):
                 self.delete_entry(entry_uuid)
 
     def edit_entry(self, entry_uuid):
-        record_dict = { 3 : 'name_entry',
-                        4 : 'username_entry',
-                        5 : 'notes_buffer',
-                        6 : 'password_entry',
-                        13: 'url_entry' }
+        record_dict = {3: 'name_entry',
+                       4: 'username_entry',
+                       5: 'notes_buffer',
+                       6: 'password_entry',
+                       13: 'url_entry'}
 
         # Make sure dialog isn't already open
         if self.editdetails_dialog is not None:
@@ -394,13 +410,11 @@ class PasaffeWindow(Window):
             self.disable_idle_timeout()
             self.editdetails_dialog = self.EditDetailsDialog()
 
-            for record in self.passfile.records:
-                if record[1] == entry_uuid.decode("hex"):
-                    for record_type, widget_name in record_dict.items():
-                        if record.has_key(record_type):
-                            self.editdetails_dialog.builder.get_object(widget_name).set_text(record[record_type])
-                    break
+            for record_type, widget_name in record_dict.items():
+                if record_type in self.passfile.records[entry_uuid]:
+                    self.editdetails_dialog.builder.get_object(widget_name).set_text(self.passfile.records[entry_uuid][record_type])
 
+            self.set_entry_window_size()
             response = self.editdetails_dialog.run()
             if response == Gtk.ResponseType.OK:
                 data_changed = False
@@ -411,11 +425,11 @@ class PasaffeWindow(Window):
                     else:
                         new_value = self.editdetails_dialog.builder.get_object(widget_name).get_text()
 
-                    if (record_type == 5 or record_type == 13) and new_value == "" and record.has_key(record_type):
-                            del record[record_type]
-                    elif record.get(record_type, "") != new_value:
+                    if (record_type == 5 or record_type == 13) and new_value == "" and record_type in self.passfile.records[entry_uuid]:
+                            del self.passfile.records[entry_uuid][record_type]
+                    elif self.passfile.records[entry_uuid].get(record_type, "") != new_value:
                         data_changed = True
-                        record[record_type] = new_value
+                        self.passfile.records[entry_uuid][record_type] = new_value
 
                         # Update the name in the tree
                         if record_type == 3:
@@ -429,14 +443,15 @@ class PasaffeWindow(Window):
 
                         # Update the password changed date
                         if record_type == 6:
-                            record[8] = timestamp
+                            self.passfile.records[entry_uuid][8] = timestamp
 
                 if data_changed == True:
                     self.set_save_status(True)
-                    record[12] = timestamp
+                    self.passfile.records[entry_uuid][12] = timestamp
                     if self.settings.get_boolean('auto-save') == True:
                         self.save_db()
 
+            self.save_entry_window_size()
             self.editdetails_dialog.destroy()
             self.editdetails_dialog = None
 
@@ -465,9 +480,7 @@ class PasaffeWindow(Window):
             else:
                 item = self.ui.treeview1.get_model().iter_next(item)
 
-        for record in self.passfile.records:
-            if record[1].encode("hex") == entry_uuid:
-                self.passfile.records.remove(record)
+        del self.passfile.records[entry_uuid]
 
         if save == True:
             self.set_save_status(True)
@@ -486,8 +499,8 @@ class PasaffeWindow(Window):
     def model_get_iter_last(self, model, parent=None):
         """Returns a Gtk.TreeIter to the last row or None if there aren't any rows.
         If parent is None, returns a Gtk.TreeIter to the last root row."""
-        n = model.iter_n_children( parent )
-        return n and model.iter_nth_child( parent, n - 1 )
+        n = model.iter_n_children(parent)
+        return n and model.iter_nth_child(parent, n - 1)
 
     def on_treeview1_row_activated(self, treeview, path, view_column):
         treemodel, treeiter = treeview.get_selection().get_selected()
@@ -560,13 +573,13 @@ class PasaffeWindow(Window):
         if treeiter != None:
             entry_uuid = treemodel.get_value(treeiter, 1)
 
-            for record in self.passfile.records:
-                if record[1] == entry_uuid.decode("hex") and record.has_key(item):
-                    for atom in [Gdk.SELECTION_CLIPBOARD, Gdk.SELECTION_PRIMARY]:
-                        clipboard = Gtk.Clipboard.get(atom)
-                        clipboard.set_text(record[item], len(record[item]))
-                        clipboard.store()
-                    self.set_clipboard_timeout()
+            if item in self.passfile.records[entry_uuid]:
+                for atom in [Gdk.SELECTION_CLIPBOARD, Gdk.SELECTION_PRIMARY]:
+                    clipboard = Gtk.Clipboard.get(atom)
+                    clipboard.set_text(self.passfile.records[entry_uuid][item],
+                                       len(self.passfile.records[entry_uuid][item]))
+                    clipboard.store()
+                self.set_clipboard_timeout()
 
     def on_mnu_add_activate(self, menuitem):
         self.add_entry()
@@ -586,18 +599,15 @@ class PasaffeWindow(Window):
     def on_mnu_info_activate(self, menuitem):
         information = _('<big><b>Database Information</b></big>\n\n')
         information += _('Number of entries: %s\n') % len(self.passfile.records)
-        information += _('Database version: %s.%s\n') % (self.passfile.header[0][1].encode('hex'),self.passfile.header[0][0].encode('hex'))
-        if 7 in self.passfile.header:
-            information += _('Last saved by: %s\n') % self.passfile.header[7]
-        if 8 in self.passfile.header:
-            information += _('Last saved on host: %s\n') % self.passfile.header[8]
-        if 4 in self.passfile.header:
-            last_saved = time.strftime("%a, %d %b %Y %H:%M:%S",
-                                   time.localtime(struct.unpack("<I",
-                                   self.passfile.header[4])[0]))
-            information += _('Last save date: %s\n') % last_saved
-        if 6 in self.passfile.header:
-            information += _('Application used: %s\n') % self.passfile.header[6]
+        information += _('Database version: %s\n') % self.passfile.get_database_version_string()
+        if self.passfile.get_saved_name():
+            information += _('Last saved by: %s\n') % self.passfile.get_saved_name()
+        if self.passfile.get_saved_host():
+            information += _('Last saved on host: %s\n') % self.passfile.get_saved_host()
+        if self.passfile.get_saved_date_string():
+            information += _('Last save date: %s\n') % self.passfile.get_saved_date_string()
+        if self.passfile.get_saved_application():
+            information += _('Application used: %s\n') % self.passfile.get_saved_application()
 
         info_dialog = Gtk.MessageDialog(type=Gtk.MessageType.INFO, buttons=Gtk.ButtonsType.OK)
         info_dialog.set_markup(information)
@@ -646,20 +656,20 @@ class PasaffeWindow(Window):
         if find == self.find_value and force == False:
             return
 
-        record_list = ( 3, 5, 13 )
+        record_list = (3, 5, 13)
         pat = re.compile(find, re.IGNORECASE)
         results = []
 
-        for record in self.passfile.records:
+        for uuid in self.passfile.records:
             found = False
             for record_type in record_list:
-                if record.has_key(record_type):
-                    if pat.search(record.get(record_type)):
+                if record_type in self.passfile.records[uuid]:
+                    if pat.search(self.passfile.records[uuid].get(record_type)):
                         found = True
                         break
 
             if found == True:
-                results.append([record[3],record[1].encode("hex")])
+                results.append([self.passfile.records[uuid][3], uuid])
 
         self.find_results = sorted(results, key=lambda results: results[0].lower())
         self.find_results_index = None
@@ -833,7 +843,7 @@ class PasaffeWindow(Window):
             GObject.source_remove(self.idle_id)
             self.idle_id == None
         if self.settings.get_boolean('lock-on-idle') == True and self.settings.get_int('idle-timeout') != 0:
-            idle_time = int(self.settings.get_int('idle-timeout')*1000*60)
+            idle_time = int(self.settings.get_int('idle-timeout') * 1000 * 60)
             self.idle_id = GObject.timeout_add(idle_time, self.idle_timeout_reached)
 
     def idle_timeout_reached(self):
@@ -852,7 +862,7 @@ class PasaffeWindow(Window):
             GObject.source_remove(self.clipboard_id)
             self.clipboard_id == None
         if self.settings.get_int('clipboard-timeout') != 0:
-            clipboard_time = int(self.settings.get_int('clipboard-timeout')*1000)
+            clipboard_time = int(self.settings.get_int('clipboard-timeout') * 1000)
             self.clipboard_id = GObject.timeout_add(clipboard_time,
                                                     self.clipboard_timeout_reached)
 

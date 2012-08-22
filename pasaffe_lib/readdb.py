@@ -1,24 +1,35 @@
 # -*- Mode: Python; coding: utf-8; indent-tabs-mode: nil; tab-width: 4 -*-
 ### BEGIN LICENSE
-# Copyright (C) 2011 Marc Deslauriers <marc.deslauriers@canonical.com>
-# This program is free software: you can redistribute it and/or modify it 
-# under the terms of the GNU General Public License version 3, as published 
+# Copyright (C) 2011-2012 Marc Deslauriers <marc.deslauriers@canonical.com>
+# This program is free software: you can redistribute it and/or modify it
+# under the terms of the GNU General Public License version 3, as published
 # by the Free Software Foundation.
-# 
-# This program is distributed in the hope that it will be useful, but 
-# WITHOUT ANY WARRANTY; without even the implied warranties of 
-# MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR 
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranties of
+# MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
 # PURPOSE.  See the GNU General Public License for more details.
-# 
-# You should have received a copy of the GNU General Public License along 
+#
+# You should have received a copy of the GNU General Public License along
 # with this program.  If not, see <http://www.gnu.org/licenses/>.
 ### END LICENSE
 
-import sys, struct, hashlib, hmac, random, os, time, tempfile, shutil, pwd
+import sys
+import struct
+import hashlib
+import hmac
+import random
+import os
+import time
+import tempfile
+import shutil
+import pwd
+
 import pytwofishcbc
 import logging
 logger = logging.getLogger('pasaffe_lib')
 from . pasaffeconfig import get_version
+
 
 class PassSafeFile:
 
@@ -27,10 +38,11 @@ class PassSafeFile:
 
         self.keys = {}
         self.header = {}
-        self.records = []
+        self.records = {}
         self.cipher = None
         self.cipher_block_size = 0
         self.hmac = None
+        self.dbfile = None
 
         if req_cipher == 'Twofish':
             self.cipher = pytwofishcbc.TwofishCBC()
@@ -45,19 +57,21 @@ class PassSafeFile:
         '''Parses database file'''
         logger.debug('Opening database: %s' % filename)
         try:
-            dbfile = open(filename, 'r')
+            self.dbfile = open(filename, 'r')
         except Exception:
             raise RuntimeError("Could not open %s. Aborting." % filename)
 
-        tag = dbfile.read(4)
+        tag = self.dbfile.read(4)
         if tag != "PWS3":
-            raise RuntimeError("File %s is not a password safe database. Aborting." % filename)
+            raise RuntimeError("File %s is not a password safe database."
+                               " Aborting." % filename)
 
-        self._readkeys(dbfile, password)
-        self._readheader(dbfile)
-        self._readrecords(dbfile)
-        self._validatehmac(dbfile)
-        dbfile.close()
+        self._readkeys(password)
+        self._readheader()
+        self._readrecords()
+        self._validatehmac()
+        self.dbfile.close()
+        self.dbfile = None
 
         # Now that we've read the file, but before we get rid of the
         # password, generate new keys for our next save
@@ -72,12 +86,14 @@ class PassSafeFile:
 
         self.new_keys(password)
 
-        self.header[0] = '\x02\x03' # database version
-        self.header[1] = os.urandom(16) # uuid
+        self.header[0] = '\x02\x03'  # database version
+        self.header[1] = os.urandom(16)  # uuid
 
     def check_password(self, password):
         '''Checks if password is valid'''
-        stretched_key = self._keystretch(password, self.keys['SALT'], self.keys['ITER'])
+        stretched_key = self._keystretch(password,
+                                         self.keys['SALT'],
+                                         self.keys['ITER'])
         # Don't need the password anymore, clear it out
         password = ''
         if hashlib.sha256(stretched_key).digest() != self.keys['HP']:
@@ -89,7 +105,8 @@ class PassSafeFile:
         '''Generates new keys'''
         self.keys['SALT'] = os.urandom(32)
 
-        stretched_key = self._keystretch(password, self.keys['SALT'], self.keys['ITER'])
+        stretched_key = self._keystretch(password, self.keys['SALT'],
+                                                   self.keys['ITER'])
         # Don't need the password anymore, clear it out
         password = ''
         self.keys['HP'] = hashlib.sha256(stretched_key).digest()
@@ -132,19 +149,21 @@ class PassSafeFile:
         basedir = os.path.dirname(filename)
 
         try:
-            dbfile = tempfile.NamedTemporaryFile(dir=basedir, delete=False)
+            self.dbfile = tempfile.NamedTemporaryFile(dir=basedir,
+                                                      delete=False)
         except Exception:
             raise RuntimeError("Could not create %s. Aborting." % filename)
 
-        tempname = dbfile.name
+        tempname = self.dbfile.name
 
-        dbfile.write("PWS3")
-        self._writekeys(dbfile)
-        self._writeheader(dbfile)
-        self._writerecords(dbfile)
-        self._writeeofblock(dbfile)
-        self._writehmac(dbfile)
-        dbfile.close()
+        self.dbfile.write("PWS3")
+        self._writekeys()
+        self._writeheader()
+        self._writerecords()
+        self._writeeofblock()
+        self._writehmac()
+        self.dbfile.close()
+        self.dbfile = None
 
         # TODO: add sanity check
         # At this point, intention was to reopen the temp file and see
@@ -155,6 +174,43 @@ class PassSafeFile:
         shutil.copy(tempname, filename)
         os.unlink(tempname)
 
+    def get_database_version_string(self):
+        '''Returns a string of the current database version'''
+        return '%s.%s' % (self.header[0][1].encode('hex'),
+                          self.header[0][0].encode('hex'))
+
+    def get_saved_name(self):
+        '''Returns the username of the last save'''
+        return self.header.get(7)
+
+    def get_saved_host(self):
+        '''Returns the hostname of the last save'''
+        return self.header.get(8)
+
+    def get_saved_application(self):
+        '''Returns the application of the last save'''
+        return self.header.get(6)
+
+    def get_saved_date_string(self):
+        '''Returns a string of the date of the last save'''
+        if 4 in self.header:
+            return time.strftime("%a, %d %b %Y %H:%M:%S",
+                                 time.localtime(struct.unpack("<I",
+                                 self.header[4])[0]))
+        else:
+            return None
+
+    def new_entry(self):
+        '''Creates a new entry'''
+        uuid = os.urandom(16)
+        uuid_hex = uuid.encode("hex")
+        timestamp = struct.pack("<I", int(time.time()))
+        new_entry = {1: uuid, 3: '', 4: '', 5: '', 6: '',
+                     7: timestamp, 8: timestamp, 12: timestamp, 13: ''}
+        self.records[uuid_hex] = new_entry
+
+        return uuid_hex
+
     def _keystretch(self, password, salt, iters):
         '''Takes a password, and stretches it using iters iterations'''
         password = hashlib.sha256(password + salt).digest()
@@ -162,55 +218,62 @@ class PassSafeFile:
             password = hashlib.sha256(password).digest()
         return password
 
-    def _readkeys(self, dbfile, password):
-        self.keys['SALT'] = dbfile.read(32)
-        self.keys['ITER'] = struct.unpack("<i", dbfile.read(4))[0]
+    def _readkeys(self, password):
+        self.keys['SALT'] = self.dbfile.read(32)
+        self.keys['ITER'] = struct.unpack("<i", self.dbfile.read(4))[0]
         # Sanity check so we don't gobble up massive amounts of ram
         if self.keys['ITER'] > 50000:
-            raise RuntimeError("Too many iterations: %s. Aborting." % self.keys['ITER'])
+            raise RuntimeError("Too many iterations: %s. Aborting." %
+                               self.keys['ITER'])
         logger.debug("Number of iters is %d" % self.keys['ITER'])
-        self.keys['HP'] = dbfile.read(32)
+        self.keys['HP'] = self.dbfile.read(32)
         #logger.debug("hp is %s" % self.keys['HP'])
-        self.keys['B1'] = dbfile.read(16)
-        self.keys['B2'] = dbfile.read(16)
-        self.keys['B3'] = dbfile.read(16)
-        self.keys['B4'] = dbfile.read(16)
-        self.keys['IV'] = dbfile.read(16)
+        self.keys['B1'] = self.dbfile.read(16)
+        self.keys['B2'] = self.dbfile.read(16)
+        self.keys['B3'] = self.dbfile.read(16)
+        self.keys['B4'] = self.dbfile.read(16)
+        self.keys['IV'] = self.dbfile.read(16)
         self.cipher.initCBC(self.keys['IV'])
-        stretched_key = self._keystretch(password, self.keys['SALT'], self.keys['ITER'])
+        stretched_key = self._keystretch(password, self.keys['SALT'],
+                                                   self.keys['ITER'])
         # Don't need the password anymore, clear it out
         password = ''
         #logger.debug("stretched pass is %s" % stretched_key.encode("hex"))
         if hashlib.sha256(stretched_key).digest() != self.keys['HP']:
-            raise ValueError("Password supplied doesn't match database. Aborting.")
+            raise ValueError("Password supplied doesn't match database."
+                             " Aborting.")
 
         self.cipher.set_key(stretched_key)
         # Don't need the stretched key anymore, clear it out
         stretched_key = ''
-        self.keys['K'] = self.cipher.decrypt(self.keys['B1']) + self.cipher.decrypt(self.keys['B2'])
-        self.keys['L'] = self.cipher.decrypt(self.keys['B3']) + self.cipher.decrypt(self.keys['B4'])
+        self.keys['K'] = self.cipher.decrypt(self.keys['B1']) + \
+                         self.cipher.decrypt(self.keys['B2'])
+        self.keys['L'] = self.cipher.decrypt(self.keys['B3']) + \
+                         self.cipher.decrypt(self.keys['B4'])
         self.hmac = hmac.new(self.keys['L'], digestmod=hashlib.sha256)
-        #logger.debug("K is %s and L is %s" % (self.keys['K'].encode("hex"), self.keys['L'].encode("hex")))
+        #logger.debug("K is %s and L is %s" % (self.keys['K'].encode("hex"),
+        #                                      self.keys['L'].encode("hex")))
 
-    def _writekeys(self, dbfile):
-        dbfile.write(self.keys['SALT'])
-        dbfile.write(struct.pack("i", self.keys['ITER']))
-        dbfile.write(self.keys['HP'])
-        dbfile.write(self.keys['B1'])
-        dbfile.write(self.keys['B2'])
-        dbfile.write(self.keys['B3'])
-        dbfile.write(self.keys['B4'])
-        dbfile.write(self.keys['IV'])
+    def _writekeys(self):
+        self.dbfile.write(self.keys['SALT'])
+        self.dbfile.write(struct.pack("i", self.keys['ITER']))
+        self.dbfile.write(self.keys['HP'])
+        self.dbfile.write(self.keys['B1'])
+        self.dbfile.write(self.keys['B2'])
+        self.dbfile.write(self.keys['B3'])
+        self.dbfile.write(self.keys['B4'])
+        self.dbfile.write(self.keys['IV'])
         self.cipher.initCBC(self.keys['IV'])
         self.hmac = hmac.new(self.keys['L'], digestmod=hashlib.sha256)
 
-    def _readheader(self, dbfile):
+    def _readheader(self):
         self.cipher.set_key(self.keys['K'])
 
         while(1):
-            status, field_type, field_data = self._readfield(dbfile)
+            status, field_type, field_data = self._readfield()
             if status == False:
-                raise RuntimeError("Malformed file, was expecting more data in header")
+                raise RuntimeError("Malformed file, "
+                                   "was expecting more data in header")
             if field_type == 0xff:
                 logger.debug("Found end field")
                 break
@@ -218,45 +281,46 @@ class PassSafeFile:
                 self.header[field_type] = field_data
                 logger.debug("Found field 0x%.2x" % field_type)
 
-    def _writeheader(self, dbfile):
+    def _writeheader(self):
         self.cipher.set_key(self.keys['K'])
 
         for entry in self.header.keys():
             logger.debug("Writing %.2x" % entry)
-            self._writefield(dbfile, entry, self.header[entry])
+            self._writefield(entry, self.header[entry])
 
-        self._writefieldend(dbfile)
+        self._writefieldend()
 
-    def _readrecords(self, dbfile):
+    def _readrecords(self):
         self.cipher.set_key(self.keys['K'])
 
         record = {}
 
         while(1):
-            status, field_type, field_data = self._readfield(dbfile)
+            status, field_type, field_data = self._readfield()
             if status == False:
                 break
             if field_type == 0xff:
                 logger.debug("Found end field")
-                self.records.append(record)
+                uuid = record[1].encode('hex')
+                self.records[uuid] = record
                 record = {}
             else:
                 record[field_type] = field_data
                 logger.debug("Found field 0x%.2x" % field_type)
 
-    def _writerecords(self, dbfile):
+    def _writerecords(self):
         self.cipher.set_key(self.keys['K'])
 
         record = {}
 
-        for record in self.records:
-            for field in record.keys():
-                self._writefield(dbfile, field, record[field])
-            self._writefieldend(dbfile)
+        for uuid in self.records:
+            for field in self.records[uuid].keys():
+                self._writefield(field, self.records[uuid][field])
+            self._writefieldend()
 
-    def _readfield(self, dbfile):
+    def _readfield(self):
         field_data = ''
-        status, first_block = self._readblock(dbfile)
+        status, first_block = self._readblock()
         if status == False:
             return False, 0xFF, ''
         field_length = struct.unpack("<I", first_block[0:4])[0]
@@ -274,9 +338,10 @@ class PassSafeFile:
             field_length -= self.cipher_block_size - 5
             while field_length > 0:
                 logger.debug("extra block")
-                status, data = self._readblock(dbfile)
+                status, data = self._readblock()
                 if status == False:
-                    raise RuntimeError("Malformed file, was expecting more data")
+                    raise RuntimeError("Malformed file, "
+                                       "was expecting more data")
                 field_data += data[0:field_length]
                 field_length -= self.cipher_block_size
 
@@ -286,7 +351,7 @@ class PassSafeFile:
 
         return True, field_type, field_data
 
-    def _writefield(self, dbfile, field_type, field_data):
+    def _writefield(self, field_type, field_data):
         self.hmac.update(field_data)
         field_length = len(field_data)
         field_free_space = self.cipher_block_size - 5
@@ -295,21 +360,22 @@ class PassSafeFile:
         block += struct.pack("I", field_length)
         block += struct.pack("B", field_type)
 
-        logger.debug("Writing field type %.2x, length %d" % (field_type, field_length))
+        logger.debug("Writing field type %.2x, length %d" %
+                     (field_type, field_length))
 
         while field_length >= 0:
             if field_length < field_free_space:
                 logger.debug("smaller than block")
-                block += field_data[index:index+field_length]
+                block += field_data[index:index + field_length]
                 for x in range(field_free_space - field_length):
                     block += struct.pack("B", random.randint(0, 254))
-                self._writeblock(dbfile, block)
+                self._writeblock(block)
                 field_length = -1
                 block = ''
             else:
                 logger.debug("bigger than block")
-                block += field_data[index:index+field_free_space]
-                self._writeblock(dbfile, block)
+                block += field_data[index:index + field_free_space]
+                self._writeblock(block)
                 field_length -= field_free_space
                 if field_length == 0:
                     field_length = -1
@@ -317,7 +383,7 @@ class PassSafeFile:
                 field_free_space = self.cipher_block_size
                 block = ''
 
-    def _writefieldend(self, dbfile):
+    def _writefieldend(self):
         block = struct.pack("I", 0)
         block += struct.pack("B", 0xff)
 
@@ -325,29 +391,29 @@ class PassSafeFile:
 
         for x in range(self.cipher_block_size - 5):
             block += struct.pack("B", random.randint(0, 254))
-        self._writeblock(dbfile, block)
+        self._writeblock(block)
 
-    def _readblock(self, dbfile):
-        block = dbfile.read(self.cipher_block_size)
+    def _readblock(self):
+        block = self.dbfile.read(self.cipher_block_size)
         if block == 'PWS3-EOFPWS3-EOF':
             return False, block
         return True, self.cipher.decryptCBC(block)
 
-    def _writeblock(self, dbfile, block):
+    def _writeblock(self, block):
         logger.debug("writing block, length is %d" % len(block))
-        dbfile.write(self.cipher.encryptCBC(block))
+        self.dbfile.write(self.cipher.encryptCBC(block))
 
-    def _writeeofblock(self, dbfile):
-        dbfile.write('PWS3-EOFPWS3-EOF')
+    def _writeeofblock(self):
+        self.dbfile.write('PWS3-EOFPWS3-EOF')
 
-    def _validatehmac(self, dbfile):
-        hmac = dbfile.read(32)
+    def _validatehmac(self):
+        hmac = self.dbfile.read(32)
         if hmac != self.hmac.digest():
             raise RuntimeError("Malformed file, HMAC didn't match!")
         else:
             logger.debug("HMAC Matched")
             self.hmac = None
 
-    def _writehmac(self, dbfile):
-        dbfile.write(self.hmac.digest())
+    def _writehmac(self):
+        self.dbfile.write(self.hmac.digest())
         self.hmac = None

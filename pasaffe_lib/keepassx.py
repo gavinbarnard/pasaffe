@@ -26,7 +26,7 @@ logger = logging.getLogger('pasaffe_lib')
 
 
 class KeePassX:
-    records = []
+    records = {}
     skipped = []
     index = 0
 
@@ -42,9 +42,11 @@ class KeePassX:
         """ Converts time format"""
         if timestring:
             if tz:
-                value = time.mktime(time.strptime(timestring,"%Y-%m-%dT%H:%M:%SZ"))
+                value = time.mktime(time.strptime(
+                                    timestring, "%Y-%m-%dT%H:%M:%SZ"))
             else:
-                value = time.mktime(time.strptime(timestring,"%Y-%m-%dT%H:%M:%S"))
+                value = time.mktime(time.strptime(
+                                    timestring, "%Y-%m-%dT%H:%M:%S"))
         else:
             value = time.time()
 
@@ -65,6 +67,7 @@ class KeePassX:
 
                 for pwitem in groupitem.iter('entry'):
                     uuid = os.urandom(16)
+                    uuid_hex = uuid.encode('hex')
                     timestamp = struct.pack("<I", int(time.time()))
                     new_entry = {1: uuid, 3: '', 4: '', 6: '',
                                  7: timestamp, 8: timestamp, 12: timestamp}
@@ -91,12 +94,13 @@ class KeePassX:
                             if x.tag not in self.skipped:
                                 self.skipped.append(x.tag)
 
-                    self.records.append(new_entry)
+                    self.records[uuid_hex] = new_entry
 
         elif element.getroot().tag == 'KeePassFile':
             for groupitem in element.findall('./Root/Group'):
                 for pwitem in list(groupitem):
                     uuid = os.urandom(16)
+                    uuid_hex = uuid.encode('hex')
                     timestamp = struct.pack("<I", int(time.time()))
                     new_entry = {1: uuid, 3: '', 4: '', 6: '',
                                  7: timestamp, 8: timestamp, 12: timestamp}
@@ -111,7 +115,7 @@ class KeePassX:
                                         new_entry[8] = self._convert_time(timesitem.text, True)
                                         new_entry[12] = self._convert_time(timesitem.text, True)
 
-                            elif x.tag == 'String': 
+                            elif x.tag == 'String':
                                 for stritem in list(x):
                                     if stritem.text == 'Title':
                                         new_entry[3] = (x.find('Value').text or 'Untitled item').encode("utf-8")
@@ -131,8 +135,7 @@ class KeePassX:
                                 if x.tag not in self.skipped:
                                     self.skipped.append(x.tag)
 
-                        self.records.append(new_entry)
+                        self.records[uuid_hex] = new_entry
 
         else:
             raise RuntimeError("Not a valid KeePassX or KeePass2 XML file")
-

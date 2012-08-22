@@ -1,3 +1,10 @@
+pasaffe (0.21-0ubuntu1) quantal; urgency=low
+
+  * New upstream release
+    - Pasaffe now remembers window positions
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Tue, 21 Aug 2012 20:04:25 -0400
+
 pasaffe (0.20-0ubuntu1) quantal; urgency=low
 
   * New upstream release
