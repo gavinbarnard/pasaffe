@@ -1,3 +1,10 @@
+pasaffe (0.21-0ubuntu2) quantal; urgency=low
+
+  * debian/patches/fix_desktop_icon.patch: fix icon file location when
+    setup with dh_python2.
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Tue, 04 Sep 2012 19:20:41 -0400
+
 pasaffe (0.21-0ubuntu1) quantal; urgency=low
 
   * New upstream release

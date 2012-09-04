@@ -1,0 +1,15 @@
+Description: fix icon location when setup with dh_python2
+Origin: upstream, http://bazaar.launchpad.net/~mdeslaur/pasaffe/trunk/revision/312
+
+Index: pasaffe-0.21/pasaffe.desktop.in
+===================================================================
+--- pasaffe-0.21.orig/pasaffe.desktop.in	2011-07-26 22:48:23.000000000 -0400
++++ pasaffe-0.21/pasaffe.desktop.in	2012-09-04 19:20:31.676539241 -0400
+@@ -3,6 +3,6 @@
+ _Comment=Pasaffe password manager
+ Categories=GNOME;Utility;
+ Exec=pasaffe
+-Icon=pasaffe
++Icon=/usr/share/pasaffe/media/pasaffe.svg
+ Terminal=false
+ Type=Application
