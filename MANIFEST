@@ -67,6 +67,7 @@ pasaffe_lib/blowfish.py
 pasaffe_lib/figaroxml.py
 pasaffe_lib/gpassfile.py
 pasaffe_lib/helpers.py
+pasaffe_lib/helpersgui.py
 pasaffe_lib/keepassx.py
 pasaffe_lib/pasaffeconfig.py
 pasaffe_lib/pytwofish.py

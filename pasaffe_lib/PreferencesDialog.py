@@ -1,6 +1,6 @@
 # -*- Mode: Python; coding: utf-8; indent-tabs-mode: nil; tab-width: 4 -*-
 ### BEGIN LICENSE
-# Copyright (C) 2011-2012 Marc Deslauriers <marc.deslauriers@canonical.com>
+# Copyright (C) 2011-2013 Marc Deslauriers <marc.deslauriers@canonical.com>
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU General Public License version 3, as published
 # by the Free Software Foundation.
@@ -21,8 +21,8 @@ from gi.repository import Gtk  # pylint: disable=E0611
 import logging
 logger = logging.getLogger('pasaffe_lib')
 
-from . helpers import get_builder, show_uri, get_help_uri
-
+from . helpers import get_help_uri
+from . helpersgui import get_builder, show_uri
 
 class PreferencesDialog(Gtk.Dialog):
     __gtype_name__ = "PreferencesDialog"

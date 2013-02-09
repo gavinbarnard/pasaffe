@@ -1,3 +1,196 @@
+2013-02-09  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.22
+
+2013-02-09  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* AUTHORS:
+	* bin/pasaffe:
+	* bin/pasaffe-import-entry:
+	* bin/pasaffe-import-gpass:
+	* bin/pasaffe-import-keepassx:
+	* data/ui/AboutPasaffeDialog.ui:
+	* pasaffe/AboutPasaffeDialog.py:
+	* pasaffe/EditDetailsDialog.py:
+	* pasaffe/NewDatabaseDialog.py:
+	* pasaffe/NewPasswordDialog.py:
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe/PasswordEntryDialog.py:
+	* pasaffe/PreferencesPasaffeDialog.py:
+	* pasaffe/SaveChangesDialog.py:
+	* pasaffe/__init__.py:
+	* pasaffe_lib/AboutDialog.py:
+	* pasaffe_lib/Builder.py:
+	* pasaffe_lib/PreferencesDialog.py:
+	* pasaffe_lib/Window.py:
+	* pasaffe_lib/__init__.py:
+	* pasaffe_lib/gpassfile.py:
+	* pasaffe_lib/helpers.py:
+	* pasaffe_lib/helpersgui.py:
+	* pasaffe_lib/pasaffeconfig.py:
+	* pasaffe_lib/pytwofishcbc.py:
+	* pasaffe_lib/readdb.py:
+	* setup.py:
+	* tests/test_example.py:
+	* tests/test_lint.py:
+
+	Updated copyright notices
+
+2013-02-09  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe_lib/helpersgui.py:
+	* NEWS:
+
+	Added missing file, and update NEWS
+
+2013-02-09  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/EditDetailsDialog.py:
+	* pasaffe/NewDatabaseDialog.py:
+	* pasaffe/NewPasswordDialog.py:
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe/PasswordEntryDialog.py:
+	* pasaffe/SaveChangesDialog.py:
+	* pasaffe_lib/AboutDialog.py:
+	* pasaffe_lib/PreferencesDialog.py:
+	* pasaffe_lib/Window.py:
+	* pasaffe_lib/__init__.py:
+	* pasaffe_lib/helpers.py:
+
+	Move gui elements from pasaffe_lib/helpers.py to helpersgui.py so
+	command line tools such as pasaffe-dump-db can be used in an ssh
+	session.
+
+2013-02-09  Launchpad Translations on behalf of mdeslaur
+
+	* po/fr.po:
+
+	Launchpad automatic translations update.
+
+2013-01-10  Launchpad Translations on behalf of mdeslaur
+
+	* po/fr.po:
+
+	Launchpad automatic translations update.
+
+2013-01-05  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2012-12-28  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	updated NEWS
+
+2012-12-28  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe_lib/readdb.py:
+
+	- added new time functions to readdb.py
+	- added new folder functions to readdb.py
+	- updated PasaffeWindow.py to use new time functions
+
+2012-12-17  Launchpad Translations on behalf of mdeslaur
+
+	* po/fr.po:
+
+	Launchpad automatic translations update.
+
+2012-12-16  Launchpad Translations on behalf of mdeslaur
+
+	* po/fr.po:
+
+	Launchpad automatic translations update.
+
+2012-11-28  Launchpad Translations on behalf of mdeslaur
+
+	* po/fr.po:
+
+	Launchpad automatic translations update.
+
+2012-11-04  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+
+	Launchpad automatic translations update.
+
+2012-10-26  Launchpad Translations on behalf of mdeslaur
+
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2012-10-24  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+
+	Launchpad automatic translations update.
+
+2012-10-07  Launchpad Translations on behalf of mdeslaur
+
+	* po/es.po:
+
+	Launchpad automatic translations update.
+
+2012-10-06  Launchpad Translations on behalf of mdeslaur
+
+	* po/es.po:
+
+	Launchpad automatic translations update.
+
+2012-09-12  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2012-09-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* setup.py:
+
+	setup.py: fix some whitespace
+
+2012-09-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe.desktop.in:
+
+	- Fix icon location in desktop file
+
+2012-08-28  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2012-08-21  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	Prepare for next release
+
 2012-08-21  Marc Deslauriers  <marc.deslauriers@canonical.com>
 
 	* NEWS:

@@ -1,3 +1,12 @@
+pasaffe (0.22-0ubuntu1) raring; urgency=low
+
+  * New upstream release
+   - Updated translations
+   - Command line tools can now be run without a GUI
+  * debian/patches/fix_desktop_icon.patch: removed, upstream.
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Sat, 09 Feb 2013 11:32:03 -0500
+
 pasaffe (0.21-0ubuntu2) quantal; urgency=low
 
   * debian/patches/fix_desktop_icon.patch: fix icon file location when

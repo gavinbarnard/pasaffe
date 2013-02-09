@@ -1,6 +1,6 @@
 # -*- Mode: Python; coding: utf-8; indent-tabs-mode: nil; tab-width: 4 -*-
 ### BEGIN LICENSE
-# Copyright (C) 2011-2012 Marc Deslauriers <marc.deslauriers@canonical.com>
+# Copyright (C) 2011-2013 Marc Deslauriers <marc.deslauriers@canonical.com>
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU General Public License version 3, as published
 # by the Free Software Foundation.
@@ -30,7 +30,7 @@ import webbrowser
 
 logger = logging.getLogger('pasaffe')
 
-from pasaffe_lib import Window
+from pasaffe_lib.Window import Window
 from pasaffe.AboutPasaffeDialog import AboutPasaffeDialog
 from pasaffe.EditDetailsDialog import EditDetailsDialog
 from pasaffe.PasswordEntryDialog import PasswordEntryDialog
@@ -39,7 +39,7 @@ from pasaffe.NewDatabaseDialog import NewDatabaseDialog
 from pasaffe.NewPasswordDialog import NewPasswordDialog
 from pasaffe.PreferencesPasaffeDialog import PreferencesPasaffeDialog
 from pasaffe_lib.readdb import PassSafeFile
-from pasaffe_lib.helpers import get_builder
+from pasaffe_lib.helpersgui import get_builder
 
 
 # See pasaffe_lib.Window.py for more details about how this class works
@@ -418,7 +418,6 @@ class PasaffeWindow(Window):
             response = self.editdetails_dialog.run()
             if response == Gtk.ResponseType.OK:
                 data_changed = False
-                timestamp = struct.pack("<I", int(time.time()))
                 for record_type, widget_name in record_dict.items():
                     if record_type == 5:
                         new_value = self.editdetails_dialog.builder.get_object(widget_name).get_text(self.editdetails_dialog.builder.get_object(widget_name).get_start_iter(), self.editdetails_dialog.builder.get_object(widget_name).get_end_iter(), True)
@@ -443,11 +442,11 @@ class PasaffeWindow(Window):
 
                         # Update the password changed date
                         if record_type == 6:
-                            self.passfile.records[entry_uuid][8] = timestamp
+                            self.passfile.update_password_time[entry_uuid]
 
                 if data_changed == True:
                     self.set_save_status(True)
-                    self.passfile.records[entry_uuid][12] = timestamp
+                    self.passfile.update_modification_time[entry_uuid]
                     if self.settings.get_boolean('auto-save') == True:
                         self.save_db()
 
