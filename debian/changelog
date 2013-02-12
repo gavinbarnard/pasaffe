@@ -1,3 +1,10 @@
+pasaffe (0.23-0ubuntu1) raring; urgency=low
+
+  * New upstream release (LP: #1122453)
+   - Fixed adding new entries
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Tue, 12 Feb 2013 16:00:54 -0500
+
 pasaffe (0.22-0ubuntu1) raring; urgency=low
 
   * New upstream release
