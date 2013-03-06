@@ -1,3 +1,84 @@
+2013-03-06  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.24
+
+2013-02-17  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2013-02-16  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	- added NEWS
+
+2013-02-16  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/de.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	- merged translations
+
+2013-02-15  Launchpad Translations on behalf of mdeslaur
+
+	* po/fr.po:
+
+	Launchpad automatic translations update.
+
+2013-02-13  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2013-02-16  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* pasaffe/PasaffeWindow.py:
+
+	removed deprecated GObject usage
+
+2013-02-16  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* pasaffe/AboutPasaffeDialog.py:
+	* pasaffe/EditDetailsDialog.py:
+	* pasaffe/NewDatabaseDialog.py:
+	* pasaffe/NewPasswordDialog.py:
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe/PasswordEntryDialog.py:
+	* pasaffe/SaveChangesDialog.py:
+	* pasaffe/__init__.py:
+	* tests/test_example.py:
+
+	fix pylint warnings and test suite
+
+2013-02-12  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	- prepare for next release
+
 2013-02-12  Marc Deslauriers  <marc.deslauriers@canonical.com>
 
 	* NEWS:

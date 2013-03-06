@@ -1,3 +1,12 @@
+pasaffe (0.24-0ubuntu1) raring; urgency=low
+
+  * New upstream release
+   - Updated translations
+   - Fix pylint warnings and test suite
+   - Removed deprecated GObject usage
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Wed, 06 Mar 2013 17:00:06 -0500
+
 pasaffe (0.23-0ubuntu1) raring; urgency=low
 
   * New upstream release (LP: #1122453)
