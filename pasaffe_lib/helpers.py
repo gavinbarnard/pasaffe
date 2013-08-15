@@ -25,6 +25,123 @@ from gettext import gettext as _
 gettext.textdomain('pasaffe')
 
 
+class PathEntry:
+    def __init__(self, name, uuid, path):
+        self.name = name
+        self.uuid = uuid
+        self.path = path
+
+    def __cmp__(self, other):
+
+        # First, we sort by path
+        result = self._sort_path(self.path, other.path)
+        if result != 0:
+            return result
+
+        # Then we sort by name
+        result = self._sort_name(self.name, other.name)
+        return result
+
+    def _lower(self, name):
+        # Doing .lower() is wrong in Python 2 as it doesn't properly
+        # handle certain characters in Unicode languages. Unfortunately,
+        # I can't think of a better solution right now, and it will work
+        # properly once we migrate to Python 3
+        if name:
+            return name.lower()
+        else:
+            return name
+
+    def _sort_name(self, first, second):
+        # Perform a case-insensitive sort
+        nocase_first = self._lower(first)
+        nocase_second = self._lower(second)
+        # We assume empty names are folders, so they need to
+        # lose to be first in the list
+        if nocase_first in (None, "") and nocase_second in (None, ""):
+            return 0
+        elif nocase_first < nocase_second:
+            return -1
+        elif nocase_first > nocase_second:
+            return 1
+        else:
+            # If they are the same when they are case-insensitive, we now
+            # want to sort in a case-sensitive way
+            if first < second:
+                return -1
+            elif first > second:
+                return 1
+            else:
+                return 0
+
+    def _sort_path(self, first, second):
+
+        # Folders should be displayed first, so they should lose to
+        # entries that don't have folders
+        if first in (None, []) and second in (None, []):
+            return 0
+        elif first in (None, []):
+            return 1
+        elif second in (None, []):
+            return -1
+        elif len(first) < len(second):
+            i = 0
+            for path in first:
+                if not len(path):
+                    return 1
+                if not len(second[i]):
+                    return -1
+                # First test in a case insensitive way
+                if self._lower(path) < self._lower(second[i]):
+                    return -1
+                if self._lower(path) > self._lower(second[i]):
+                    return 1
+                # Now try in a case-sensitive way
+                if path < second[i]:
+                    return -1
+                if path > second[i]:
+                    return 1
+                i += 1
+            return 1
+        elif len(first) > len(second):
+            i = 0
+            for path in second:
+                if not len(path):
+                    return -1
+                if not len(first[i]):
+                    return 1
+                # First test in a case insensitive way
+                if self._lower(path) > self._lower(first[i]):
+                    return -1
+                if self._lower(path) < self._lower(first[i]):
+                    return 1
+                # Now try in a case-sensitive way
+                if path > first[i]:
+                    return -1
+                if path < first[i]:
+                    return 1
+                i += 1
+            return -1
+        else:
+            i = 0
+            for path in first:
+                if not len(path):
+                    return 1
+                if not len(second[i]):
+                    return -1
+                # First test in a case insensitive way
+                if self._lower(path) < self._lower(second[i]):
+                    return -1
+                if self._lower(path) > self._lower(second[i]):
+                    return 1
+                # Now try in a case-sensitive way
+                if path < second[i]:
+                    return -1
+                if path > second[i]:
+                    return 1
+                i += 1
+            return 0
+
 # Owais Lone : To get quick access to icons and stuff.
 def get_media_file(media_file_name):
     media_filename = get_data_file('media', '%s' % (media_file_name,))
@@ -91,3 +208,67 @@ def alias(alternative_function_name):
         function.aliases.append(alternative_function_name)
         return function
     return decorator
+
+def folder_list_to_field(folder_list):
+    '''Converts a folder list to a folder field'''
+    field = ""
+
+    if folder_list == None:
+        return field
+
+    for folder in folder_list:
+        if field != "":
+            field += "."
+        field += folder.replace(".", "\\.")
+    return field
+
+def folder_list_to_path(folders, index=None):
+    '''Converts a folder list to a folder path'''
+    if len(folders) == 0 or folders == None:
+        return "/"
+
+    if index == None:
+        index = len(folders)
+
+    folder_path = ""
+
+    for folder in folders[0:index+1]:
+        folder_path += "/"
+        folder_path += folder.replace("/", "\\/")
+
+    folder_path += "/"
+
+    return folder_path
+
+def folder_path_to_list(folder_path):
+    '''Converts a folder path to a folder list'''
+    folders = []
+
+    if folder_path.endswith("/"):
+        folder_path = folder_path[:-1]
+    if folder_path.startswith("/"):
+        folder_path = folder_path[1:]
+
+    if folder_path == '':
+        return folders
+
+    # We need to split into folders using the "/" character, but not
+    # if it is escaped with a \
+    index = 0
+    location = 0
+    while index < len(folder_path):
+        location = folder_path.find("/", location + 1)
+
+        if location == -1:
+            break
+
+        if folder_path[location-1] == "\\":
+            continue
+
+        folders.append(folder_path[index:location].replace("\\",''))
+        index = location + 1
+
+    folders.append(folder_path[index:len(folder_path)].replace('\\',''))
+    return folders
+
+

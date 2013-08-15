@@ -1,3 +1,19 @@
+pasaffe (0.28-0ubuntu1) saucy; urgency=low
+
+  * New upstream release
+   - Added tree support (Thanks to Jabik Postmus!)
+   - Improved test suite
+   - Updated translations
+   - Fixed some untranslated strings
+   - Folder text entry now activates OK button (thanks jdstrand!)
+   - Tree now sorts folders before directories (thanks jdstrand!)
+   - Fixed typeahead find (thanks hallyn!)
+   - Implemented drag and drop of folders and entries
+   - Fix broken menu entries when gtk is configured to show icons in menus
+   - Deactivate certain menu items when a folder is selected
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Thu, 15 Aug 2013 16:48:44 -0400
+
 pasaffe (0.24-0ubuntu1) raring; urgency=low
 
   * New upstream release

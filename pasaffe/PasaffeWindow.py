@@ -33,6 +33,7 @@ logger = logging.getLogger('pasaffe')
 from pasaffe_lib.Window import Window
 from pasaffe.AboutPasaffeDialog import AboutPasaffeDialog
 from pasaffe.EditDetailsDialog import EditDetailsDialog
+from pasaffe.EditFolderDialog import EditFolderDialog
 from pasaffe.PasswordEntryDialog import PasswordEntryDialog
 from pasaffe.SaveChangesDialog import SaveChangesDialog
 from pasaffe.NewDatabaseDialog import NewDatabaseDialog
@@ -40,6 +41,10 @@ from pasaffe.NewPasswordDialog import NewPasswordDialog
 from pasaffe.PreferencesPasaffeDialog import PreferencesPasaffeDialog
 from pasaffe_lib.readdb import PassSafeFile
 from pasaffe_lib.helpersgui import get_builder
+from pasaffe_lib.helpers import folder_list_to_field
+from pasaffe_lib.helpers import folder_list_to_path
+from pasaffe_lib.helpers import folder_path_to_list
+from pasaffe_lib.helpers import PathEntry
 
 # pylint: disable=E1101
 
@@ -65,6 +70,8 @@ class PasaffeWindow(Window):
         self.AboutDialog = AboutPasaffeDialog
         self.EditDetailsDialog = EditDetailsDialog
         self.editdetails_dialog = None
+        self.EditFolderDialog = EditFolderDialog
+        self.editfolder_dialog = None
         self.PreferencesDialog = PreferencesPasaffeDialog
         self.PasswordEntryDialog = PasswordEntryDialog
         self.SaveChangesDialog = SaveChangesDialog
@@ -190,13 +197,208 @@ class PasaffeWindow(Window):
         newdb_dialog.destroy()
         return success
 
+    def create_folders(self, folders):
+        parent = None
+
+        if folders == None or len(folders) == 0:
+            return None
+
+        node = self.ui.liststore1.get_iter_first()
+
+        for folder in folders:
+            if len(folder) == 0:
+                return parent
+            found = False
+            while node != None and not found:
+                if (self.ui.liststore1.get_value(node, 1) == folder) and \
+                   ("pasaffe_treenode." in self.ui.liststore1.get_value(node, 2)):
+                    found = True
+                    parent = node
+                    if self.ui.liststore1.iter_has_child(node):
+                        node = self.ui.liststore1.iter_children(node)
+                    else:
+                        break
+                if not found:
+                    node = self.ui.liststore1.iter_next(node)
+            if not found:
+                parent = self.ui.liststore1.append(parent, ["gtk-directory", folder, "pasaffe_treenode." + folder])
+                node = self.ui.liststore1.iter_children(parent)
+        return parent
+
     def display_entries(self):
         entries = []
+
+        # Add empty folders first
+        for folder in self.passfile.get_empty_folders():
+            entry = PathEntry("", "", folder)
+            entries.append(entry)
+
+        # Then add records
         for uuid in self.passfile.records:
-            entries.append([self.passfile.records[uuid][3], uuid])
+            entry = PathEntry(self.passfile.records[uuid][3], uuid, self.passfile.get_folder_list(uuid))
+            entries.append(entry)
+
         self.ui.liststore1.clear()
-        for record in sorted(entries, key=lambda entry: entry[0].lower()):
-            self.ui.liststore1.append(record)
+
+        # Then sort and add
+        for record in sorted(entries):
+            parent = self.create_folders(record.path)
+            if record.name != "":
+                self.ui.liststore1.append(parent, ["gtk-file", record.name, record.uuid])
+        self.ui.treeview1.expand_all()
+        self.set_menu_for_entry(False)
+
+        # enable drag and drop
+        dnd_targets = [ ('MY_TREE_MODEL_ROW',
+                         Gtk.TargetFlags.SAME_WIDGET, 0) ]
+
+        self.ui.treeview1.enable_model_drag_source(Gdk.ModifierType.BUTTON1_MASK,
+                                                   dnd_targets,
+                                                   Gdk.DragAction.DEFAULT|
+                                                   Gdk.DragAction.MOVE)
+        self.ui.treeview1.enable_model_drag_dest(dnd_targets,
+                                                 Gdk.DragAction.DEFAULT)
+        self.ui.treeview1.connect("drag_data_received",
+                                  self.drag_data_received_data)
+
+    def drag_data_received_data(self, treeview, context, x, y, selection,
+                                info, etime):
+        sourcemodel, sourceiter = treeview.get_selection().get_selected()
+        source_uuid = sourcemodel.get_value(sourceiter, 2)
+
+        destmodel = treeview.get_model()
+        drop_info = treeview.get_dest_row_at_pos(x, y)
+        if drop_info:
+            path, position = drop_info
+            destiter = destmodel.get_iter(path)
+            dest_uuid = destmodel.get_value(destiter, 2)
+
+            # Ignore entries as drop destinations
+            if "pasaffe_treenode." not in dest_uuid:
+                return
+
+            if ((position == Gtk.TreeViewDropPosition.INTO_OR_BEFORE) or
+                (position == Gtk.TreeViewDropPosition.INTO_OR_AFTER)):
+
+                new_parents = self.get_folders_from_iter(destmodel, destiter)
+
+                if "pasaffe_treenode." in source_uuid:
+                    current_folders = self.get_folders_from_iter(sourcemodel,
+                                                               sourceiter)
+                    parent_folders = current_folders[:-1]
+
+                    # Bail out if the folder is dragged onto itself
+                    if current_folders == new_parents:
+                        return
+
+                    # Bail out if we're trying to drag a folder into a
+                    # subdirectory of itself
+                    if current_folders == new_parents[:len(current_folders)]:
+                        return
+
+                    if new_parents != parent_folders:
+                        new_folders = new_parents[:]
+                        new_folders.append(current_folders[-1:][0])
+                        old_folders = current_folders[:]
+
+                        self.passfile.rename_folder_list(old_folders, new_folders)
+
+                        self.display_entries()
+                        self.goto_folder(new_folders)
+
+                        self.set_save_status(True)
+                        if self.settings.get_boolean('auto-save') == True:
+                            self.save_db()
+                else:
+                    parent_folders = self.passfile.get_folder_list(source_uuid)
+                    if new_parents != parent_folders:
+                        self.passfile.remove_empty_folder(new_parents)
+                        self.passfile.add_empty_folder(parent_folders)
+                        self.passfile.update_folder_list(source_uuid, new_parents)
+
+                        self.passfile.update_modification_time(source_uuid)
+
+                        self.display_entries()
+                        self.goto_uuid(source_uuid)
+
+                        self.set_save_status(True)
+                        if self.settings.get_boolean('auto-save') == True:
+                            self.save_db()
+
+                self.set_idle_timeout()
+                self.update_find_results(force=True)
+
+    def goto_uuid(self, uuid):
+        item = self.search_uuid(uuid)
+        if (item != None):
+            self.ui.treeview1.get_selection().select_iter(item)
+            self.display_data(uuid)
+            path = self.ui.treeview1.get_model().get_path(item)
+            self.ui.treeview1.scroll_to_cell(path)
+            self.set_menu_for_entry(True)
+
+    def goto_folder(self, folders):
+        item = self.search_folder(folders)
+        if (item != None):
+            self.ui.treeview1.get_selection().select_iter(item)
+            self.display_folder(self.ui.liststore1.get_value(item, 1))
+            path = self.ui.treeview1.get_model().get_path(item)
+            self.ui.treeview1.scroll_to_cell(path)
+            self.set_menu_for_entry(False)
+
+    def search_uuid(self, uuid, item=None, toplevel=True):
+       if toplevel == True:
+           item = self.ui.treeview1.get_model().get_iter_first()
+       while item:
+           if self.ui.liststore1.get_value(item, 2) == uuid:
+               return item
+           result = self.search_uuid(uuid, self.ui.treeview1.get_model().iter_children(item), False)
+           if result:
+               return result
+           item = self.ui.treeview1.get_model().iter_next(item)
+       return None
+
+    def search_folder(self, folders):
+        parent = None
+
+        if folders == None or len(folders) == 0:
+            return None
+
+        node = self.ui.liststore1.get_iter_first()
+
+        for folder in folders:
+            if len(folder) == 0:
+                return parent
+            found = False
+            while node != None and not found:
+                if (self.ui.liststore1.get_value(node, 1) == folder) and \
+                   ("pasaffe_treenode." in self.ui.liststore1.get_value(node, 2)):
+                    found = True
+                    parent = node
+                    if self.ui.liststore1.iter_has_child(node):
+                        node = self.ui.liststore1.iter_children(node)
+                    else:
+                        break
+                if not found:
+                    node = self.ui.liststore1.iter_next(node)
+            if not found:
+                return None
+        return parent
+
+    def find_prev_iter(self, uuid, item=None, toplevel=True, prev_item=None):
+       if toplevel == True:
+           item = self.ui.treeview1.get_model().get_iter_first()
+       if item == None:
+           return prev_item, None
+       while item:
+           if self.ui.liststore1.get_value(item, 2) == uuid:
+               return prev_item, item
+           prev_item, result = self.find_prev_iter(uuid, self.ui.treeview1.get_model().iter_children(item), False, item)
+           if result:
+               return prev_item, result
+           prev_item = item
+           item = self.ui.treeview1.get_model().iter_next(item)
+       return item, None
 
     def display_data(self, entry_uuid, show_secrets=False):
         title = self.passfile.records[entry_uuid].get(3)
@@ -233,6 +435,10 @@ class PasaffeWindow(Window):
     def display_welcome(self):
         self.fill_display(_("Welcome to Pasaffe!"), None,
                           _("Pasaffe is an easy to use\npassword manager for Gnome."))
+
+    def display_folder(self, folder_name):
+        self.fill_display(folder_name, None,
+                          _("This is a folder."))
 
     def fill_display(self, title, url, contents):
         texttagtable = Gtk.TextTagTable()
@@ -279,7 +485,12 @@ class PasaffeWindow(Window):
         url = None
         treemodel, treeiter = self.ui.treeview1.get_selection().get_selected()
         if treeiter != None:
-            entry_uuid = treemodel.get_value(treeiter, 1)
+            entry_uuid = treemodel.get_value(treeiter, 2)
+
+            # Bail out of we're a folder
+            if "pasaffe_treenode." in entry_uuid:
+                return
+
             url = self.passfile.records[entry_uuid].get(13)
         if url != None:
             if not url.startswith('http://') and \
@@ -293,8 +504,14 @@ class PasaffeWindow(Window):
         if selection is not None:
             treemodel, treeiter = selection.get_selected()
             if treemodel is not None and treeiter is not None:
-                entry_uuid = treemodel.get_value(treeiter, 1)
-                self.display_data(entry_uuid)
+                entry_uuid = treemodel.get_value(treeiter, 2)
+                if "pasaffe_treenode." in entry_uuid:
+                    self.display_folder(treemodel.get_value(treeiter, 1))
+                    self.set_menu_for_entry(False)
+                else:
+                    self.display_data(entry_uuid)
+                    self.set_menu_for_entry(True)
+
                 # Reset the show password button and menu item
                 self.ui.display_secrets.set_active(False)
                 self.ui.mnu_display_secrets.set_active(False)
@@ -321,29 +538,57 @@ class PasaffeWindow(Window):
 
         uuid_hex = self.passfile.new_entry()
 
+        treemodel, treeiter = self.ui.treeview1.get_selection().get_selected()
+        folder = self.get_folders_from_iter(treemodel, treeiter)
+        if folder != None:
+            self.passfile.records[uuid_hex][2] = folder_list_to_field(folder)
+
         response = self.edit_entry(uuid_hex)
         if response != Gtk.ResponseType.OK:
             self.delete_entry(uuid_hex, save=False)
         else:
             self.display_entries()
-            item = self.ui.treeview1.get_model().get_iter_first()
-            while (item != None):
-                if self.ui.liststore1.get_value(item, 1) == uuid_hex:
-                    self.ui.treeview1.get_selection().select_iter(item)
-                    self.display_data(uuid_hex)
-                    path = self.ui.treeview1.get_model().get_path(item)
-                    self.ui.treeview1.scroll_to_cell(path)
-                    break
-                else:
-                    item = self.ui.treeview1.get_model().iter_next(item)
+            self.goto_uuid(uuid_hex)
             self.set_save_status(True)
             if self.settings.get_boolean('auto-save') == True:
                 self.save_db()
         self.set_idle_timeout()
         self.update_find_results(force=True)
 
+    def add_folder(self):
+        self.disable_idle_timeout()
+
+        # Make sure dialog isn't already open
+        if self.editfolder_dialog is not None:
+            self.editfolder_dialog.present()
+            return
+
+        # Get currently selected folder
+        treemodel, treeiter = self.ui.treeview1.get_selection().get_selected()
+        if treeiter != None:
+            entry_uuid = treemodel.get_value(treeiter, 2)
+            if "pasaffe_treenode." not in entry_uuid:
+                treeiter = None
+
+        # TODO: make sure folder name is unique in same level
+
+        new_iter = self.ui.liststore1.append(treeiter, ['gtk-directory', 'New Folder',"pasaffe_treenode.New Folder"])
+        if treeiter != None:
+            # FIXME: only expand current selected folder
+            self.ui.treeview1.expand_all()
+
+        self.ui.treeview1.get_selection().select_iter(new_iter)
+        self.display_folder(self.ui.liststore1.get_value(new_iter, 1))
+        self.set_menu_for_entry(False)
+
+        new_folder = self.get_folders_from_iter(treemodel, new_iter)
+        response = self.edit_folder(self.ui.liststore1, new_iter, True)
+
+        if response != Gtk.ResponseType.OK:
+            self.delete_folder(new_folder, save=False)
+
     def clone_entry(self, entry_uuid):
-        record_list = (3, 4, 5, 6, 13)
+        record_list = (2, 3, 4, 5, 6, 13)
         self.disable_idle_timeout()
 
         # Make sure dialog isn't already open
@@ -362,16 +607,7 @@ class PasaffeWindow(Window):
             self.delete_entry(uuid_hex, save=False)
         else:
             self.display_entries()
-            item = self.ui.treeview1.get_model().get_iter_first()
-            while (item != None):
-                if self.ui.liststore1.get_value(item, 1) == uuid_hex:
-                    self.ui.treeview1.get_selection().select_iter(item)
-                    self.display_data(uuid_hex)
-                    path = self.ui.treeview1.get_model().get_path(item)
-                    self.ui.treeview1.scroll_to_cell(path)
-                    break
-                else:
-                    item = self.ui.treeview1.get_model().iter_next(item)
+            self.goto_uuid(uuid_hex)
             self.set_save_status(True)
             if self.settings.get_boolean('auto-save') == True:
                 self.save_db()
@@ -381,8 +617,8 @@ class PasaffeWindow(Window):
     def remove_entry(self):
         treemodel, treeiter = self.ui.treeview1.get_selection().get_selected()
         if treeiter != None:
-            entry_uuid = treemodel.get_value(treeiter, 1)
-            entry_name = treemodel.get_value(treeiter, 0)
+            entry_uuid = treemodel.get_value(treeiter, 2)
+            entry_name = treemodel.get_value(treeiter, 1)
 
             information = _('<big><b>Are you sure you wish to remove "%s"?</b></big>\n\n') % entry_name
             information += _('Contents of the entry will be lost.\n')
@@ -395,8 +631,55 @@ class PasaffeWindow(Window):
             if result == Gtk.ResponseType.YES:
                 self.delete_entry(entry_uuid)
 
+    def remove_folder(self):
+        treemodel, treeiter = self.ui.treeview1.get_selection().get_selected()
+        if treeiter != None:
+            folder_name = treemodel.get_value(treeiter, 1)
+
+            information = _('<big><b>Are you sure you wish to remove folder "%s"?</b></big>\n\n') % folder_name
+            information += _('All entries in this folder will be lost.\n')
+
+            info_dialog = Gtk.MessageDialog(parent=self, flags=Gtk.DialogFlags.MODAL, type=Gtk.MessageType.QUESTION, buttons=Gtk.ButtonsType.YES_NO)
+            info_dialog.set_markup(information)
+            result = info_dialog.run()
+            info_dialog.destroy()
+
+            if result == Gtk.ResponseType.YES:
+                folder = self.get_folders_from_iter(treemodel, treeiter)
+                self.delete_folder(folder)
+
+    def populate_folders(self, liststore, combobox, default = None):
+
+        folders = [ ["/"] ]
+        for folder in self.passfile.get_all_folders():
+            for index in range(len(folder)):
+                folder_path = [folder_list_to_path(folder, index)]
+                if folder_path not in folders:
+                    folders.append(folder_path)
+
+        folders.sort()
+
+        for folder in folders:
+            liststore.append(folder)
+
+        if default != None:
+            item = self.search_folder_ui(liststore, folder_list_to_path(default))
+            if item != None:
+                combobox.set_active_iter(item)
+
+    def search_folder_ui(self, liststore, folder):
+       item = liststore.get_iter_first()
+       while item:
+           if liststore.get_value(item, 0) == folder:
+               return item
+           item = liststore.iter_next(item)
+       return None
+
     def edit_entry(self, entry_uuid):
-        record_dict = {3: 'name_entry',
+        if "pasaffe_treenode." in entry_uuid:
+            return None
+        record_dict = {2: 'folder_entry',
+                       3: 'name_entry',
                        4: 'username_entry',
                        5: 'notes_buffer',
                        6: 'password_entry',
@@ -412,34 +695,56 @@ class PasaffeWindow(Window):
             self.editdetails_dialog = self.EditDetailsDialog()
 
             for record_type, widget_name in record_dict.items():
-                if record_type in self.passfile.records[entry_uuid]:
+                # Handle folders separately
+                if record_type == 2:
+                    liststore = self.editdetails_dialog.builder.get_object('liststore1')
+                    combobox = self.editdetails_dialog.builder.get_object('folder_combo')
+                    if 2 in self.passfile.records[entry_uuid]:
+                        self.populate_folders(liststore, combobox, self.passfile.get_folder_list(entry_uuid))
+                    else:
+                        self.populate_folders(liststore, combobox, [])
+                elif record_type in self.passfile.records[entry_uuid]:
                     self.editdetails_dialog.builder.get_object(widget_name).set_text(self.passfile.records[entry_uuid][record_type])
 
             self.set_entry_window_size()
             response = self.editdetails_dialog.run()
+
+            data_changed = False
+            tree_changed = False
+
             if response == Gtk.ResponseType.OK:
-                data_changed = False
                 for record_type, widget_name in record_dict.items():
-                    if record_type == 5:
+                    # Get the new value
+                    if record_type == 2:
+                        combo = self.editdetails_dialog.builder.get_object('folder_combo')
+                        combo_iter = combo.get_active_iter()
+                        if combo_iter != None:
+                            new_value = folder_path_to_list(combo.get_model()[combo_iter][0])
+                        else:
+                            new_value = folder_path_to_list(combo.get_child().get_text())
+                    elif record_type == 5:
                         new_value = self.editdetails_dialog.builder.get_object(widget_name).get_text(self.editdetails_dialog.builder.get_object(widget_name).get_start_iter(), self.editdetails_dialog.builder.get_object(widget_name).get_end_iter(), True)
                     else:
                         new_value = self.editdetails_dialog.builder.get_object(widget_name).get_text()
 
-                    if (record_type == 5 or record_type == 13) and new_value == "" and record_type in self.passfile.records[entry_uuid]:
+                    # Now do something with it
+                    if record_type == 2:
+                        old_folder = self.passfile.get_folder_list(entry_uuid)
+                        self.passfile.remove_empty_folder(new_value)
+                        if old_folder != new_value:
+                            self.passfile.add_empty_folder(old_folder)
+                            self.passfile.update_folder_list(entry_uuid, new_value)
+                            data_changed = True
+                            tree_changed = True
+                    elif (record_type in [ 5, 13 ]) and new_value == "" and record_type in self.passfile.records[entry_uuid]:
                         del self.passfile.records[entry_uuid][record_type]
+                        data_changed = True
                     elif self.passfile.records[entry_uuid].get(record_type, "") != new_value:
                         data_changed = True
                         self.passfile.records[entry_uuid][record_type] = new_value
-
-                        # Update the name in the tree
-                        if record_type == 3:
-                            item = self.ui.treeview1.get_model().get_iter_first()
-                            while (item != None):
-                                if self.ui.liststore1.get_value(item, 1) == entry_uuid:
-                                    self.ui.liststore1.set_value(item, 0, new_value)
-                                    break
-                                else:
-                                    item = self.ui.treeview1.get_model().iter_next(item)
+                        # Reset the entire tree on name and path changes
+                        if record_type in [2, 3]:
+                            tree_changed = True
 
                         # Update the password changed date
                         if record_type == 6:
@@ -455,32 +760,119 @@ class PasaffeWindow(Window):
             self.editdetails_dialog.destroy()
             self.editdetails_dialog = None
 
-            # Update the right pane only if it's still the one currently selected
-            treemodel, treeiter = self.ui.treeview1.get_selection().get_selected()
-            if treeiter != None and treemodel.get_value(treeiter, 1) == entry_uuid:
-                self.display_data(entry_uuid)
+            if tree_changed == True:
+                self.display_entries()
+                self.goto_uuid(entry_uuid)
+            else:
+                # Update the right pane only if it's still the one currently selected
+                treemodel, treeiter = self.ui.treeview1.get_selection().get_selected()
+                if treeiter != None and treemodel.get_value(treeiter, 2) == entry_uuid:
+                    self.display_data(entry_uuid)
+                    self.set_menu_for_entry(True)
 
             self.set_idle_timeout()
             self.update_find_results(force=True)
             return response
 
+    def edit_folder(self, treemodel, treeiter, new_folder=False):
+
+        # Make sure dialog isn't already open
+        if self.editfolder_dialog is not None:
+            self.editfolder_dialog.present()
+            return
+
+        if self.EditFolderDialog is not None:
+            self.disable_idle_timeout()
+            self.editfolder_dialog = self.EditFolderDialog()
+
+            folder_name = treemodel.get_value(treeiter, 1)
+            self.editfolder_dialog.ui.folder_name_entry.set_text(folder_name)
+            self.editfolder_dialog.ui.folder_name_entry.select_region(0, -1)
+
+            liststore = self.editfolder_dialog.builder.get_object('liststore1')
+            combobox = self.editfolder_dialog.builder.get_object('folder_combo')
+            parent_folder = self.get_folders_from_iter(treemodel, treeiter)[:-1]
+            self.populate_folders(liststore, combobox, parent_folder)
+
+            response = self.editfolder_dialog.run()
+            if response == Gtk.ResponseType.OK:
+                new_name = self.editfolder_dialog.ui.folder_name_entry.get_text()
+
+                combo_iter = combobox.get_active_iter()
+                if combo_iter != None:
+                    new_parent = folder_path_to_list(combobox.get_model()[combo_iter][0])
+                else:
+                    new_parent = []
+
+                if new_name != folder_name or new_parent != parent_folder:
+
+                    # TODO: make sure new_name is unique in the same level
+                    new_folders = new_parent[:]
+                    new_folders.append(new_name)
+
+                    old_folders = parent_folder[:]
+                    old_folders.append(folder_name)
+
+                    if new_folder == False:
+                        self.passfile.rename_folder_list(old_folders, new_folders)
+                    else:
+                        self.passfile.add_empty_folder(new_folders)
+
+                    self.display_entries()
+                    self.goto_folder(new_folders)
+
+                    self.set_save_status(True)
+                    if self.settings.get_boolean('auto-save') == True:
+                        self.save_db()
+
+            self.editfolder_dialog.destroy()
+            self.editfolder_dialog = None
+
+            self.set_idle_timeout()
+            self.update_find_results(force=True)
+            return response
+
+    def get_folders_from_iter(self, treemodel, treeiter):
+        folders = []
+
+        if treemodel == None or treeiter == None:
+            return folders
+
+        uuid = treemodel.get_value(treeiter, 2)
+        if "pasaffe_treenode." in uuid:
+            folders.append(treemodel.get_value(treeiter, 1))
+
+        parent = treemodel.iter_parent(treeiter)
+        while parent != None:
+            folders.insert(0, treemodel.get_value(parent, 1))
+            parent = treemodel.iter_parent(parent)
+
+        return folders
+
     def delete_entry(self, entry_uuid, save=True):
         self.set_idle_timeout()
-        item = self.ui.treeview1.get_model().get_iter_first()
 
-        while (item != None):
-            if self.ui.liststore1.get_value(item, 1) == entry_uuid:
-                next_item = self.ui.treeview1.get_model().iter_next(item)
-                self.ui.liststore1.remove(item)
-                if next_item == None:
-                    next_item = self.model_get_iter_last(self.ui.treeview1.get_model())
-                if next_item != 0:
-                    self.ui.treeview1.get_selection().select_iter(next_item)
-                break
-            else:
-                item = self.ui.treeview1.get_model().iter_next(item)
+        item = self.search_uuid(entry_uuid)
+        if item:
+            new_item = self.ui.treeview1.get_model().iter_next(item)
 
-        del self.passfile.records[entry_uuid]
+            if new_item == None:
+                # No more items in the current level, try and get the parent
+                new_item, _item = self.find_prev_iter(entry_uuid)
+
+            self.ui.liststore1.remove(item)
+
+        # Delete the entry, and add the folder to the empty list
+        folder = self.passfile.get_folder_list(entry_uuid)
+        self.passfile.delete_entry(entry_uuid)
+        self.passfile.add_empty_folder(folder)
+
+        if item:
+            if new_item == None:
+                new_item = self.ui.treeview1.get_model().get_iter_first()
+
+            if new_item != 0 and new_item != None:
+                self.ui.treeview1.get_selection().select_iter(new_item)
 
         if save == True:
             self.set_save_status(True)
@@ -489,8 +881,45 @@ class PasaffeWindow(Window):
 
         treemodel, treeiter = self.ui.treeview1.get_selection().get_selected()
         if treeiter != None:
-            entry_uuid = treemodel.get_value(treeiter, 1)
-            self.display_data(entry_uuid)
+            entry_uuid = treemodel.get_value(treeiter, 2)
+            if "pasaffe_treenode." in entry_uuid:
+                self.display_folder(treemodel.get_value(treeiter, 1))
+                self.set_menu_for_entry(False)
+            else:
+                self.display_data(entry_uuid)
+                self.set_menu_for_entry(True)
+        else:
+            self.display_welcome()
+
+        self.update_find_results(force=True)
+
+    def delete_folder(self, folders, save=True):
+        self.set_idle_timeout()
+
+        item = self.search_folder(folders)
+        if item:
+            self.passfile.delete_folder(folders)
+
+            self.display_entries()
+            parent_folder = folders[:-1]
+            # TODO: if top level, switch to next iter
+            if parent_folder != []:
+                self.goto_folder(parent_folder)
+
+        if save == True:
+            self.set_save_status(True)
+            if self.settings.get_boolean('auto-save') == True:
+                self.save_db()
+
+        treemodel, treeiter = self.ui.treeview1.get_selection().get_selected()
+        if treeiter != None:
+            entry_uuid = treemodel.get_value(treeiter, 2)
+            if "pasaffe_treenode." in entry_uuid:
+                self.display_folder(treemodel.get_value(treeiter, 1))
+                self.set_menu_for_entry(False)
+            else:
+                self.display_data(entry_uuid)
+                self.set_menu_for_entry(True)
         else:
             self.display_welcome()
 
@@ -504,8 +933,11 @@ class PasaffeWindow(Window):
 
     def on_treeview1_row_activated(self, treeview, _path, _view_column):
         treemodel, treeiter = treeview.get_selection().get_selected()
-        entry_uuid = treemodel.get_value(treeiter, 1)
-        self.edit_entry(entry_uuid)
+        entry_uuid = treemodel.get_value(treeiter, 2)
+        if "pasaffe_treenode." in entry_uuid:
+            self.edit_folder(treemodel, treeiter)
+        else:
+            self.edit_entry(entry_uuid)
 
     def save_db(self):
         if self.get_save_status() == True:
@@ -532,8 +964,12 @@ class PasaffeWindow(Window):
     def on_mnu_clone_activate(self, _menuitem):
         treemodel, treeiter = self.ui.treeview1.get_selection().get_selected()
         if treeiter != None:
-            entry_uuid = treemodel.get_value(treeiter, 1)
-            self.clone_entry(entry_uuid)
+            entry_uuid = treemodel.get_value(treeiter, 2)
+            # TODO: what happens when we clone a folder?
+            if "pasaffe_treenode." in entry_uuid:
+                return
+            else:
+                self.clone_entry(entry_uuid)
 
     def on_username_copy_activate(self, _menuitem):
         self.copy_selected_entry_item(4)
@@ -564,14 +1000,23 @@ class PasaffeWindow(Window):
         self.set_idle_timeout()
         treemodel, treeiter = self.ui.treeview1.get_selection().get_selected()
         if treeiter != None:
-            entry_uuid = treemodel.get_value(treeiter, 1)
+            entry_uuid = treemodel.get_value(treeiter, 2)
+
+            # Bail out of we're a folder
+            if "pasaffe_treenode." in entry_uuid:
+                return
+
             self.display_data(entry_uuid, display)
 
     def copy_selected_entry_item(self, item):
         self.set_idle_timeout()
         treemodel, treeiter = self.ui.treeview1.get_selection().get_selected()
         if treeiter != None:
-            entry_uuid = treemodel.get_value(treeiter, 1)
+            entry_uuid = treemodel.get_value(treeiter, 2)
+
+            # Bail out of we're a folder
+            if "pasaffe_treenode." in entry_uuid:
+                return
 
             if item in self.passfile.records[entry_uuid]:
                 for atom in [Gdk.SELECTION_CLIPBOARD, Gdk.SELECTION_PRIMARY]:
@@ -581,17 +1026,29 @@ class PasaffeWindow(Window):
                     clipboard.store()
                 self.set_clipboard_timeout()
 
-    def on_mnu_add_activate(self, _menuitem):
+    def on_mnu_add_entry_activate(self, _menuitem):
         self.add_entry()
+
+    def on_mnu_add_folder_activate(self, _menuitem):
+        self.add_folder()
 
     def on_mnu_edit1_activate(self, _menuitem):
         treemodel, treeiter = self.ui.treeview1.get_selection().get_selected()
         if treeiter != None:
-            entry_uuid = treemodel.get_value(treeiter, 1)
-            self.edit_entry(entry_uuid)
+            entry_uuid = treemodel.get_value(treeiter, 2)
+            if "pasaffe_treenode." in entry_uuid:
+                self.edit_folder(treemodel, treeiter)
+            else:
+                self.edit_entry(entry_uuid)
 
     def on_mnu_delete_activate(self, _menuitem):
-        self.remove_entry()
+        treemodel, treeiter = self.ui.treeview1.get_selection().get_selected()
+        if treeiter != None:
+            entry_uuid = treemodel.get_value(treeiter, 2)
+            if "pasaffe_treenode." in entry_uuid:
+                self.remove_folder()
+            else:
+                self.remove_entry()
 
     def on_mnu_lock_activate(self, _menuitem):
         self.lock_screen()
@@ -604,7 +1061,6 @@ class PasaffeWindow(Window):
             information += _('Last saved by: %s\n') % self.passfile.get_saved_name()
         if self.passfile.get_saved_host():
             information += _('Last saved on host: %s\n') % self.passfile.get_saved_host()
-        if self.passfile.get_saved_date_string():
             information += _('Last save date: %s\n') % self.passfile.get_saved_date_string()
         if self.passfile.get_saved_application():
             information += _('Application used: %s\n') % self.passfile.get_saved_application()
@@ -695,16 +1151,7 @@ class PasaffeWindow(Window):
         result = self.find_results[self.find_results_index]
         uuid_hex = result[1]
 
-        item = self.ui.treeview1.get_model().get_iter_first()
-        while (item != None):
-            if self.ui.liststore1.get_value(item, 1) == uuid_hex:
-                self.ui.treeview1.get_selection().select_iter(item)
-                self.display_data(uuid_hex)
-                path = self.ui.treeview1.get_model().get_path(item)
-                self.ui.treeview1.scroll_to_cell(path)
-                break
-            else:
-                item = self.ui.treeview1.get_model().iter_next(item)
+        self.goto_uuid(uuid_hex)
 
     def on_find_entry_activate(self, _entry):
         self.update_find_results()
@@ -800,7 +1247,8 @@ class PasaffeWindow(Window):
         # There's got to be a better way to do this
         self.ui.mnu_lock.set_sensitive(status)
         self.ui.mnu_chg_password.set_sensitive(status)
-        self.ui.mnu_add.set_sensitive(status)
+        self.ui.mnu_add_entry.set_sensitive(status)
+        self.ui.mnu_add_folder.set_sensitive(status)
         self.ui.mnu_clone.set_sensitive(status)
         self.ui.mnu_delete.set_sensitive(status)
         self.ui.mnu_find.set_sensitive(status)
@@ -826,17 +1274,51 @@ class PasaffeWindow(Window):
             self.ui.save.set_sensitive(True)
             self.ui.save.set_sensitive(False)
 
+    def set_menu_for_entry(self, status):
+        # main menu
+        self.ui.mnu_clone.set_sensitive(status)
+        self.ui.url_copy.set_sensitive(status)
+        self.ui.username_copy.set_sensitive(status)
+        self.ui.password_copy.set_sensitive(status)
+        self.ui.mnu_open_url.set_sensitive(status)
+
+        # context menu
+        self.ui.mnu_clone1.set_sensitive(status)
+        self.ui.url_copy1.set_sensitive(status)
+        self.ui.username_copy1.set_sensitive(status)
+        self.ui.password_copy1.set_sensitive(status)
+
+        # Toolbar
+        self.ui.open_url.set_sensitive(status)
+        self.ui.copy_username.set_sensitive(status)
+        self.ui.copy_password.set_sensitive(status)
+
+        if status == False:
+            self.ui.mnu_display_secrets.set_sensitive(False)
+            self.ui.display_secrets.set_sensitive(False)
+        else:
+            self.set_show_password_status()
+
     def on_add_clicked(self, _toolbutton):
         self.add_entry()
+
+    def on_add_folder_clicked(self, _toolbutton):
+        self.add_folder()
 
     def on_edit_clicked(self, _toolbutton):
         treemodel, treeiter = self.ui.treeview1.get_selection().get_selected()
         if treeiter != None:
-            entry_uuid = treemodel.get_value(treeiter, 1)
+            entry_uuid = treemodel.get_value(treeiter, 2)
             self.edit_entry(entry_uuid)
 
     def on_remove_clicked(self, _toolbutton):
-        self.remove_entry()
+        treemodel, treeiter = self.ui.treeview1.get_selection().get_selected()
+        if treeiter != None:
+            entry_uuid = treemodel.get_value(treeiter, 2)
+            if "pasaffe_treenode." in entry_uuid:
+                self.remove_folder()
+            else:
+                self.remove_entry()
 
     def set_idle_timeout(self):
         if self.idle_id != None:

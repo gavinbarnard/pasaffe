@@ -1,16 +1,16 @@
-# Italian translation for pasaffe
-# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# English (United Kingdom) translation for pasaffe
+# Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
 # This file is distributed under the same license as the pasaffe package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: pasaffe\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-08-14 17:40-0400\n"
-"PO-Revision-Date: 2012-05-19 14:59+0000\n"
-"Last-Translator: Paolo Stivanin <Unknown>\n"
-"Language-Team: Italian <it@li.org>\n"
+"PO-Revision-Date: 2013-08-14 23:55+0000\n"
+"Last-Translator: Anthony Harrington <untaintableangel@ubuntu.com>\n"
+"Language-Team: English (United Kingdom) <en_GB@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,48 +19,48 @@ msgstr ""
 
 #: ../data/ui/EditFolderDialog.ui.h:1
 msgid "<big><b>Edit folder</b></big>"
-msgstr ""
+msgstr "<big><b>Edit folder</b></big>"
 
 #: ../data/ui/EditFolderDialog.ui.h:2
 msgid "Parent folder:"
-msgstr ""
+msgstr "Parent folder:"
 
 #: ../data/ui/EditFolderDialog.ui.h:3
 msgid "Folder name:"
-msgstr ""
+msgstr "Folder name:"
 
 #: ../data/ui/EditFolderDialog.ui.h:4
 msgid "The parent folder for this new folder"
-msgstr ""
+msgstr "The parent folder for this new folder"
 
 #: ../data/ui/PasswordEntryDialog.ui.h:1
 msgid "<big><b>Please enter your master password:</b></big>"
-msgstr "<big><b>Inserisci la tua password principale:</b></big>"
+msgstr "<big><b>Please enter your master password:</b></big>"
 
 #: ../data/ui/PasswordEntryDialog.ui.h:2
 msgid "Invalid password! Please try again."
-msgstr "Password non valida! Riprova."
+msgstr "Invalid password! Please try again."
 
 #: ../pasaffe/__init__.py:36
 msgid "Show debug messages (-vv debugs pasaffe_lib also)"
-msgstr "Mostra messaggi debug (-vv debugs pasaffe_lib also)"
+msgstr "Show debug messages (-vv debugs pasaffe_lib also)"
 
 #: ../pasaffe/__init__.py:39
 msgid "use database FILE"
-msgstr "Usare il database FILE"
+msgstr "use database FILE"
 
 #: ../pasaffe/__init__.py:42
 msgid "set database as default"
-msgstr "Impostare il database come predefinito"
+msgstr "set database as default"
 
 #: ../pasaffe/PasaffeWindow.py:414
 msgid "Secrets are currently hidden."
-msgstr "Attualmente i segreti sono nascosti."
+msgstr "Secrets are currently hidden."
 
 #: ../pasaffe/PasaffeWindow.py:418
 #, python-format
 msgid "Username: %s\n"
-msgstr "Nome utente: %s\n"
+msgstr "Username: %s\n"
 
 #: ../pasaffe/PasaffeWindow.py:420
 #, python-format
@@ -82,28 +82,28 @@ msgstr ""
 #: ../pasaffe/PasaffeWindow.py:427
 #, python-format
 msgid "Last updated: %s\n"
-msgstr "Ultimo aggiornamento: %s\n"
+msgstr "Last updated: %s\n"
 
 #: ../pasaffe/PasaffeWindow.py:432
 #, python-format
 msgid "Password updated: %s\n"
-msgstr "Password aggiornate: %s\n"
+msgstr "Password updated: %s\n"
 
 #: ../pasaffe/PasaffeWindow.py:436
 msgid "Welcome to Pasaffe!"
-msgstr "Benvenuti in Pasaffe!"
+msgstr "Welcome to Pasaffe!"
 
 #: ../pasaffe/PasaffeWindow.py:437
 msgid ""
 "Pasaffe is an easy to use\n"
 "password manager for Gnome."
 msgstr ""
-"Pasaffe è un password manager\n"
-"per Gnome semplice da usare"
+"Pasaffe is an easy to use\n"
+"password manager for Gnome."
 
 #: ../pasaffe/PasaffeWindow.py:441
 msgid "This is a folder."
-msgstr ""
+msgstr "This is a folder."
 
 #: ../pasaffe/PasaffeWindow.py:623
 #, python-format
@@ -111,12 +111,12 @@ msgid ""
 "<big><b>Are you sure you wish to remove \"%s\"?</b></big>\n"
 "\n"
 msgstr ""
-"<big><b>Sei sicuro di voler rimuovere \"%s\"?</b></big>\n"
+"<big><b>Are you sure you wish to remove \"%s\"?</b></big>\n"
 "\n"
 
 #: ../pasaffe/PasaffeWindow.py:624
 msgid "Contents of the entry will be lost.\n"
-msgstr "Il contenuto della voce verrà perso.\n"
+msgstr "Contents of the entry will be lost.\n"
 
 #: ../pasaffe/PasaffeWindow.py:639
 #, python-format
@@ -124,136 +124,138 @@ msgid ""
 "<big><b>Are you sure you wish to remove folder \"%s\"?</b></big>\n"
 "\n"
 msgstr ""
+"<big><b>Are you sure you wish to remove folder \"%s\"?</b></big>\n"
+"\n"
 
 #: ../pasaffe/PasaffeWindow.py:640
 msgid "All entries in this folder will be lost.\n"
-msgstr ""
+msgstr "All entries in this folder will be lost.\n"
 
 #: ../pasaffe/PasaffeWindow.py:1057
 msgid ""
 "<big><b>Database Information</b></big>\n"
 "\n"
 msgstr ""
-"<big><b>Informazioni database</b></big>\n"
+"<big><b>Database Information</b></big>\n"
 "\n"
 
 #: ../pasaffe/PasaffeWindow.py:1058
 #, python-format
 msgid "Number of entries: %s\n"
-msgstr "Numero di elementi: %s\n"
+msgstr "Number of entries: %s\n"
 
 #: ../pasaffe/PasaffeWindow.py:1059
 #, python-format
 msgid "Database version: %s\n"
-msgstr ""
+msgstr "Database version: %s\n"
 
 #: ../pasaffe/PasaffeWindow.py:1061
 #, python-format
 msgid "Last saved by: %s\n"
-msgstr "Ultimo salvataggio effettuato da: %s\n"
+msgstr "Last saved by: %s\n"
 
 #: ../pasaffe/PasaffeWindow.py:1063
 #, python-format
 msgid "Last saved on host: %s\n"
-msgstr "Ultimo salvataggio sull'host: %s\n"
+msgstr "Last saved on host: %s\n"
 
 #: ../pasaffe/PasaffeWindow.py:1064
 #, python-format
 msgid "Last save date: %s\n"
-msgstr "Ultima data di salvataggio: %s\n"
+msgstr "Last save date: %s\n"
 
 #: ../pasaffe/PasaffeWindow.py:1066
 #, python-format
 msgid "Application used: %s\n"
-msgstr "Applicazione usate: %s\n"
+msgstr "Application used: %s\n"
 
 #: ../pasaffe/PasaffeWindow.py:1188 ../data/ui/NewDatabaseDialog.ui.h:5
 msgid "Passwords don't match! Please try again."
-msgstr "Le password non coincidono! Per favore riprova."
+msgstr "Passwords don't match! Please try again."
 
 #: ../pasaffe/PasaffeWindow.py:1192
 msgid "New password cannot be blank! Please try again."
-msgstr "La password non può essere vuota! Per favore riprova."
+msgstr "New password cannot be blank! Please try again."
 
 #: ../pasaffe/PasaffeWindow.py:1196
 msgid "Old password is invalid! Please try again."
-msgstr "La vecchia password non è valida! Per favore riprova."
+msgstr "Old password is invalid! Please try again."
 
 #: ../data/ui/PreferencesPasaffeDialog.ui.h:1
 msgid "Pasaffe Preferences"
-msgstr "Preferenze Pasaffe"
+msgstr "Pasaffe Preferences"
 
 #: ../data/ui/PreferencesPasaffeDialog.ui.h:2
 msgid "Automatically save changes"
-msgstr "Salva cambiamenti automaticamente"
+msgstr "Automatically save changes"
 
 #: ../data/ui/PreferencesPasaffeDialog.ui.h:3
 msgid "Display secrets by default"
-msgstr "Visualizza segreti di default"
+msgstr "Display secrets by default"
 
 #: ../data/ui/PreferencesPasaffeDialog.ui.h:4
 msgid "Only passwords are secret"
-msgstr "Solo le passwords sono segrete"
+msgstr "Only passwords are secret"
 
 #: ../data/ui/PreferencesPasaffeDialog.ui.h:5
 msgid "<b>Secrets</b>"
-msgstr ""
+msgstr "<b>Secrets</b>"
 
 #: ../data/ui/PreferencesPasaffeDialog.ui.h:6
 msgid "Lock database after"
-msgstr ""
+msgstr "Lock database after"
 
 #: ../data/ui/PreferencesPasaffeDialog.ui.h:7
 msgid "minutes"
-msgstr ""
+msgstr "minutes"
 
 #: ../data/ui/PreferencesPasaffeDialog.ui.h:8
 msgid "<b>Lock</b>"
-msgstr ""
+msgstr "<b>Lock</b>"
 
 #: ../data/ui/PreferencesPasaffeDialog.ui.h:9
 msgid "Passwords are"
-msgstr ""
+msgstr "Passwords are"
 
 #: ../data/ui/PreferencesPasaffeDialog.ui.h:10
 msgid "characters long"
-msgstr ""
+msgstr "characters long"
 
 #: ../data/ui/PreferencesPasaffeDialog.ui.h:11
 msgid "<b>Password Generator</b>"
-msgstr ""
+msgstr "<b>Password Generator</b>"
 
 #: ../data/ui/PasaffeWindow.ui.h:1
 msgid "<big><b>The password database is currently locked.</b></big>"
-msgstr "<big><b>Il database è attualmente bloccato.</b></big>"
+msgstr "<big><b>The password database is currently locked.</b></big>"
 
 #: ../data/ui/PasaffeWindow.ui.h:2
 msgid "Unlock"
-msgstr "Sbloccare"
+msgstr "Unlock"
 
 #: ../data/ui/PasaffeWindow.ui.h:3
 msgid "Add Entry"
-msgstr ""
+msgstr "Add Entry"
 
 #: ../data/ui/PasaffeWindow.ui.h:4
 msgid "Add Folder"
-msgstr ""
+msgstr "Add Folder"
 
 #: ../data/ui/PasaffeWindow.ui.h:5
 msgid "Clone"
-msgstr "Clona"
+msgstr "Clone"
 
 #: ../data/ui/PasaffeWindow.ui.h:6
 msgid "Copy URL"
-msgstr "Copia URL"
+msgstr "Copy URL"
 
 #: ../data/ui/PasaffeWindow.ui.h:7
 msgid "Copy Username"
-msgstr "Copia Username"
+msgstr "Copy Username"
 
 #: ../data/ui/PasaffeWindow.ui.h:8
 msgid "Copy Password"
-msgstr "Copia Password"
+msgstr "Copy Password"
 
 #: ../data/ui/PasaffeWindow.ui.h:9 ../pasaffe.desktop.in.h:1
 msgid "Pasaffe"
@@ -265,123 +267,123 @@ msgstr "_File"
 
 #: ../data/ui/PasaffeWindow.ui.h:11
 msgid "Lock"
-msgstr "Blocca"
+msgstr "Lock"
 
 #: ../data/ui/PasaffeWindow.ui.h:12
 msgid "Change Master Password"
-msgstr "Cambia Password Principale"
+msgstr "Change Master Password"
 
 #: ../data/ui/PasaffeWindow.ui.h:13
 msgid "_Edit"
-msgstr "_Modifica"
+msgstr "_Edit"
 
 #: ../data/ui/PasaffeWindow.ui.h:14
 msgid "Find"
-msgstr "Cercare"
+msgstr "Find"
 
 #: ../data/ui/PasaffeWindow.ui.h:15
 msgid "_View"
-msgstr "_Visualizza"
+msgstr "_View"
 
 #: ../data/ui/PasaffeWindow.ui.h:16
 msgid "Display Secrets"
-msgstr "Visualizza Segreti"
+msgstr "Display Secrets"
 
 #: ../data/ui/PasaffeWindow.ui.h:17
 msgid "Open URL"
-msgstr "Apri URL"
+msgstr "Open URL"
 
 #: ../data/ui/PasaffeWindow.ui.h:18
 msgid "Database Information"
-msgstr "Informazione sul database"
+msgstr "Database Information"
 
 #: ../data/ui/PasaffeWindow.ui.h:19
 msgid "_Help"
-msgstr "_Aiuto"
+msgstr "_Help"
 
 #: ../data/ui/PasaffeWindow.ui.h:20
 msgid "Contents"
-msgstr "Contenuti"
+msgstr "Contents"
 
 #: ../data/ui/PasaffeWindow.ui.h:21
 msgid "Save changes"
-msgstr "Salva modifiche"
+msgstr "Save changes"
 
 #: ../data/ui/PasaffeWindow.ui.h:22
 msgid "Save"
-msgstr "Salva"
+msgstr "Save"
 
 #: ../data/ui/PasaffeWindow.ui.h:23
 msgid "Add a new entry"
-msgstr "Aggiungi una nuova voce"
+msgstr "Add a new entry"
 
 #: ../data/ui/PasaffeWindow.ui.h:24
 msgid "Add"
-msgstr "Aggiungi"
+msgstr "Add"
 
 #: ../data/ui/PasaffeWindow.ui.h:25
 msgid "Add a new folder"
-msgstr ""
+msgstr "Add a new folder"
 
 #: ../data/ui/PasaffeWindow.ui.h:26
 msgid "Edit the selected entry"
-msgstr "Modifica la voce selezionata"
+msgstr "Edit the selected entry"
 
 #: ../data/ui/PasaffeWindow.ui.h:27
 msgid "Edit"
-msgstr "Modifica"
+msgstr "Edit"
 
 #: ../data/ui/PasaffeWindow.ui.h:28
 msgid "Delete the selected entry"
-msgstr "Elimina la voce selezionata"
+msgstr "Delete the selected entry"
 
 #: ../data/ui/PasaffeWindow.ui.h:29
 msgid "Remove"
-msgstr ""
+msgstr "Remove"
 
 #: ../data/ui/PasaffeWindow.ui.h:30
 msgid "Open the URL"
-msgstr "Apri l'URL"
+msgstr "Open the URL"
 
 #: ../data/ui/PasaffeWindow.ui.h:31
 msgid "Copy the username"
-msgstr "Copia l'username"
+msgstr "Copy the username"
 
 #: ../data/ui/PasaffeWindow.ui.h:32
 msgid "Copy the password"
-msgstr "Copia la password"
+msgstr "Copy the password"
 
 #: ../data/ui/PasaffeWindow.ui.h:33
 msgid "Find entries"
-msgstr "Cercare le voci"
+msgstr "Find entries"
 
 #: ../data/ui/PasaffeWindow.ui.h:34
 msgid "Display secrets"
-msgstr "Visualizza segreti"
+msgstr "Display secrets"
 
 #: ../data/ui/PasaffeWindow.ui.h:35
 msgid "icon"
-msgstr ""
+msgstr "icon"
 
 #: ../data/ui/PasaffeWindow.ui.h:36
 msgid "name"
-msgstr ""
+msgstr "name"
 
 #: ../data/ui/PasaffeWindow.ui.h:37
 msgid "Close find"
-msgstr "Chiudere la ricerca"
+msgstr "Close find"
 
 #: ../data/ui/PasaffeWindow.ui.h:38
 msgid "Previous result"
-msgstr "Risultato precedente"
+msgstr "Previous result"
 
 #: ../data/ui/PasaffeWindow.ui.h:39
 msgid "Next result"
-msgstr "Risultato successivo"
+msgstr "Next result"
 
 #: ../data/ui/NewDatabaseDialog.ui.h:1
 msgid "<big><b>Welcome to Pasaffe!</b></big>"
-msgstr "<big><b>Benvenuti in Pasaffe!</b></big>"
+msgstr "<big><b>Welcome to Pasaffe!</b></big>"
 
 #: ../data/ui/NewDatabaseDialog.ui.h:2
 msgid ""
@@ -389,17 +391,17 @@ msgid ""
 "A new one will be created.\n"
 "Please enter a master password to protect it."
 msgstr ""
-"Nessun database è stato trovato.\n"
-"Ne verrà quindi creato uno nuovo.\n"
-"Per favore inserisci la password principale per proteggerlo."
+"No existing database was found.\n"
+"A new one will be created.\n"
+"Please enter a master password to protect it."
 
 #: ../data/ui/NewDatabaseDialog.ui.h:6
 msgid "Enter password:"
-msgstr "Inserisci password:"
+msgstr "Enter password:"
 
 #: ../data/ui/NewDatabaseDialog.ui.h:7
 msgid "Confirm password:"
-msgstr "Conferma password:"
+msgstr "Confirm password:"
 
 #: ../pasaffe.desktop.in.h:2
 msgid "Pasaffe password manager"
@@ -407,31 +409,31 @@ msgstr "Pasaffe password manager"
 
 #: ../data/ui/EditDetailsDialog.ui.h:1
 msgid "<big><b>Edit entry</b></big>"
-msgstr "<big><b>Modifica elemento</b></big>"
+msgstr "<big><b>Edit entry</b></big>"
 
 #: ../data/ui/EditDetailsDialog.ui.h:2
 msgid "The name for this entry"
-msgstr "Il nome per questo elemento"
+msgstr "The name for this entry"
 
 #: ../data/ui/EditDetailsDialog.ui.h:3
 msgid "The folder for this entry"
-msgstr ""
+msgstr "The folder for this entry"
 
 #: ../data/ui/EditDetailsDialog.ui.h:4
 msgid "The entry's username"
-msgstr "L'username dell'elemento"
+msgstr "The entry's username"
 
 #: ../data/ui/EditDetailsDialog.ui.h:5
 msgid "Title:"
-msgstr "Titolo:"
+msgstr "Title:"
 
 #: ../data/ui/EditDetailsDialog.ui.h:6
 msgid "Folder:"
-msgstr ""
+msgstr "Folder:"
 
 #: ../data/ui/EditDetailsDialog.ui.h:7
 msgid "Username:"
-msgstr "Nome utente:"
+msgstr "Username:"
 
 #: ../data/ui/EditDetailsDialog.ui.h:8
 msgid "Password:"
@@ -439,7 +441,7 @@ msgstr "Password:"
 
 #: ../data/ui/EditDetailsDialog.ui.h:9
 msgid "Notes:"
-msgstr "Note:"
+msgstr "Notes:"
 
 #: ../data/ui/EditDetailsDialog.ui.h:10
 msgid "URL:"
@@ -447,11 +449,11 @@ msgstr "URL:"
 
 #: ../data/ui/EditDetailsDialog.ui.h:11
 msgid "The website for this entry"
-msgstr "Il sito internet per questo elemento"
+msgstr "The website for this entry"
 
 #: ../data/ui/EditDetailsDialog.ui.h:12
 msgid "Pick a random password"
-msgstr "Scegliere una password casuale"
+msgstr "Pick a random password"
 
 #: ../data/ui/AboutPasaffeDialog.ui.h:1
 msgid "http://www.launchpad.net/pasaffe"
@@ -461,19 +463,19 @@ msgstr "http://www.launchpad.net/pasaffe"
 msgid ""
 "<big><b>Save changes to your password database before closing?</b></big>"
 msgstr ""
-"<big><b>Salvare i cambiamenti nel database prima di chiudere?</b></big>"
+"<big><b>Save changes to your password database before closing?</b></big>"
 
 #: ../data/ui/SaveChangesDialog.ui.h:2
 msgid "Your changes will be lost if you don't save them."
-msgstr "Le modifiche verranno perse se non saranno salvate."
+msgstr "Your changes will be lost if you don't save them."
 
 #: ../data/ui/SaveChangesDialog.ui.h:3
 msgid "Close without Saving"
-msgstr ""
+msgstr "Close without Saving"
 
 #: ../data/ui/NewPasswordDialog.ui.h:1
 msgid "<big><b>Change master password</b></big>"
-msgstr "<big><b>Cambiare password principale</b></big>"
+msgstr "<big><b>Change master password</b></big>"
 
 #: ../data/ui/NewPasswordDialog.ui.h:2
 msgid ""
@@ -481,22 +483,22 @@ msgid ""
 "and a new master password.\n"
 "You must confirm the new password."
 msgstr ""
-"Inserisci la tua vecchia password principale,\n"
-"e quella nuova.\n"
-"Devi confermare la nuova password."
+"Enter your old master password,\n"
+"and a new master password.\n"
+"You must confirm the new password."
 
 #: ../data/ui/NewPasswordDialog.ui.h:5
 msgid "error message"
-msgstr "messaggio di errore"
+msgstr "error message"
 
 #: ../data/ui/NewPasswordDialog.ui.h:6
 msgid "Old password:"
-msgstr "Vecchia password:"
+msgstr "Old password:"
 
 #: ../data/ui/NewPasswordDialog.ui.h:7
 msgid "New password:"
-msgstr "Nuova password:"
+msgstr "New password:"
 
 #: ../data/ui/NewPasswordDialog.ui.h:8
 msgid "Confirm new password:"
-msgstr "Conferma nuova password:"
+msgstr "Confirm new password:"

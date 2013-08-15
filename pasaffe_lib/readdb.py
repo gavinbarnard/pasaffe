@@ -43,6 +43,10 @@ class PassSafeFile:
         self.cipher_block_size = 0
         self.hmac = None
         self.dbfile = None
+        self.empty_folders = []
+
+        # Use version 0x030B, since we support saving empty folders
+        self.db_version = '\x0B\x03'
 
         if req_cipher == 'Twofish':
             self.cipher = pytwofishcbc.TwofishCBC()
@@ -86,7 +90,7 @@ class PassSafeFile:
 
         self.new_keys(password)
 
-        self.header[0] = '\x02\x03'  # database version
+        self.header[0] = self.db_version
         self.header[1] = os.urandom(16)  # uuid
 
     def check_password(self, password):
@@ -139,8 +143,15 @@ class PassSafeFile:
         # Set timestamp
         self.header[4] = struct.pack("<I", int(time.time()))
         self.header[6] = "Pasaffe v%s" % get_version()
-        # TODO: we should probably update the database version
-        # string here to at least what we use in new_db()
+
+        # Update the database version if it's older than what we support.
+        # Do major version first
+        if self.header[0][1] < self.db_version[1]:
+            self.header[0] = self.db_version
+        # Now check minor version if major version is same
+        elif self.header[0][1] == self.db_version[1]:
+            if self.header[0][0] < self.db_version[0]:
+                self.header[0] = self.db_version
 
         # Create backup if requested
         if backup == True and os.path.exists(filename):
@@ -191,12 +202,15 @@ class PassSafeFile:
         '''Returns the application of the last save'''
         return self.header.get(6)
 
-    def get_saved_date_string(self):
+    def get_saved_date_string(self, localtime = True):
         '''Returns a string of the date of the last save'''
         if 4 in self.header:
-            return time.strftime("%a, %d %b %Y %H:%M:%S",
-                                 time.localtime(struct.unpack("<I",
-                                 self.header[4])[0]))
+            unpacked_time = struct.unpack("<I", self.header[4])[0]
+            if localtime:
+                converted_time = time.localtime(unpacked_time)
+            else:
+                converted_time = time.gmtime(unpacked_time)
+            return time.strftime("%a, %d %b %Y %H:%M:%S", converted_time)
         else:
             return None
 
@@ -208,30 +222,83 @@ class PassSafeFile:
         if 2 not in self.records[uuid]:
             return None
 
-        # We need to split into folders using the "." character, but not
-        # if it is escaped with a \
+        return (self._field_to_folder_list(self.records[uuid][2]))
+
+    def update_folder_list(self, uuid, folder):
+        '''Updates an entry folder list'''
+        if uuid not in self.records:
+            return
+
+        self.records[uuid][2] = self._folder_list_to_field(folder)
+
+        # If the record is empty, just delete it
+        if self.records[uuid][2] == "":
+            del self.records[uuid][2]
+
+    def get_empty_folders(self):
+        '''Returns the empty folders list'''
         folders = []
-        index = 0
-        while index < len(self.records[uuid][2]):
-            print "index = %s" % index
-            location = self.records[uuid][2].find(".", index)
-            print "location is %s" % location
 
-            if self.records[uuid][2][location-1] == "\\":
-                break
-            if location == -1:
-                break
-            folders.append(self.records[uuid][2][index:location].replace("\\",''))
-            index = location + 1
+        for folder in self.empty_folders:
+            folders.append(self._field_to_folder_list(folder))
 
-        folders.append(self.records[uuid][2][index:len(self.records[uuid][2])].replace('\\',''))
+        logger.debug("returning %s" % folders)
         return folders
 
-    def update_folder_list(self, old_list, new_list):
-        '''Updates a folder name in all entries'''
+    def get_all_folders(self):
+        '''Returns a list of all the folders'''
+
+        # First, get the empty folders
+        folders = self.get_empty_folders()
+
+        # Now, do the records
+        for uuid in self.records:
+            if 2 not in self.records[uuid]:
+                continue
+
+            folder = self._field_to_folder_list(self.records[uuid][2])
+            if folder not in folders:
+                folders.append(folder)
+
+        return folders
+
+    def add_empty_folder(self, folder):
+        '''Adds a folder to the empty folders list'''
+
+        if folder == None or folder == []:
+            return
+
+        for part in range(len(folder)):
+            field = self._folder_list_to_field(folder[:part + 1])
+            logger.debug("searching for %s" % field)
+            if field not in self.empty_folders:
+                # Make sure it's actually empty
+                found = False
+                for uuid in self.records.keys():
+                    if 2 not in self.records[uuid]:
+                        continue
+                    if self.records[uuid][2] == field:
+                        logger.debug("folder %s isn't empty" % field)
+                        found = True
+                        break
+
+                if found == False:
+                    logger.debug("adding %s" % field)
+                    self.empty_folders.append(field)
+
+    def remove_empty_folder(self, folder):
+        '''Removes a folder from the empty folders list'''
+        field = self._folder_list_to_field(folder)
+        if field in self.empty_folders:
+            logger.debug("removing %s" % field)
+            self.empty_folders.remove(field)
+
+    def rename_folder_list(self, old_list, new_list):
+        '''Renamed a folder name in all entries'''
         old_field = self._folder_list_to_field(old_list)
         new_field = self._folder_list_to_field(new_list)
 
+        # Do the records first
         for uuid in self.records:
             if 2 not in self.records[uuid]:
                 continue
@@ -246,24 +313,136 @@ class PassSafeFile:
 
             self.update_modification_time(uuid)
 
+        # Now do the empty folders
+        for empty_folder in self.empty_folders[:]:
+            if empty_folder == old_field:
+                logger.debug("renaming %s to %s" % (empty_folder, new_field))
+                self.empty_folders.remove(empty_folder)
+                self.empty_folders.append(new_field)
+            elif empty_folder.startswith(old_field + '.'):
+                updated_field = empty_folder.replace(old_field, new_field, 1)
+                logger.debug("renaming %s to %s" % (empty_folder, updated_field))
+                self.empty_folders.remove(empty_folder)
+                self.empty_folders.append(updated_field)
+
+    def delete_entry(self, uuid):
+        '''Deletes an entry'''
+        del self.records[uuid]
+
+    def delete_folder(self, folder):
+        '''Deletes a folder and all contents'''
+
+        if folder == None or folder == []:
+            return
+
+        field = self._folder_list_to_field(folder)
+
+        # Do the records first
+        for uuid in self.records.keys():
+            if 2 not in self.records[uuid]:
+                continue
+            if self.records[uuid][2] == field:
+                self.delete_entry(uuid)
+            elif self.records[uuid][2].startswith(field + '.'):
+                self.delete_entry(uuid)
+
+        # Now do the empty folders
+        for empty_folder in self.empty_folders[:]:
+            if empty_folder == field:
+                logger.debug("removing folder '%s'" % empty_folder)
+                self.empty_folders.remove(empty_folder)
+            elif empty_folder.startswith(field + '.'):
+                logger.debug("removing folder '%s'" % empty_folder)
+                self.empty_folders.remove(empty_folder)
+
+        # If the parent folder has no contents,
+        # add it to empty folders list
+        parent = folder[:-1]
+        if parent == []:
+            return
+        parent_field = self._folder_list_to_field(parent)
+
+        for uuid in self.records:
+            if 2 not in self.records[uuid]:
+                continue
+            if self.records[uuid][2] == parent_field:
+                return
+
+        self.add_empty_folder(parent)
+
     def update_modification_time(self, uuid):
         '''Updates the modification time of an entry'''
         timestamp = struct.pack("<I", int(time.time()))
         self.records[uuid][12] = timestamp
+
+    def get_modification_time(self, uuid, localtime = True):
+        '''Returns a string of the entry modification time'''
+        return self.get_time(uuid, 12, localtime)
 
     def update_password_time(self, uuid):
         '''Updates the password time of an entry'''
         timestamp = struct.pack("<I", int(time.time()))
         self.records[uuid][8] = timestamp
 
+    def get_password_time(self, uuid, localtime = True):
+        '''Returns a string of the password modification time'''
+        return self.get_time(uuid, 8, localtime)
+
+    def get_creation_time(self, uuid, localtime = True):
+        '''Returns a string of the creation time'''
+        return self.get_time(uuid, 7, localtime)
+
+    def get_time(self, uuid, entry, localtime = True):
+        '''Returns a string of time'''
+        if entry in self.records[uuid]:
+            unpacked_time = struct.unpack("<I", self.records[uuid][entry])[0]
+            if localtime:
+                converted_time = time.localtime(unpacked_time)
+            else:
+                converted_time = time.gmtime(unpacked_time)
+            return time.strftime("%a, %d %b %Y %H:%M:%S", converted_time)
+        else:
+            return None
+
     def _folder_list_to_field(self, folder_list):
         '''Converts a folder list to a folder field'''
         field = ""
+
+        if folder_list == None:
+            return field
+
         for folder in folder_list:
             if field != "":
                 field += "."
             field += folder.replace(".", "\\.")
         return field
+
+    def _field_to_folder_list(self, field):
+        '''Converts a folder field to a folder list'''
+
+        # We need to split into folders using the "." character, but not
+        # if it is escaped with a \
+        folders = []
+
+        if field == "":
+            return folders
+
+        index = 0
+        location = 0
+        while index < len(field):
+            location = field.find(".", location + 1)
+
+            if location == -1:
+                break
+
+            if field[location - 1] == "\\":
+                continue
+
+            folders.append(field[index:location].replace("\\",''))
+            index = location + 1
+
+        folders.append(field[index:len(field)].replace('\\',''))
+        return folders
 
     def new_entry(self):
         '''Creates a new entry'''
@@ -339,9 +518,15 @@ class PassSafeFile:
             if status == False:
                 raise RuntimeError("Malformed file, "
                                    "was expecting more data in header")
+
             if field_type == 0xff:
                 logger.debug("Found end field")
                 break
+            elif field_type == 0x11:
+                # Empty group fields can appear more than once
+                # Store them in their own variable
+                self.empty_folders.append(field_data)
+                logger.debug("found empty folder: %s" % field_data)
             else:
                 self.header[field_type] = field_data
                 logger.debug("Found field 0x%.2x" % field_type)
@@ -349,9 +534,23 @@ class PassSafeFile:
     def _writeheader(self):
         self.cipher.set_key(self.keys['K'])
 
+        # v3.30 of the spec says the version type needs to be the
+        # first field in the header. Handle it first.
+        logger.debug("Writing Version Type field")
+        self._writefield(0x00, self.header[0x00])
+
         for entry in self.header.keys():
+            # Skip Version Type, we've already handled it
+            if entry == 0x00:
+                continue
             logger.debug("Writing %.2x" % entry)
             self._writefield(entry, self.header[entry])
+
+        # Now handle empty folders
+        logger.debug("Writing empty folders")
+        for folder in self.empty_folders:
+            logger.debug("writing empty folder: %s" % folder)
+            self._writefield(0x11, folder)
 
         self._writefieldend()
 

@@ -1,6 +1,44 @@
 This file summarizes the major and interesting changes for each release.
 For a detailed list of changes, please see ChangeLog.
 
+0.28 (2013-08-15)
+
+ * Enhancements:
+
+ * Bug fixes:
+   - Fix some translation mistakes in the fr help file (LP: #1210552)
+   - Fix crash when changing the show secrets setting
+   - Mark some more menu entries as translatable
+   - Perform case-insensitive sort on entries and folders
+
+0.27 (2013-08-12)
+
+ * Enhancements:
+   - Implemented drag and drop of folders and entries
+   - Fix broken menu entries when gtk is configured to show icons in menus
+   - Deactivate certain menu items when a folder is selected
+
+ * Bug fixes:
+
+0.26 (2013-08-11)
+
+ * Enhancements:
+
+ * Bug fixes:
+   - Folder text entry now activates OK button (thanks jdstrand!)
+   - Tree now sorts folders before directories (thanks jdstrand!)
+   - Fixed typeahead find (thanks hallyn!)
+
+0.25 (2013-08-09)
+
+ * Enhancements:
+   - Added tree support (Thanks to Jabik Postmus!)
+   - Improved test suite
+   - Updated translations
+
+ * Bug fixes:
+   - Fixed some untranslated strings (LP: #1202980)
+
 0.24 (2013-03-06)
 
  * Enhancements:

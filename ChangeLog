@@ -1,3 +1,1129 @@
+2013-08-15  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.28
+
+2013-08-15  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	fixed version in NEWS
+
+2013-08-15  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	merged translations
+
+2013-08-15  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2013-08-15  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* pasaffe_lib/helpers.py:
+	* tests/test_helpers.py:
+
+	use case-insensitive sort in tree
+
+2013-08-14  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* help/C/legal.xml:
+	* help/fr/legal.xml:
+	* help/C/index.page:
+	* help/fr/index.page:
+
+	fix some translation issues in the help files
+
+2013-08-14  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/pasaffe.pot:
+
+	updated pot file
+
+2013-08-14  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	updated NEWS
+
+2013-08-14  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/PasaffeWindow.ui:
+
+	mark some more menu entries as translatable
+
+2013-08-14  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+	* help/C/new-entry.page:
+	* help/C/preferences.page:
+	* help/fr/new-entry.page:
+	* help/fr/preferences.page:
+
+	updated the help files
+
+2013-08-14  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+
+	added a TODO
+
+2013-08-14  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/AboutPasaffeDialog.ui:
+
+	Changed About dialog to use a real copyright character
+
+2013-08-14  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	merged translations
+
+2013-08-13  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2013-08-14  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* pasaffe_lib/Window.py:
+
+	fix crash when changing the show secrets setting
+
+2013-08-12  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* help/fr/delete-entry.page:
+	* help/fr/index.page:
+	* help/fr/new-entry.page:
+	* help/fr/preferences.page:
+	* help/fr/show-secrets.page:
+
+	Fixed some translation mistakes in the fr help file (LP: #1210552)
+
+2013-08-12  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	prepare for next release
+
+2013-08-12  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.27
+
+2013-08-12  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	don't allow dragging a folder into a subdirectory of itself
+
+2013-08-12  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* TODO:
+	* pasaffe/PasaffeWindow.py:
+
+	deactivate certain menu items when a folder is selected
+
+2013-08-12  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* data/ui/PasaffeWindow.ui:
+
+	fix broken menu entries when gtk is configured to show icons in menus
+
+2013-08-12  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* TODO:
+	* pasaffe/PasaffeWindow.py:
+
+	implemented drag and drop
+
+2013-08-12  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	updated translations
+
+2013-08-12  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2013-08-11  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	prepared for next release
+
+2013-08-11  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.26
+
+2013-08-11  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* data/ui/PasaffeWindow.ui:
+
+	fixed typeahead find (thanks to hallyn for reporting!)
+
+2013-08-11  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	updated NEWS
+
+2013-08-11  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	updated translations
+
+2013-08-10  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2013-08-11  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe_lib/helpers.py:
+	* tests/test_helpers.py:
+
+	- sort folders before names (thanks to jdstrand for reporting)
+
+2013-08-09  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe_lib/helpers.py:
+
+	move PathEntry class to helpers.py
+
+2013-08-09  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* data/ui/EditFolderDialog.ui:
+
+	- folder text entry now activates OK button (thanks jdstrand!)
+
+2013-08-09  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	prepared for next release
+
+2013-08-09  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.25
+
+2013-08-09  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	fix menu hiding when locked
+
+2013-08-09  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	added NEWS
+
+2013-08-09  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* help/fr/index.page:
+
+	- fixed a french translation issue
+
+2013-08-09  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/SaveChangesDialog.ui:
+
+	fixed untranslated string (LP: #1202980)
+
+2013-08-09  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/fr.po:
+
+	updated french translation
+
+2013-08-09  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+
+	added TODO
+
+2013-08-09  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	Don't allow open URL on a folder
+
+2013-08-09  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+
+	added some TODOs
+
+2013-08-09  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	Don't allow copying stuff from folders
+
+2013-08-09  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	fix removing last entry
+
+2013-08-06  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2013-08-05  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* tests/autopilot:
+	* tests/autopilot/pasaffe:
+	* tests/autopilot/pasaffe/__init__.py:
+	* tests/autopilot/pasaffe/tests:
+	* tests/autopilot/pasaffe/tests/__init__.py:
+	* tests/autopilot/pasaffe/tests/test_pasaffe.py:
+
+	- added autopilot test
+
+2013-08-05  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	merged translations
+
+2013-08-04  Launchpad Translations on behalf of mdeslaur
+
+	* po/en_GB.po:
+
+	Launchpad automatic translations update.
+
+2013-08-03  Launchpad Translations on behalf of mdeslaur
+
+	* po/en_GB.po:
+
+	Launchpad automatic translations update.
+
+2013-08-02  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2013-08-01  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	don't die if trying to clone a folder
+
+2013-08-01  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/PasaffeWindow.ui:
+	* pasaffe/PasaffeWindow.py:
+
+	add add folder entry to menus
+
+2013-08-01  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/pasaffe.pot:
+
+	regenerated pot file
+
+2013-08-01  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	merged translations
+
+2013-07-31  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2013-07-30  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* tests/databases/pasaffe-025.psafe3:
+	* tests/generate_pasaffe_db.py:
+	* tests/test_pasaffe_025.py:
+	* pasaffe_lib/readdb.py:
+	* tests/databases/README:
+	* tests/test_pw_gorilla_15363.py:
+	* tests/test_pwsafe_331.py:
+
+	- added pasaffe test database
+	- added test database generation script
+	- readdb.py: allow requesting time in UTC, for testing
+	- modified test scripts to use UTC time
+
+2013-07-30  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+	* data/ui/EditDetailsDialog.ui:
+
+	fix tab issues
+
+2013-07-30  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	merged translations
+
+2013-07-28  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2013-07-30  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* tests/test_helpers.py:
+	* pasaffe_lib/helpers.py:
+
+	added test for helpers, and fix broken logic
+
+2013-07-30  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe_lib/helpers.py:
+
+	move conversion functions to helper lib
+
+2013-07-30  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/EditFolderDialog.py:
+
+	EditFolderDialog.py: fix pylint warning
+
+2013-07-27  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/PasaffeWindow.ui:
+
+	add icon alignment, not sure what best default is yet
+
+2013-07-27  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+	* data/ui/PasaffeWindow.ui:
+	* pasaffe/PasaffeWindow.py:
+
+	added icons to tree
+
+2013-07-27  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+
+	added a TODO
+
+2013-07-27  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* docs/interopability.txt:
+	* TODO:
+
+	- added a file detailing interopability issues
+
+2013-07-27  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	merged translations
+
+2013-07-26  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2013-07-27  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe_lib/readdb.py:
+	* tests/test_pw_gorilla_15363.py:
+	* tests/test_pwsafe_331.py:
+
+	- added more database tests
+
+2013-07-25  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* tests/test_pw_gorilla_15363.py:
+	* tests/test_pwsafe_331.py:
+
+	- start adding database tests
+
+2013-07-25  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	merged translations
+
+2013-07-25  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2013-07-25  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* tests/databases/pw-gorilla-15363.psafe3:
+	* tests/databases/pwsafe-331.psafe3:
+
+	- updated test databases
+
+2013-07-24  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* tests/databases/pw-gorilla-15363.psafe3:
+	* tests/databases/README.txt:
+	* tests/databases/README:
+
+	- added a Password Gorilla test database
+
+2013-07-24  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	merged translations
+
+2013-07-24  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2013-07-24  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* tests/databases:
+	* tests/databases/README.txt:
+	* tests/databases/pwsafe-331.psafe3:
+	* examples:
+	* examples/README:
+	* examples/pasaffe.psafe3:
+
+	- removed example database from examples directory
+	- added new example database to tests/databases
+
+2013-07-23  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	merged translations
+
+2013-07-23  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2013-07-23  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	fix adding a new entry with no folder selected
+
+2013-07-23  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/EditFolderDialog.ui:
+	* pasaffe/PasaffeWindow.py:
+
+	added parent folder drop-down to edit folder dialog
+
+2013-07-22  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	merged translations
+
+2013-07-22  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2013-07-22  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe_lib/readdb.py:
+	* tests/test_readdb.py:
+
+	test_readdb.py: added more tests
+	readdb.py: fix a couple of issues
+
+2013-07-20  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* tests/test_readdb.py:
+
+	more tests
+
+2013-07-20  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	merged translations
+
+2013-07-20  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2013-07-20  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe_lib/readdb.py:
+	* tests/test_readdb.py:
+
+	added more tests
+
+2013-07-20  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* TODO:
+	* tests/test_readdb.py:
+
+	added more tests
+
+2013-07-19  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	merged translations
+
+2013-07-12  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2013-07-19  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe_lib/readdb.py:
+
+	fixed some more empty folder issues
+	added some debug output
+
+2013-07-13  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* tests/test_readdb.py:
+	* pasaffe_lib/readdb.py:
+
+	added some readdb tests
+
+2013-07-11  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe_lib/readdb.py:
+
+	fix bug with folder unescaping
+
+2013-07-11  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/en_GB.po:
+	* po/de.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	merged
+
+2013-07-10  Launchpad Translations on behalf of mdeslaur
+
+	* po/en_GB.po:
+
+	Launchpad automatic translations update.
+
+2013-07-09  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2013-07-11  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe_lib/readdb.py:
+
+	- improve folder support
+
+2013-07-08  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+	* data/ui/EditDetailsDialog.ui:
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe_lib/readdb.py:
+
+	- start implementing folder selection drop-down
+
+2013-07-08  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/de.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	- merged translations
+	- fixed removing an empty folder
+
+2013-07-07  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2013-07-08  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe_lib/readdb.py:
+
+	fix removing an empty folder
+
+2013-07-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe_lib/readdb.py:
+
+	readdb.py: get rid of example data
+
+2013-07-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* docs/formatV3.txt:
+	* AUTHORS:
+	* TODO:
+	* pasaffe_lib/readdb.py:
+	* docs/formatV3.txt:
+	* docs/formatV322.txt:
+
+	implement empty folder saving and loading from db
+
+2013-07-03  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe_lib/readdb.py:
+
+	further work on folder support
+
+2013-07-03  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	further work on folder support
+
+2013-07-03  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	fix adding empty folders
+
+2013-07-03  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	allow creating a new entry in an existing folder
+
+2013-07-02  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	fix cancelling a new item
+
+2013-07-02  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/EditFolderDialog.ui:
+	* data/ui/edit_folder_dialog.xml:
+	* pasaffe/PasaffeWindow.py:
+
+	more work on folder edit dialog
+
+2013-06-29  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/EditFolderDialog.py:
+	* data/ui/PasaffeWindow.ui:
+	* pasaffe/PasaffeWindow.py:
+
+	start an edit folder dialog
+
+2013-06-29  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	make the new highlight more predictible when we delete an item
+
+2013-06-29  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	improve search_tree
+
+2013-06-29  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+
+	added some folder TODO items
+
+2013-06-29  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	properly handle deleting an item in a folder
+
+2013-06-29  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	added recursive search into tree
+
+2013-06-29  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	allow specifying a uuid to switch to when refreshing the tree
+
+2013-06-29  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	fix some whitespace
+
+2013-06-29  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	Properly display folders with dots in their name
+
+2013-06-29  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/EditDetailsDialog.ui:
+	* pasaffe/PasaffeWindow.py:
+
+	Prefer "Folder" to "Path"
+
+2013-06-29  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	PasaffeWindow.py: allow sorting entries with no folder
+
+2013-06-29  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe_lib/readdb.py:
+
+	pasaffe_lib/readdb.py: Don't force folder names to be lowercase.
+	The database format allows different independently cased folder
+	names. Also, remove some debugging prints.
+
+2013-06-29  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* TODO:
+
+	Updated NEWS and TODO
+
+2013-06-29  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/EditDetailsDialog.ui:
+	* data/ui/PasaffeWindow.ui:
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe_lib/readdb.py:
+
+	Merged tree support:
+	- Jabik Postmus 2013-06-28 Added support for a tree view of your passwords
+
+2013-06-28  Jabik Postmus  <launchpad@snth.eu>
+
+	* data/ui/EditDetailsDialog.ui:
+	* data/ui/PasaffeWindow.ui:
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe_lib/readdb.py:
+
+	Added support for a tree view of your passwords
+
+2013-06-03  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2013-06-02  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* AUTHORS:
+	* bin/pasaffe-import-figaroxml:
+	* data/ui/AboutPasaffeDialog.ui:
+	* pasaffe_lib/figaroxml.py:
+	* pasaffe_lib/keepassx.py:
+	* po/de.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	- updated translations
+	- merged Francesco Marella's email address change
+
+2013-06-02  Francesco Marella  <fra.marella@gmx.com>
+
+	* AUTHORS:
+	* bin/pasaffe-import-figaroxml:
+	* data/ui/AboutPasaffeDialog.ui:
+	* pasaffe_lib/figaroxml.py:
+	* pasaffe_lib/keepassx.py:
+
+	updated email address
+
+2013-03-28  Launchpad Translations on behalf of mdeslaur
+
+	* po/fr.po:
+
+	Launchpad automatic translations update.
+
+2013-03-07  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2013-03-06  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* AUTHORS:
+
+	updated copyright date in AUTHORS file
+
+2013-03-06  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	- fix version for next release
+
+2013-03-06  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	Prepare for next release
+
 2013-03-06  Marc Deslauriers  <marc.deslauriers@canonical.com>
 
 	* NEWS:
