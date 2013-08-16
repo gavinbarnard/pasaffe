@@ -1,3 +1,10 @@
+pasaffe (0.28-0ubuntu2) saucy; urgency=low
+
+  * debian/patches/fix_column_sizing.patch: Set icon column sizing to
+    automatic so tree doesn't move around in data/ui/PasaffeWindow.ui.
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Fri, 16 Aug 2013 11:59:50 -0400
+
 pasaffe (0.28-0ubuntu1) saucy; urgency=low
 
   * New upstream release

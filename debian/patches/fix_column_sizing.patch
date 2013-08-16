@@ -1,0 +1,15 @@
+Description: Set icon column sizing to automatic so tree doesn't move around
+Origin: upstream, http://bazaar.launchpad.net/~mdeslaur/pasaffe/trunk/revision/454
+
+Index: pasaffe-0.28/data/ui/PasaffeWindow.ui
+===================================================================
+--- pasaffe-0.28.orig/data/ui/PasaffeWindow.ui	2013-08-15 16:44:17.000000000 -0400
++++ pasaffe-0.28/data/ui/PasaffeWindow.ui	2013-08-16 11:59:40.185137548 -0400
+@@ -848,6 +848,7 @@
+                     </child>
+                     <child>
+                       <object class="GtkTreeViewColumn" id="treeviewcolumn1">
++                        <property name="sizing">autosize</property>
+                         <property name="title" translatable="yes">icon</property>
+                         <child>
+                           <object class="GtkCellRendererPixbuf" id="cellrendererpixbuf1">
