@@ -1,3 +1,14 @@
+pasaffe (0.29-0ubuntu1) saucy; urgency=low
+
+  * New upstream release
+   - Implemented folder expansion saving to database
+   - Implemented folder expansion preferences
+   - Folder window size is now saved
+   - Updated translations
+   - Set icon column sizing to automatic so tree doesn't move around
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Wed, 04 Sep 2013 19:37:14 -0400
+
 pasaffe (0.28-0ubuntu2) saucy; urgency=low
 
   * debian/patches/fix_column_sizing.patch: Set icon column sizing to

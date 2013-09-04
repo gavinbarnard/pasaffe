@@ -6,6 +6,11 @@
       <summary>Pasaffe database location</summary>
       <description>Full path to the location where Pasaffe stores the password database.</description>
     </key>
+    <key name="tree-expansion" type="s">
+      <default>"collapsed"</default>
+      <summary>Pasaffe folder expansion preference</summary>
+      <description>How Pasaffe expands the folder tree when starting.</description>
+    </key>
     <key name="idle-timeout" type="i">
       <default>5</default>
       <summary>Timeout before Pasaffe is locked</summary>
@@ -67,6 +72,16 @@
       <default>475</default>
       <summary>Width of entry window</summary>
       <description>Sets the current horizontal size of the entry window.</description>
+    </key>
+    <key name="folder-size-height" type="i">
+      <default>150</default>
+      <summary>Height of folder window</summary>
+      <description>Sets the current vertical size of the folder window.</description>
+    </key>
+    <key name="folder-size-width" type="i">
+      <default>350</default>
+      <summary>Width of folder window</summary>
+      <description>Sets the current horizontal size of the folder window.</description>
     </key>
   </schema>
 </schemalist>

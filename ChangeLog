@@ -1,3 +1,272 @@
+2013-09-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.29
+
+2013-09-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	remove MessageDialog deprecation warning
+
+2013-09-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+	* data/glib-2.0/schemas/net.launchpad.pasaffe.gschema.xml:
+	* pasaffe/PasaffeWindow.py:
+
+	default to collapsing folders
+
+2013-09-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	merged translations
+
+2013-08-31  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2013-08-30  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/fr.po:
+
+	updated translations
+
+2013-08-30  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	merged translations
+
+2013-08-30  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2013-08-29  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	expand folder if we're adding an entry
+
+2013-08-29  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	fix collapsed state if no tree info in database
+
+2013-08-29  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	updated NEWS
+
+2013-08-29  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	merged translations
+
+2013-08-29  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2013-08-28  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* help/fr/preferences.page:
+
+	updated french help
+
+2013-08-28  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/pasaffe.pot:
+
+	updated translation template
+
+2013-08-28  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* help/C/preferences.page:
+
+	added new preference to help
+
+2013-08-28  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/PreferencesPasaffeDialog.ui:
+
+	change wording
+
+2013-08-28  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/PreferencesPasaffeDialog.ui:
+
+	realign preferences dialog
+
+2013-08-27  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/PreferencesPasaffeDialog.ui:
+	* pasaffe/PreferencesPasaffeDialog.py:
+
+	fixed tree expansion preference binding
+
+2013-08-21  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	updated NEWS
+
+2013-08-21  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/glib-2.0/schemas/net.launchpad.pasaffe.gschema.xml:
+	* pasaffe/PasaffeWindow.py:
+
+	save folder window size
+
+2013-08-21  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/glib-2.0/schemas/net.launchpad.pasaffe.gschema.xml:
+	* data/ui/PreferencesPasaffeDialog.ui:
+	* pasaffe/PasaffeWindow.py:
+
+	added initial preference for tree expansion
+
+2013-08-21  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe_lib/readdb.py:
+	* tests/test_helpers.py:
+	* tests/test_readdb.py:
+
+	added some tests
+
+2013-08-21  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* TODO:
+	* data/ui/PasaffeWindow.ui:
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe_lib/helpers.py:
+	* pasaffe_lib/readdb.py:
+
+	implement folder expansion saving to database
+
+2013-08-20  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2013-08-19  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	merged translations
+
+2013-08-17  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2013-08-16  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	merged translations
+
+2013-08-16  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2013-08-16  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* data/ui/PasaffeWindow.ui:
+
+	Set icon column sizing to automatic so tree doesn't move around
+
+2013-08-15  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	prepare for next release
+
 2013-08-15  Marc Deslauriers  <marc.deslauriers@canonical.com>
 
 	* NEWS:

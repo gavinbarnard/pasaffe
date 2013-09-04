@@ -1,9 +1,9 @@
 List of stuff to do:
 
 - Improve folder support
-  - Implement folder expansion state saving in database
   - Make search work with folder names
   - Make import scripts work with folders
+  - Fix loading expanded folders inside collapsed folders
 - Improve icon
 - Design a better layout for details pane
 - Add database merge functionality
