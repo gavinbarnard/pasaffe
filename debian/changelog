@@ -1,3 +1,11 @@
+pasaffe (0.30-0ubuntu1) saucy; urgency=low
+
+  * New upstream release
+   - Updated translations
+   - Fix help file location when using python-distutils-extra >= 2.38
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Sun, 08 Sep 2013 11:52:22 -0400
+
 pasaffe (0.29-0ubuntu1) saucy; urgency=low
 
   * New upstream release

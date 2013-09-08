@@ -1,3 +1,139 @@
+2013-09-08  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.30
+
+2013-09-08  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	merged translations
+
+2013-09-08  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2013-09-07  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* setup.py:
+
+	properly quote config items
+
+2013-09-07  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	merged translations
+
+2013-09-07  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2013-09-07  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe_lib/helpers.py:
+
+	fix typo
+
+2013-09-07  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe_lib/helpers.py:
+	* pasaffe_lib/pasaffeconfig.py:
+	* setup.py:
+
+	also handle help file separator
+
+2013-09-07  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* pasaffe_lib/PreferencesDialog.py:
+	* pasaffe_lib/Window.py:
+	* pasaffe_lib/helpers.py:
+	* pasaffe_lib/pasaffeconfig.py:
+	* setup.py:
+
+	fix help file install location when using newer python-distutils-extra
+
+2013-09-06  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	merged translations
+
+2013-09-06  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2013-09-05  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2013-09-06  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+
+	added a TODO
+
+2013-09-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	prepare for next release
+
 2013-09-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
 
 	* NEWS:
