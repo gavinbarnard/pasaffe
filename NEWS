@@ -1,6 +1,13 @@
 This file summarizes the major and interesting changes for each release.
 For a detailed list of changes, please see ChangeLog.
 
+0.32 (2013-09-26)
+
+ * Enhancements:
+
+ * Bug fixes:
+   - Allow search to work on entries in collapsed folders
+
 0.31 (2013-09-26)
 
  * Enhancements:
