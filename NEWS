@@ -1,6 +1,13 @@
 This file summarizes the major and interesting changes for each release.
 For a detailed list of changes, please see ChangeLog.
 
+0.31 (2013-09-26)
+
+ * Enhancements:
+
+ * Bug fixes:
+   - Don't crash when attempting to add an entry with nothing selected
+
 0.30 (2013-09-08)
 
  * Enhancements:
