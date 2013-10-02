@@ -1,3 +1,55 @@
+2013-10-02  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.33
+
+2013-10-02  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	updated translations
+
+2013-09-28  Launchpad Translations on behalf of mdeslaur
+
+	* po/es.po:
+
+	Launchpad automatic translations update.
+
+2013-09-27  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2013-09-26  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* pasaffe/PasaffeWindow.py:
+
+	don't crash when search string ends with a backslash
+
+2013-09-26  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	prepare for next release
+
 2013-09-26  Marc Deslauriers  <marc.deslauriers@canonical.com>
 
 	* NEWS:
