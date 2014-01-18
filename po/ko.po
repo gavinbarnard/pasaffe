@@ -1,21 +1,21 @@
-# Dutch translation for pasaffe
-# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# Korean translation for pasaffe
+# Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
 # This file is distributed under the same license as the pasaffe package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: pasaffe\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-10-02 16:49-0400\n"
-"PO-Revision-Date: 2011-09-20 10:01+0000\n"
-"Last-Translator: Wim Champagne <Unknown>\n"
-"Language-Team: Dutch <nl@li.org>\n"
+"PO-Revision-Date: 2013-11-19 22:21+0000\n"
+"Last-Translator: Litty <Unknown>\n"
+"Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-10-03 05:47+0000\n"
-"X-Generator: Launchpad (build 16791)\n"
+"X-Launchpad-Export-Date: 2013-11-20 05:36+0000\n"
+"X-Generator: Launchpad (build 16831)\n"
 
 #: ../data/ui/EditFolderDialog.ui.h:1
 msgid "<big><b>Edit folder</b></big>"
@@ -23,15 +23,15 @@ msgstr ""
 
 #: ../data/ui/EditFolderDialog.ui.h:2
 msgid "Parent folder:"
-msgstr ""
+msgstr "상위 폴더:"
 
 #: ../data/ui/EditFolderDialog.ui.h:3
 msgid "Folder name:"
-msgstr ""
+msgstr "폴더 이름:"
 
 #: ../data/ui/EditFolderDialog.ui.h:4
 msgid "The parent folder for this new folder"
-msgstr ""
+msgstr "이 새 폴더의 상위 폴더"
 
 #: ../data/ui/PasswordEntryDialog.ui.h:1
 msgid "<big><b>Please enter your master password:</b></big>"
@@ -39,7 +39,7 @@ msgstr ""
 
 #: ../data/ui/PasswordEntryDialog.ui.h:2
 msgid "Invalid password! Please try again."
-msgstr "Foutief wachtwoord! Probeer nog een keer."
+msgstr ""
 
 #: ../pasaffe/__init__.py:36
 msgid "Show debug messages (-vv debugs pasaffe_lib also)"
@@ -60,7 +60,7 @@ msgstr ""
 #: ../pasaffe/PasaffeWindow.py:505
 #, python-format
 msgid "Username: %s\n"
-msgstr "Gebruikersnaam: %s\n"
+msgstr "사용자 이름: %s\n"
 
 #: ../pasaffe/PasaffeWindow.py:507
 #, python-format
@@ -68,7 +68,7 @@ msgid ""
 "Password: %s\n"
 "\n"
 msgstr ""
-"Wachtwoord: %s\n"
+"암호: %s\n"
 "\n"
 
 #: ../pasaffe/PasaffeWindow.py:509
@@ -76,22 +76,22 @@ msgid ""
 "Password: *****\n"
 "\n"
 msgstr ""
-"Wachtwoord: *****\n"
+"암호: *****\n"
 "\n"
 
 #: ../pasaffe/PasaffeWindow.py:514
 #, python-format
 msgid "Last updated: %s\n"
-msgstr "Laatst aangepast: %s\n"
+msgstr ""
 
 #: ../pasaffe/PasaffeWindow.py:519
 #, python-format
 msgid "Password updated: %s\n"
-msgstr "Wachtwoord aangepast: %s\n"
+msgstr ""
 
 #: ../pasaffe/PasaffeWindow.py:523
 msgid "Welcome to Pasaffe!"
-msgstr "Welkom bij Pasaffe!"
+msgstr "Pasaffe에 오신 것을 환영합니다!"
 
 #: ../pasaffe/PasaffeWindow.py:524
 msgid ""
@@ -130,8 +130,6 @@ msgid ""
 "<big><b>Database Information</b></big>\n"
 "\n"
 msgstr ""
-"<big><b>Database Informatie</b></big>\n"
-"\n"
 
 #: ../pasaffe/PasaffeWindow.py:1172
 #, python-format
@@ -141,7 +139,7 @@ msgstr ""
 #: ../pasaffe/PasaffeWindow.py:1173
 #, python-format
 msgid "Database version: %s\n"
-msgstr ""
+msgstr "데이터 베이스 버전: %s\n"
 
 #: ../pasaffe/PasaffeWindow.py:1175
 #, python-format
@@ -156,7 +154,7 @@ msgstr ""
 #: ../pasaffe/PasaffeWindow.py:1178
 #, python-format
 msgid "Last save date: %s\n"
-msgstr ""
+msgstr "마지막 저장 날짜: %s\n"
 
 #: ../pasaffe/PasaffeWindow.py:1180
 #, python-format
@@ -165,11 +163,11 @@ msgstr ""
 
 #: ../pasaffe/PasaffeWindow.py:1310 ../data/ui/NewDatabaseDialog.ui.h:5
 msgid "Passwords don't match! Please try again."
-msgstr ""
+msgstr "암호가 일치하지 않습니다! 다시 시도해주십시오."
 
 #: ../pasaffe/PasaffeWindow.py:1314
 msgid "New password cannot be blank! Please try again."
-msgstr "Het nieuwe wachtwoord kan niet leeg zijn! Probeer nog een keer."
+msgstr ""
 
 #: ../pasaffe/PasaffeWindow.py:1318
 msgid "Old password is invalid! Please try again."
@@ -189,11 +187,11 @@ msgstr ""
 
 #: ../data/ui/PreferencesPasaffeDialog.ui.h:4
 msgid "Pasaffe Preferences"
-msgstr ""
+msgstr "Pasaffe 설정"
 
 #: ../data/ui/PreferencesPasaffeDialog.ui.h:5
 msgid "Automatically save changes"
-msgstr ""
+msgstr "변경 사항 자동 저장"
 
 #: ../data/ui/PreferencesPasaffeDialog.ui.h:6
 msgid "Display secrets by default"
@@ -217,7 +215,7 @@ msgstr ""
 
 #: ../data/ui/PreferencesPasaffeDialog.ui.h:11
 msgid "<b>Lock</b>"
-msgstr ""
+msgstr "<b>잠금</b>"
 
 #: ../data/ui/PreferencesPasaffeDialog.ui.h:12
 msgid "Passwords are"
@@ -229,7 +227,7 @@ msgstr ""
 
 #: ../data/ui/PreferencesPasaffeDialog.ui.h:14
 msgid "<b>Password Generator</b>"
-msgstr ""
+msgstr "<b>암호 생성기</b>"
 
 #: ../data/ui/PreferencesPasaffeDialog.ui.h:15
 msgid "Folders"
@@ -237,7 +235,7 @@ msgstr ""
 
 #: ../data/ui/PreferencesPasaffeDialog.ui.h:16
 msgid "<b>Folder Preferences</b>"
-msgstr ""
+msgstr "<b>폴더 설정</b>"
 
 #: ../data/ui/PasaffeWindow.ui.h:1
 msgid "<big><b>The password database is currently locked.</b></big>"
@@ -265,11 +263,11 @@ msgstr ""
 
 #: ../data/ui/PasaffeWindow.ui.h:7
 msgid "Copy Username"
-msgstr ""
+msgstr "사용자 이름 복사"
 
 #: ../data/ui/PasaffeWindow.ui.h:8
 msgid "Copy Password"
-msgstr ""
+msgstr "암호 복사"
 
 #: ../data/ui/PasaffeWindow.ui.h:9 ../pasaffe.desktop.in.h:1
 msgid "Pasaffe"
@@ -277,11 +275,11 @@ msgstr ""
 
 #: ../data/ui/PasaffeWindow.ui.h:10
 msgid "_File"
-msgstr "_Bestand"
+msgstr ""
 
 #: ../data/ui/PasaffeWindow.ui.h:11
 msgid "Lock"
-msgstr "Vergrendelen"
+msgstr ""
 
 #: ../data/ui/PasaffeWindow.ui.h:12
 msgid "Change Master Password"
@@ -289,7 +287,7 @@ msgstr ""
 
 #: ../data/ui/PasaffeWindow.ui.h:13
 msgid "_Edit"
-msgstr "_Bewerken"
+msgstr ""
 
 #: ../data/ui/PasaffeWindow.ui.h:14
 msgid "Find"
@@ -297,7 +295,7 @@ msgstr ""
 
 #: ../data/ui/PasaffeWindow.ui.h:15
 msgid "_View"
-msgstr "_Beeld"
+msgstr ""
 
 #: ../data/ui/PasaffeWindow.ui.h:16
 msgid "Display Secrets"
@@ -309,11 +307,11 @@ msgstr ""
 
 #: ../data/ui/PasaffeWindow.ui.h:18
 msgid "Database Information"
-msgstr "Database Informatie"
+msgstr ""
 
 #: ../data/ui/PasaffeWindow.ui.h:19
 msgid "_Help"
-msgstr "_Help"
+msgstr ""
 
 #: ../data/ui/PasaffeWindow.ui.h:20
 msgid "Contents"
@@ -321,11 +319,11 @@ msgstr ""
 
 #: ../data/ui/PasaffeWindow.ui.h:21
 msgid "Save changes"
-msgstr "Wijzigingen opslaan"
+msgstr ""
 
 #: ../data/ui/PasaffeWindow.ui.h:22
 msgid "Save"
-msgstr "Opslaan"
+msgstr ""
 
 #: ../data/ui/PasaffeWindow.ui.h:23
 msgid "Add a new entry"
@@ -345,7 +343,7 @@ msgstr ""
 
 #: ../data/ui/PasaffeWindow.ui.h:27
 msgid "Edit"
-msgstr "Bewerken"
+msgstr ""
 
 #: ../data/ui/PasaffeWindow.ui.h:28
 msgid "Delete the selected entry"
@@ -357,15 +355,15 @@ msgstr ""
 
 #: ../data/ui/PasaffeWindow.ui.h:30
 msgid "Open the URL"
-msgstr ""
+msgstr "URL 열기"
 
 #: ../data/ui/PasaffeWindow.ui.h:31
 msgid "Copy the username"
-msgstr ""
+msgstr "사용자 이름 복사"
 
 #: ../data/ui/PasaffeWindow.ui.h:32
 msgid "Copy the password"
-msgstr ""
+msgstr "암호 복사"
 
 #: ../data/ui/PasaffeWindow.ui.h:33
 msgid "Find entries"
@@ -389,15 +387,15 @@ msgstr ""
 
 #: ../data/ui/PasaffeWindow.ui.h:38
 msgid "Previous result"
-msgstr ""
+msgstr "이전 결과"
 
 #: ../data/ui/PasaffeWindow.ui.h:39
 msgid "Next result"
-msgstr ""
+msgstr "다음 결과"
 
 #: ../data/ui/NewDatabaseDialog.ui.h:1
 msgid "<big><b>Welcome to Pasaffe!</b></big>"
-msgstr "<big><b>welkom bij Pasaffe!</b></big>"
+msgstr ""
 
 #: ../data/ui/NewDatabaseDialog.ui.h:2
 msgid ""
@@ -408,15 +406,15 @@ msgstr ""
 
 #: ../data/ui/NewDatabaseDialog.ui.h:6
 msgid "Enter password:"
-msgstr "Voer wachtwoord in:"
+msgstr ""
 
 #: ../data/ui/NewDatabaseDialog.ui.h:7
 msgid "Confirm password:"
-msgstr "Bevestig wachtwoord:"
+msgstr ""
 
 #: ../pasaffe.desktop.in.h:2
 msgid "Pasaffe password manager"
-msgstr "Pasaffe wachtwoord manager"
+msgstr "Pasaffe 암호 관리자"
 
 #: ../data/ui/EditDetailsDialog.ui.h:1
 msgid "<big><b>Edit entry</b></big>"
@@ -436,7 +434,7 @@ msgstr ""
 
 #: ../data/ui/EditDetailsDialog.ui.h:5
 msgid "Title:"
-msgstr "Titel:"
+msgstr ""
 
 #: ../data/ui/EditDetailsDialog.ui.h:6
 msgid "Folder:"
@@ -444,19 +442,19 @@ msgstr ""
 
 #: ../data/ui/EditDetailsDialog.ui.h:7
 msgid "Username:"
-msgstr "Gebruikersnaam:"
+msgstr ""
 
 #: ../data/ui/EditDetailsDialog.ui.h:8
 msgid "Password:"
-msgstr "Wachtwoord:"
+msgstr ""
 
 #: ../data/ui/EditDetailsDialog.ui.h:9
 msgid "Notes:"
-msgstr "Opmerkingen:"
+msgstr ""
 
 #: ../data/ui/EditDetailsDialog.ui.h:10
 msgid "URL:"
-msgstr "URL-adres:"
+msgstr ""
 
 #: ../data/ui/EditDetailsDialog.ui.h:11
 msgid "The website for this entry"
@@ -473,11 +471,11 @@ msgstr ""
 #: ../data/ui/SaveChangesDialog.ui.h:1
 msgid ""
 "<big><b>Save changes to your password database before closing?</b></big>"
-msgstr ""
+msgstr "<big><b>닫기 전에 암호 데이터 베이스에 변경 사항을 저장하시겠습니까?</b></big>"
 
 #: ../data/ui/SaveChangesDialog.ui.h:2
 msgid "Your changes will be lost if you don't save them."
-msgstr "Uw wijzigingen zullen verloren gaan als u ze niet opslaat."
+msgstr ""
 
 #: ../data/ui/SaveChangesDialog.ui.h:3
 msgid "Close without Saving"
@@ -496,16 +494,16 @@ msgstr ""
 
 #: ../data/ui/NewPasswordDialog.ui.h:5
 msgid "error message"
-msgstr "foutmelding"
+msgstr ""
 
 #: ../data/ui/NewPasswordDialog.ui.h:6
 msgid "Old password:"
-msgstr "Oud wachtwoord:"
+msgstr ""
 
 #: ../data/ui/NewPasswordDialog.ui.h:7
 msgid "New password:"
-msgstr "Nieuw wachtwoord:"
+msgstr ""
 
 #: ../data/ui/NewPasswordDialog.ui.h:8
 msgid "Confirm new password:"
-msgstr "Bevestig nieuw wachtwoord:"
+msgstr "새 암호 확인:"

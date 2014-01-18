@@ -1,3 +1,64 @@
+2014-01-18  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.34
+
+2014-01-18  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* pasaffe/EditDetailsDialog.py:
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe/PreferencesPasaffeDialog.py:
+	* pasaffe/__init__.py:
+	* pasaffe_lib/Window.py:
+
+	Fix new PyGI deprecations
+
+2013-11-21  Launchpad Translations on behalf of mdeslaur
+
+	* po/es.po:
+
+	Launchpad automatic translations update.
+
+2013-11-20  Launchpad Translations on behalf of mdeslaur
+
+	* po/ko.po:
+
+	Launchpad automatic translations update.
+
+2013-10-06  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+
+	Launchpad automatic translations update.
+
+2013-10-05  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+
+	Launchpad automatic translations update.
+
+2013-10-03  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2013-10-02  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	prepare for next release
+
 2013-10-02  Marc Deslauriers  <marc.deslauriers@canonical.com>
 
 	* NEWS:

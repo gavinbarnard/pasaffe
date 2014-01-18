@@ -1,6 +1,14 @@
 This file summarizes the major and interesting changes for each release.
 For a detailed list of changes, please see ChangeLog.
 
+0.34 (2014-01-18)
+
+ * Enhancements:
+   - Updated translations
+
+ * Bug fixes:
+   - Fix new PyGI deprecations
+
 0.33 (2013-10-02)
 
  * Enhancements:

@@ -1,3 +1,11 @@
+pasaffe (0.34-0ubuntu1) trusty; urgency=medium
+
+  * New upstream release
+    - Updated translations
+    - Fix new PyGI deprecations
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Sat, 18 Jan 2014 17:32:59 -0500
+
 pasaffe (0.33-0ubuntu1) saucy; urgency=low
 
   * New upstream release
