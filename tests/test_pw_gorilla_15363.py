@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- Mode: Python; coding: utf-8; indent-tabs-mode: nil; tab-width: 4 -*-
 ### BEGIN LICENSE
 # Copyright (C) 2013 Marc Deslauriers <marc.deslauriers@canonical.com>
@@ -39,7 +39,7 @@ class TestPasswordGorilla15363(unittest.TestCase):
 
     def test_get_database_uuid(self):
         self.assertEqual(self.passfile.header[1],
-                         '\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00')
+                         b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00')
 
     def test_get_saved_name(self):
         self.assertEqual(self.passfile.get_saved_name(), None)
@@ -99,7 +99,7 @@ class TestPasswordGorilla15363(unittest.TestCase):
         self.assertEqual(self.passfile.records[uuid][3], 'entrylevel1')
         self.assertEqual(self.passfile.records[uuid][4], 'username1')
         self.assertEqual(self.passfile.records[uuid][5],
-                         'This is a note\r\nThis is a second line\r\nUnicode: \xc3\xa9l\xc3\xa9phant')
+                         'This is a note\r\nThis is a second line\r\nUnicode: éléphant')
         self.assertEqual(self.passfile.records[uuid][6], 'password1')
         self.assertEqual(self.passfile.get_password_time(uuid, False),
                          'Thu, 25 Jul 2013 00:33:06')

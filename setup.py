@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- Mode: Python; coding: utf-8; indent-tabs-mode: nil; tab-width: 4 -*-
 ### BEGIN LICENSE
 # Copyright (C) 2011-2013 Marc Deslauriers <marc.deslauriers@canonical.com>
@@ -23,7 +23,7 @@ import sys
 try:
     import DistUtilsExtra.auto
 except ImportError:
-    print >> sys.stderr, 'To build pasaffe you need https://launchpad.net/python-distutils-extra'
+    print('To build pasaffe you need https://launchpad.net/python-distutils-extra', file=sys.stderr)
     sys.exit(1)
 assert DistUtilsExtra.auto.__version__ >= '2.18', 'needs DistUtilsExtra.auto >= 2.18'
 
@@ -31,8 +31,8 @@ def update_config(values = {}):
 
     oldvalues = {}
     try:
-        fin = file('pasaffe_lib/pasaffeconfig.py', 'r')
-        fout = file(fin.name + '.new', 'w')
+        fin = open('pasaffe_lib/pasaffeconfig.py', 'r')
+        fout = open(fin.name + '.new', 'w')
 
         for line in fin:
             fields = line.split(' = ') # Separate variable from value
@@ -45,7 +45,7 @@ def update_config(values = {}):
         fout.close()
         fin.close()
         os.rename(fout.name, fin.name)
-    except (OSError, IOError), e:
+    except (OSError, IOError) as e:
         print ("ERROR: Can't find pasaffe_lib/pasaffeconfig.py")
         sys.exit(1)
     return oldvalues
@@ -54,8 +54,8 @@ def update_config(values = {}):
 def update_desktop_file(datadir):
 
     try:
-        fin = file('pasaffe.desktop.in', 'r')
-        fout = file(fin.name + '.new', 'w')
+        fin = open('pasaffe.desktop.in', 'r')
+        fout = open(fin.name + '.new', 'w')
 
         for line in fin:
             if 'Icon=' in line:
@@ -65,7 +65,7 @@ def update_desktop_file(datadir):
         fout.close()
         fin.close()
         os.rename(fout.name, fin.name)
-    except (OSError, IOError), e:
+    except (OSError, IOError) as e:
         print ("ERROR: Can't find pasaffe.desktop.in")
         sys.exit(1)
 
@@ -93,7 +93,7 @@ class InstallAndUpdateDataDirectory(DistUtilsExtra.auto.install_auto):
 
 DistUtilsExtra.auto.setup(
     name='pasaffe',
-    version='0.34',
+    version='0.35',
     license='GPL-3',
     author='Marc Deslauriers',
     author_email='marc.deslauriers@canonical.com',

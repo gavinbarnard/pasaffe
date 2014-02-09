@@ -1,3 +1,15 @@
+pasaffe (0.35-0ubuntu1) trusty; urgency=medium
+
+  * New upstream release
+    - Migrated to Python 3
+    - Added translator credits to about dialog (LP: #1273673)
+    - Updated translations
+  * debian/control: change BuildDepends and Depends to python3 packages,
+    updated to standards-version 3.9.5.
+  * debian/rules: change to dh_python3 and pybuild
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Sun, 09 Feb 2014 11:33:55 -0500
+
 pasaffe (0.34-0ubuntu1) trusty; urgency=medium
 
   * New upstream release

@@ -88,8 +88,16 @@ po/nl.po
 po/pasaffe.pot
 po/ru.po
 tests/generate_pasaffe_db.py
+tests/test_dump_db.py
 tests/test_example.py
+tests/test_figaro_079.py
+tests/test_figaro_import.py
+tests/test_gpass_050.py
+tests/test_gpass_import.py
 tests/test_helpers.py
+tests/test_import_entry.py
+tests/test_keepassx_043.py
+tests/test_keepassx_import.py
 tests/test_lint.py
 tests/test_pasaffe_025.py
 tests/test_pw_gorilla_15363.py
@@ -99,6 +107,10 @@ tests/autopilot/pasaffe/__init__.py
 tests/autopilot/pasaffe/tests/__init__.py
 tests/autopilot/pasaffe/tests/test_pasaffe.py
 tests/databases/README
+tests/databases/figaro-079.xml
+tests/databases/gpass-050.gps
+tests/databases/keepassx-043.kdb
+tests/databases/keepassx-043.xml
 tests/databases/pasaffe-025.psafe3
 tests/databases/pw-gorilla-15363.psafe3
 tests/databases/pwsafe-331.psafe3

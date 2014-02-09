@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- Mode: Python; coding: utf-8; indent-tabs-mode: nil; tab-width: 4 -*-
 ### BEGIN LICENSE
 # Copyright (C) 2013 Marc Deslauriers <marc.deslauriers@canonical.com>
@@ -55,7 +55,7 @@ class TestPasaffe025(unittest.TestCase):
 
     def test_get_database_uuid(self):
         self.assertEqual(self.passfile.header[1],
-                         '\x04T@\xa5\xf9B\x08\xb8;\xda\xaf\xabV\x0f\xf5+')
+                         b'\x04T@\xa5\xf9B\x08\xb8;\xda\xaf\xabV\x0f\xf5+')
 
     def test_get_saved_name(self):
         self.assertEqual(self.passfile.get_saved_name(), "mdeslaur")

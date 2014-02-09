@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- Mode: Python; coding: utf-8; indent-tabs-mode: nil; tab-width: 4 -*-
 ### BEGIN LICENSE
 # Copyright (C) 2011-2013 Marc Deslauriers <marc.deslauriers@canonical.com>
@@ -21,7 +21,7 @@ import subprocess
 class TestPylint(unittest.TestCase):
     def test_project_errors_only(self):
         '''run pylint in error only mode
-        
+
         your code may well work even with pylint errors
         but have some unusual code'''
         return_code = subprocess.call(["pylint", '-E', 'pasaffe'])
@@ -31,7 +31,7 @@ class TestPylint(unittest.TestCase):
     # un-comment the following for loads of diagnostics   
     #~ def test_project_full_report(self):
         #~ '''Only for the brave
-#~ 
+        #~ 
         #~ you will have to make judgement calls about your code standards
         #~ that differ from the norm'''
         #~ return_code = subprocess.call(["pylint", 'pasaffe'])

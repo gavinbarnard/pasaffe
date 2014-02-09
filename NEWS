@@ -1,6 +1,15 @@
 This file summarizes the major and interesting changes for each release.
 For a detailed list of changes, please see ChangeLog.
 
+0.35 (2014-02-09)
+
+ * Enhancements:
+   - Migrated to Python 3
+   - Added translator credits to about dialog (LP: #1273673)
+   - Updated translations
+
+ * Bug fixes:
+
 0.34 (2014-01-18)
 
  * Enhancements:

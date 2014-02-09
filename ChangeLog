@@ -1,3 +1,367 @@
+2014-02-09  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.35
+
+2014-02-09  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* tests/databases/figaro-079.xml:
+	* tests/test_figaro_079.py:
+	* tests/test_figaro_import.py:
+	* bin/pasaffe-import-figaroxml:
+	* pasaffe_lib/figaroxml.py:
+	* tests/databases/README:
+
+	migrate figaro import scripts to python 3, added test databases and
+	tests.
+
+2014-02-09  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* tests/databases/keepassx-043.kdb:
+	* tests/databases/keepassx-043.xml:
+	* tests/test_keepassx_043.py:
+	* tests/test_keepassx_import.py:
+	* bin/pasaffe-import-keepassx:
+	* pasaffe_lib/keepassx.py:
+	* tests/databases/README:
+
+	migrate keepassx handling to python3, and add some test databases
+	and test scripts
+
+2014-02-09  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* bin/pasaffe-import-entry:
+	* tests/test_import_entry.py:
+
+	fix pasaffe-import-entry and added test
+
+2014-02-09  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* tests/test_dump_db.py:
+	* bin/pasaffe-dump-db:
+
+	updated pasaffe-dump-db and added test
+
+2014-02-09  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+	* po/fr.po:
+
+	- added help file translations to TODO file
+	- removed my name from fr.po
+
+2014-02-08  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/it.po:
+	* po/ko.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2014-02-07  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/ko.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2014-02-06  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/ko.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	- updated translations
+
+2014-02-06  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/ko.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2014-02-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/fr.po:
+	* po/pasaffe.pot:
+
+	- updated translation templates
+
+2014-02-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	updated NEWS
+
+2014-02-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/AboutPasaffeDialog.ui:
+
+	- add translator-credits to about dialog (LP: #1273673)
+
+2014-02-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/ko.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	merged translations
+
+2014-01-30  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/ko.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2014-02-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* tests/test_import_entry.py:
+
+	actually add test_import_entry.py file
+
+2014-02-03  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* tests/test_lint.py:
+
+	tests/test_lint.py: fix whitespace
+
+2014-02-03  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* tests/test_gpass_import.py:
+	* .bzrignore:
+	* bin/pasaffe-import-entry:
+	* bin/pasaffe-import-figaroxml:
+	* bin/pasaffe-import-gpass:
+	* bin/pasaffe-import-keepassx:
+
+	added tests/__pycache__ to .bzrignore
+	added gpass import testing script
+	fix import scripts
+
+2014-01-28  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* bin/pasaffe-import-entry:
+	* bin/pasaffe-import-figaroxml:
+	* bin/pasaffe-import-gpass:
+	* bin/pasaffe-import-keepassx:
+	* pasaffe/__init__.py:
+	* pasaffe_lib/helpers.py:
+
+	refactor some import script code
+
+2014-01-27  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* tests/databases/gpass-050.gps:
+	* tests/test_gpass_050.py:
+	* pasaffe_lib/blowfish.py:
+	* pasaffe_lib/gpassfile.py:
+	* tests/databases/README:
+
+	migrate gpass import code to python 3
+
+2014-01-23  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* setup.py:
+
+	setup.py: use open() instead of file()
+
+2014-01-23  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* setup.py:
+
+	setup.py: specify python3
+
+2014-01-23  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* do-release:
+
+	do-release: also remove python cache directories
+
+2014-01-23  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/EditDetailsDialog.py:
+
+	pasaffe/EditDetailsDialog.py: convert apg results to strings
+
+2014-01-23  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* README:
+	* TODO:
+
+	updated NEWS, README and TODO
+
+2014-01-23  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe_lib/helpers.py:
+	* pasaffe_lib/readdb.py:
+	* tests/test_pasaffe_025.py:
+	* tests/test_pw_gorilla_15363.py:
+	* tests/test_pwsafe_331.py:
+
+	more python 3 porting, change uuid to string instead of bytes
+
+2014-01-23  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* tests/test_pwsafe_331.py:
+
+	test/test_pwsafe_331.py: migrate to python 3
+
+2014-01-23  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* tests/test_pw_gorilla_15363.py:
+
+	tests/test_pw_gorilla_15363.py: convert to python 3
+
+2014-01-23  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe_lib/helpers.py:
+
+	pasaffe_lib/helpers.py: convert to python 3
+
+2014-01-23  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe_lib/pytwofishcbc.py:
+	* pasaffe_lib/readdb.py:
+	* tests/test_pasaffe_025.py:
+
+	more python3 porting
+
+2014-01-22  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe_lib/readdb.py:
+	* tests/test_readdb.py:
+
+	pasaffe_lib/readdb.py, tests/test_readdb.py: properly handle bytes and
+	strings for python 3 compatibility
+
+2014-01-22  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe_lib/pytwofish.py:
+
+	pasaffe_lib/pytwofish.py: fix with python 3
+
+2014-01-22  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/__init__.py:
+
+	pasaffe/__init__.py: fix gettext
+
+2014-01-22  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* .bzrignore:
+
+	update .bzrignore for python3 cache directories
+
+2014-01-22  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* setup.py:
+
+	run 2to3 on setup.py
+
+2014-01-22  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe_lib/Builder.py:
+	* pasaffe_lib/blowfish.py:
+	* pasaffe_lib/gpassfile.py:
+	* pasaffe_lib/pytwofish.py:
+	* pasaffe_lib/pytwofishcbc.py:
+	* pasaffe_lib/readdb.py:
+
+	run 2to3 on pasaffe_lib directory
+
+2014-01-22  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe/__init__.py:
+
+	run 2to3 on pasaffe directory
+
+2014-01-22  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* bin/pasaffe-dump-db:
+	* bin/pasaffe-import-entry:
+	* bin/pasaffe-import-figaroxml:
+	* bin/pasaffe-import-gpass:
+	* bin/pasaffe-import-keepassx:
+
+	run 2to3 on bin directory
+
+2014-01-22  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* bin/pasaffe:
+	* bin/pasaffe-dump-db:
+	* bin/pasaffe-import-entry:
+	* bin/pasaffe-import-figaroxml:
+	* bin/pasaffe-import-gpass:
+	* bin/pasaffe-import-keepassx:
+	* tests/autopilot/pasaffe/tests/test_pasaffe.py:
+	* tests/generate_pasaffe_db.py:
+	* tests/test_example.py:
+	* tests/test_helpers.py:
+	* tests/test_lint.py:
+	* tests/test_pasaffe_025.py:
+	* tests/test_pw_gorilla_15363.py:
+	* tests/test_pwsafe_331.py:
+	* tests/test_readdb.py:
+
+	- start migration to python3
+
+2014-01-19  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/ko.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2014-01-18  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	prepare for next release
+
 2014-01-18  Marc Deslauriers  <marc.deslauriers@canonical.com>
 
 	* NEWS:

@@ -33,7 +33,7 @@ class PathEntry:
         self.uuid = uuid
         self.path = path
 
-    def __cmp__(self, other):
+    def _mycmp(self, other):
 
         # First, we sort by path
         result = self._sort_path(self.path, other.path)
@@ -44,6 +44,24 @@ class PathEntry:
         result = self._sort_name(self.name, other.name)
         return result
 
+    def __lt__(self, other):
+        return self._mycmp(other) < 0
+
+    def __gt__(self, other):
+        return self._mycmp(other) > 0
+
+    def __eq__(self, other):
+        return self._mycmp(other) == 0
+
+    def __le__(self, other):
+        return self._mycmp(other) <= 0
+
+    def __ge__(self, other):
+        return self._mycmp(other) >= 0
+
+    def __ne__(self, other):
+        return self._mycmp(other) != 0
+
     def _lower(self, name):
         # Doing .lower() is wrong in Python 2 as it doesn't properly
         # handle certain characters in Unicode languages. Unfortunately,
@@ -52,7 +70,7 @@ class PathEntry:
         if name:
             return name.lower()
         else:
-            return name
+            return ""
 
     def _sort_name(self, first, second):
         # Perform a case-insensitive sort
@@ -144,6 +162,9 @@ class PathEntry:
                 i += 1
             return 0
 
+    def __repr__(self):
+        return repr((self.name, self.uuid, self.path))
+
 # Owais Lone : To get quick access to icons and stuff.
 def get_media_file(media_file_name):
     media_filename = get_data_file('media', '%s' % (media_file_name,))
@@ -181,7 +202,7 @@ def set_up_logging(opts):
     if opts.verbose:
         logger.setLevel(logging.DEBUG)
         logger.debug('logging enabled')
-    if opts.verbose > 1:
+    if opts.verbose and opts.verbose > 1:
         lib_logger.setLevel(logging.DEBUG)
 
 
@@ -304,4 +325,57 @@ def folder_path_to_list(folder_path):
     folders.append(folder_path[index:len(folder_path)].replace('\\',''))
     return folders
 
+def confirm(prompt=None, resp=False):
+    """prompts for yes or no response from the user. Returns True for yes and
+    False for no.
+
+    'resp' should be set to the default value assumed by the caller when
+    user simply types ENTER.
+
+    >>> confirm(prompt='Create Directory?', resp=True)
+    Create Directory? [y]|n: 
+    True
+    >>> confirm(prompt='Create Directory?', resp=False)
+    Create Directory? [n]|y: 
+    False
+    >>> confirm(prompt='Create Directory?', resp=False)
+    Create Directory? [n]|y: y
+    True
+
+    """
+
+    if options.yes:
+        return resp
+
+    if prompt is None:
+        prompt = 'Confirm'
+
+    if resp:
+        prompt = '%s [%s]|%s: ' % (prompt, 'y', 'n')
+    else:
+        prompt = '%s [%s]|%s: ' % (prompt, 'n', 'y')
+
+    while True:
+        ans = input(prompt)
+        if not ans:
+            return resp
+        if ans not in ['y', 'Y', 'n', 'N']:
+            print('please enter y or n.')
+            continue
+        if ans == 'y' or ans == 'Y':
+            return True
+        if ans == 'n' or ans == 'N':
+            return False
+
+def get_database_path():
+    """Determines standard XDG location for database"""
+    if 'XDG_DATA_HOME' in os.environ:
+        basedir = os.path.join(os.environ['XDG_DATA_HOME'], 'pasaffe')
+    else:
+        basedir = os.path.join(os.environ['HOME'], '.local/share/pasaffe')
+
+    if not os.path.exists(basedir):
+        os.mkdir(basedir, 0o700)
+
+    return os.path.join(basedir, 'pasaffe.psafe3')
 
