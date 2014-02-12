@@ -1,3 +1,11 @@
+pasaffe (0.36-0ubuntu1) trusty; urgency=medium
+
+  * New upstream release
+    - Improved right pane layout
+    - Updated translations
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Wed, 12 Feb 2014 08:02:59 -0500
+
 pasaffe (0.35-0ubuntu1) trusty; urgency=medium
 
   * New upstream release
