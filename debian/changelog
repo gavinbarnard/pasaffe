@@ -1,3 +1,12 @@
+pasaffe (0.37-0ubuntu1) trusty; urgency=medium
+
+  * New upstream release
+    - Import scripts now handle folders
+    - Updated translations
+    - Fixed KeePass2 import script and added tests
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Sat, 15 Feb 2014 10:31:27 -0500
+
 pasaffe (0.36-0ubuntu1) trusty; urgency=medium
 
   * New upstream release

@@ -1,6 +1,15 @@
 This file summarizes the major and interesting changes for each release.
 For a detailed list of changes, please see ChangeLog.
 
+0.37 (2014-02-15)
+
+ * Enhancements:
+   - Import scripts now handle folders
+   - Updated translations
+
+ * Bug fixes:
+   - Fixed KeePass2 import script and added tests
+
 0.36 (2014-02-12)
 
  * Enhancements:

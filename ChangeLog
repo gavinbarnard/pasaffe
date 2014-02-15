@@ -1,3 +1,88 @@
+2014-02-15  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.37
+
+2014-02-15  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	fix version number in NEWS
+
+2014-02-15  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/pasaffe.pot:
+
+	release 0.36
+
+2014-02-15  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	updated NEWS file
+
+2014-02-15  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* TODO:
+	* pasaffe_lib/figaroxml.py:
+	* tests/test_figaro_079.py:
+
+	figaro script now handles folders
+
+2014-02-15  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* tests/databases/keepass2-224.kdbx:
+	* tests/databases/keepass2-224.xml:
+	* tests/test_keepass2_224.py:
+	* tests/test_keepass2_import.py:
+	* NEWS:
+	* pasaffe_lib/keepassx.py:
+	* tests/databases/README:
+
+	aded keepass2 tests, and fixed import script
+
+2014-02-15  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* pasaffe_lib/keepassx.py:
+	* tests/test_keepassx_043.py:
+
+	keepassx import script now handles folders
+
+2014-02-13  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* bin/pasaffe-import-gpass:
+	* pasaffe_lib/gpassfile.py:
+	* tests/databases/gpass-050.gps:
+	* tests/test_gpass_050.py:
+
+	gpass import support now handles folders
+
+2014-02-13  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/ko.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2014-02-12  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	prepare for next release
+
 2014-02-12  Marc Deslauriers  <marc.deslauriers@canonical.com>
 
 	* NEWS:
