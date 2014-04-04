@@ -1,6 +1,14 @@
 This file summarizes the major and interesting changes for each release.
 For a detailed list of changes, please see ChangeLog.
 
+0.38 (2014-04-04)
+
+ * Enhancements:
+   - Updated translations
+
+ * Bug fixes:
+   - Added some missing translations (LP: #1300012)
+
 0.37 (2014-02-15)
 
  * Enhancements:

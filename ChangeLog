@@ -1,3 +1,74 @@
+2014-04-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.38
+
+2014-04-04  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+
+	Launchpad automatic translations update.
+
+2014-04-03  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/ko.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2014-04-02  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/pasaffe.pot:
+
+	updated pot file
+
+2014-04-02  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* help/fr/delete-entry.page:
+	* help/fr/new-entry.page:
+	* help/fr/preferences.page:
+	* help/fr/show-secrets.page:
+
+	added some missing translations (LP: #1300012)
+
+2014-03-31  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* pasaffe/PasaffeWindow.py:
+
+	allow 'new folder' to be translated
+
+2014-02-16  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/ko.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2014-02-15  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	prepare for next release
+
 2014-02-15  Marc Deslauriers  <marc.deslauriers@canonical.com>
 
 	* NEWS:
