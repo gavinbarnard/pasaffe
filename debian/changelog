@@ -1,3 +1,11 @@
+pasaffe (0.38-0ubuntu1.1) trusty; urgency=medium
+
+  * Improve randomness of generated passwords (LP: #1309685):
+    - debian/patches/improve_passwords.patch: change options passed to apg
+      to generate truly random passwords instead of pronounceable ones.
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Fri, 18 Apr 2014 14:35:15 -0400
+
 pasaffe (0.38-0ubuntu1) trusty; urgency=medium
 
   * New upstream release
