@@ -704,7 +704,7 @@ class PasaffeWindow(Window):
 
             self.passfile.records[uuid_hex][2] = folder_list_to_field(folder)
 
-        response = self.edit_entry(uuid_hex)
+        response = self.edit_entry(uuid_hex, True)
         if response != Gtk.ResponseType.OK:
             self.delete_entry(uuid_hex, save=False)
         else:
@@ -842,7 +842,7 @@ class PasaffeWindow(Window):
            item = liststore.iter_next(item)
        return None
 
-    def edit_entry(self, entry_uuid):
+    def edit_entry(self, entry_uuid, new_entry=False):
         if "pasaffe_treenode." in entry_uuid:
             return None
         record_dict = {2: 'folder_entry',
@@ -860,6 +860,9 @@ class PasaffeWindow(Window):
         if self.EditDetailsDialog is not None:
             self.disable_idle_timeout()
             self.editdetails_dialog = self.EditDetailsDialog()
+            if new_entry == True:
+                title = self.editdetails_dialog.builder.get_object('title')
+                title.set_markup("<big><b>New entry</b></big>")
 
             for record_type, widget_name in list(record_dict.items()):
                 # Handle folders separately
@@ -951,6 +954,10 @@ class PasaffeWindow(Window):
         if self.EditFolderDialog is not None:
             self.disable_idle_timeout()
             self.editfolder_dialog = self.EditFolderDialog()
+
+            if new_folder == True:
+                title = self.editfolder_dialog.builder.get_object('title')
+                title.set_markup("<big><b>New folder</b></big>")
 
             folder_name = treemodel.get_value(treeiter, 1)
             self.editfolder_dialog.ui.folder_name_entry.set_text(folder_name)
@@ -1236,14 +1243,18 @@ class PasaffeWindow(Window):
     def on_mnu_info_activate(self, _menuitem):
         information = _('<big><b>Database Information</b></big>\n\n')
         information += _('Number of entries: %s\n') % len(self.passfile.records)
-        information += _('Database version: %s\n') % self.passfile.get_database_version_string()
+        information += '\n'
         if self.passfile.get_saved_name():
             information += _('Last saved by: %s\n') % self.passfile.get_saved_name()
         if self.passfile.get_saved_host():
             information += _('Last saved on host: %s\n') % self.passfile.get_saved_host()
             information += _('Last save date: %s\n') % self.passfile.get_saved_date_string()
+        information += '\n'
+        information += _('Database version: %s\n') % self.passfile.get_database_version_string()
         if self.passfile.get_saved_application():
             information += _('Application used: %s\n') % self.passfile.get_saved_application()
+        information += '\n'
+        information += _('Database location:\n%s\n') % self.database
 
         info_dialog = Gtk.MessageDialog(transient_for=self,
                                         modal=True,
@@ -1497,7 +1508,10 @@ class PasaffeWindow(Window):
         treemodel, treeiter = self.ui.treeview1.get_selection().get_selected()
         if treeiter != None:
             entry_uuid = treemodel.get_value(treeiter, 2)
-            self.edit_entry(entry_uuid)
+            if "pasaffe_treenode." in entry_uuid:
+                self.edit_folder(treemodel, treeiter)
+            else:
+                self.edit_entry(entry_uuid)
 
     def on_remove_clicked(self, _toolbutton):
         treemodel, treeiter = self.ui.treeview1.get_selection().get_selected()

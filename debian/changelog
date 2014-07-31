@@ -1,10 +1,24 @@
+pasaffe (0.39-0ubuntu1) utopic; urgency=medium
+
+  * New upstream release
+    - Improve random password generation
+    - Improve layout of database information window
+    - Display database file location in information window
+    - Corrected title in new entry and new folder windows (LP: #1314950)
+    - Edit button in toolbar now also edits folders (LP: #1350294)
+    - Updated translations
+    - Fixed [icon] text in help file, and license text. (LP: #1314956)
+    - debian/patches/improve_passwords.patch: removed, upstreamed
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Thu, 31 Jul 2014 19:05:28 -0400
+
 pasaffe (0.38-0ubuntu1.1) trusty; urgency=medium
 
   * Improve randomness of generated passwords (LP: #1309685):
     - debian/patches/improve_passwords.patch: change options passed to apg
       to generate truly random passwords instead of pronounceable ones.
 
- -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Fri, 18 Apr 2014 14:35:15 -0400
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Thu, 31 Jul 2014 19:05:26 -0400
 
 pasaffe (0.38-0ubuntu1) trusty; urgency=medium
 

@@ -1,3 +1,117 @@
+2014-07-31  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.39
+
+2014-07-31  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* pasaffe/PasaffeWindow.py:
+
+	edit button in toolbar now also edits folders
+
+2014-05-29  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/ko.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2014-05-21  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* data/ui/EditDetailsDialog.ui:
+	* data/ui/EditFolderDialog.ui:
+	* pasaffe/PasaffeWindow.py:
+
+	corrected title in new entry and new folder windows (LP: #1314950)
+
+2014-05-10  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/ko.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2014-05-01  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* pasaffe/PasaffeWindow.py:
+
+	improve database information window
+
+2014-05-01  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* help/C/delete-entry.page:
+	* help/C/index.page:
+	* help/C/legal.xml:
+	* help/C/new-entry.page:
+	* help/C/preferences.page:
+	* help/C/show-secrets.page:
+	* help/fr/delete-entry.page:
+	* help/fr/index.page:
+	* help/fr/legal.xml:
+	* help/fr/new-entry.page:
+	* help/fr/preferences.page:
+	* help/fr/show-secrets.page:
+
+	fixed help file string and text
+
+2014-04-17  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/ko.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2014-04-09  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* pasaffe/EditDetailsDialog.py:
+
+	make password generation more random
+
+2014-04-05  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/ko.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2014-04-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	prepare for next release
+
 2014-04-04  Marc Deslauriers  <marc.deslauriers@canonical.com>
 
 	* NEWS:
