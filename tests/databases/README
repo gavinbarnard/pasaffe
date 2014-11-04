@@ -2,11 +2,17 @@ This directory contains some test databases that were created in other
 Password Safe compatible applications. All test databases use 'pasaffe'
 as the password.
 
+passwdsafe-510.psafe3:
+- Created with PasswdSafe 5.1.0 for Android
+
 pwsafe-331.psafe3:
 - Created with Password Safe for Windows v3.31
 
 pw-gorilla-15363.psafe3:
 - Created with Password Gorilla v1.5.3.6.3 on Ubuntu 13.04
+
+pw-gorilla-1537.psafe3:
+- Created with Password Gorilla v1.5.3.7 on Ubuntu 14.10
 
 pasaffe-025.psafe3
 - Created with Pasaffe 0.25 and the generate_pasaffe_db.py script

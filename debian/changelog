@@ -1,3 +1,28 @@
+pasaffe (0.41-0ubuntu1) vivid; urgency=medium
+
+  * New upstream release
+    - Updated translations
+    - Store notes field with CRLF in the database for interopability
+      reasons
+    - Add a raw dump option to pasaffe-dump-db
+    - Properly handle databases that don't contain username or password
+      fields (LP: #1384710)
+    - Make sure all dialogs have transient parents (LP: #1386064)
+    - Stop using deprecated Gtk stock items (LP: #1386064)
+    - Disable menu and toolbar entries for missing fields
+    - Fixed a regression in 0.40 that added extra lines in notes at
+      each save
+  * Remove dconf migration support
+    - debian/rules: remove dh_migrations
+    - debian/control: remove dh-migrations build-depends, remove
+      dconf-tools depends.
+    - debian/01_pasaffe_change_dconf_path: removed
+    - debian/migrations: removed
+  * debian/py3dist-overrides: add dependency overrides to work around
+    vivid's dh-python which now gets these wrong.
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Tue, 04 Nov 2014 10:01:05 -0500
+
 pasaffe (0.39-0ubuntu1) utopic; urgency=medium
 
   * New upstream release

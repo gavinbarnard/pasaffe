@@ -102,7 +102,9 @@ tests/test_keepassx_043.py
 tests/test_keepassx_import.py
 tests/test_lint.py
 tests/test_pasaffe_025.py
+tests/test_passwdsafe_510.py
 tests/test_pw_gorilla_15363.py
+tests/test_pw_gorilla_1537.py
 tests/test_pwsafe_331.py
 tests/test_readdb.py
 tests/autopilot/pasaffe/__init__.py
@@ -116,5 +118,7 @@ tests/databases/keepass2-224.xml
 tests/databases/keepassx-043.kdb
 tests/databases/keepassx-043.xml
 tests/databases/pasaffe-025.psafe3
+tests/databases/passwdsafe-510.psafe3
 tests/databases/pw-gorilla-15363.psafe3
+tests/databases/pw-gorilla-1537.psafe3
 tests/databases/pwsafe-331.psafe3

@@ -1,5 +1,0 @@
-set -ex
-
-dconf dump /apps/pasaffe/ | dconf load /net/launchpad/pasaffe/
-dconf reset -f /apps/pasaffe/
-

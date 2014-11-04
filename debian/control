@@ -3,7 +3,6 @@ Section: python
 Priority: extra
 Build-Depends: debhelper (>= 8),
  dh-translations,
- dh-migrations,
  python3,
  python3-distutils-extra
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
@@ -19,8 +18,7 @@ Depends: ${misc:Depends},
  gir1.2-gtk-3.0,
  python3-gi,
  yelp,
- apg,
- dconf-tools
+ apg
 Description: Password manager for GNOME
  Pasaffe is an easy to use password manager for GNOME. You can use it
  to safely store all your usernames and passwords into a single encrypted

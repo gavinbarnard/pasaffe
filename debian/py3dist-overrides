@@ -1,0 +1,6 @@
+gi.repository.glib gir1.2-glib-2.0
+gi.repository.gobject gir1.2-glib-2.0
+gi.repository.gdk gir1.2-gtk-3.0
+gi.repository.gio gir1.2-glib-2.0
+gi.repository.gtk gir1.2-gtk-3.0
+gi.repository.pango gir1.2-pango-1.0

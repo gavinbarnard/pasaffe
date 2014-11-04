@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- Mode: Python; coding: utf-8; indent-tabs-mode: nil; tab-width: 4 -*-
 ### BEGIN LICENSE
-# Copyright (C) 2013 Marc Deslauriers <marc.deslauriers@canonical.com>
+# Copyright (C) 2014 Marc Deslauriers <marc.deslauriers@canonical.com>
 # This program is free software: you can redistribute it and/or modify it 
 # under the terms of the GNU General Public License version 3, as published 
 # by the Free Software Foundation.
@@ -23,12 +23,12 @@ sys.path.insert(0, os.path.realpath(os.path.join(os.path.dirname(__file__), ".."
 
 from pasaffe_lib.readdb import PassSafeFile
 
-class TestPasswordGorilla15363(unittest.TestCase):
+class TestPasswordGorilla1537(unittest.TestCase):
     def setUp(self):
-        self.passfile = PassSafeFile('./tests/databases/pw-gorilla-15363.psafe3', 'pasaffe')
+        self.passfile = PassSafeFile('./tests/databases/pw-gorilla-1537.psafe3', 'pasaffe')
 
     def test_num_entries(self):
-        self.assertEqual(len(self.passfile.records), 4)
+        self.assertEqual(len(self.passfile.records), 6)
 
     def test_empty_folders(self):
         # This version of Password Gorilla doesn't save empty folders
@@ -54,7 +54,7 @@ class TestPasswordGorilla15363(unittest.TestCase):
         self.assertEqual(self.passfile.get_saved_date_string(), None)
 
     def test_entry_1(self):
-        uuid = '8642342dfd444e044f50ca8b3b12fd67'
+        uuid = '009eeceaad754732634e37d2f70b0985'
         self.assertEqual(self.passfile.records[uuid][2], 'top\\.withdot')
         self.assertEqual(self.passfile.get_folder_list(uuid), ['top.withdot'])
         self.assertEqual(self.passfile.records[uuid][3], 'insidedot')
@@ -62,12 +62,12 @@ class TestPasswordGorilla15363(unittest.TestCase):
         self.assertFalse(5 in self.passfile.records[uuid])
         self.assertEqual(self.passfile.records[uuid][6], 'passworddot')
         self.assertEqual(self.passfile.get_password_time(uuid, False),
-                         'Thu, 25 Jul 2013 23:58:56')
+                         'Sat, 25 Oct 2014 15:05:30')
         self.assertEqual(self.passfile.get_modification_time(uuid, False),
-                         'Thu, 25 Jul 2013 23:58:56')
+                         'Sat, 25 Oct 2014 15:05:30')
 
     def test_entry_2(self):
-        uuid = '666b02ae0f574d4549f8f57ddae70d77'
+        uuid = 'd68cee64c2794300561837e248abddd1'
         self.assertFalse(2 in self.passfile.records[uuid])
         self.assertEqual(self.passfile.get_folder_list(uuid), None)
         self.assertEqual(self.passfile.records[uuid][3], 'toplevel1')
@@ -75,12 +75,12 @@ class TestPasswordGorilla15363(unittest.TestCase):
         self.assertEqual(self.passfile.records[uuid][5], 'This is a note')
         self.assertEqual(self.passfile.records[uuid][6], 'passwordtop')
         self.assertEqual(self.passfile.get_password_time(uuid, False),
-                         'Thu, 25 Jul 2013 23:58:06')
+                         'Sat, 25 Oct 2014 15:04:48')
         self.assertEqual(self.passfile.get_modification_time(uuid, False),
-                         'Thu, 25 Jul 2013 23:58:06')
+                         'Sat, 25 Oct 2014 15:04:48')
 
     def test_entry_3(self):
-        uuid = 'aff6f326353f4be86009bf342e0a0af7'
+        uuid = '8e869cc656a942fd7beecf36605140d8'
         self.assertEqual(self.passfile.records[uuid][2], 'topgroup1.topgroup2.topgroup3')
         self.assertEqual(self.passfile.get_folder_list(uuid), ['topgroup1', 'topgroup2', 'topgroup3'])
         self.assertEqual(self.passfile.records[uuid][3], 'entrylevel3')
@@ -88,12 +88,12 @@ class TestPasswordGorilla15363(unittest.TestCase):
         self.assertFalse(5 in self.passfile.records[uuid])
         self.assertEqual(self.passfile.records[uuid][6], 'password3')
         self.assertEqual(self.passfile.get_password_time(uuid, False),
-                         'Thu, 25 Jul 2013 00:33:33')
+                         'Sat, 25 Oct 2014 15:06:51')
         self.assertEqual(self.passfile.get_modification_time(uuid, False),
-                         'Thu, 25 Jul 2013 00:33:33')
+                         'Sat, 25 Oct 2014 15:06:51')
 
     def test_entry_4(self):
-        uuid = '66d1cf5e60dc424d6a3b19c89aed2f1e'
+        uuid = '3e317b83f4d645056abc5526f9c1f7e6'
         self.assertEqual(self.passfile.records[uuid][2], 'topgroup1')
         self.assertEqual(self.passfile.get_folder_list(uuid), ['topgroup1'])
         self.assertEqual(self.passfile.records[uuid][3], 'entrylevel1')
@@ -102,9 +102,35 @@ class TestPasswordGorilla15363(unittest.TestCase):
                          'This is a note\nThis is a second line\nUnicode: éléphant')
         self.assertEqual(self.passfile.records[uuid][6], 'password1')
         self.assertEqual(self.passfile.get_password_time(uuid, False),
-                         'Thu, 25 Jul 2013 00:33:06')
+                         'Sat, 25 Oct 2014 15:07:24')
         self.assertEqual(self.passfile.get_modification_time(uuid, False),
-                         'Thu, 25 Jul 2013 00:33:06')
+                         'Sat, 25 Oct 2014 15:07:24')
+
+    def test_entry_5(self):
+        uuid = '11fbf64e83e240a25e8bb657cea6edcd'
+        self.assertFalse(2 in self.passfile.records[uuid])
+        self.assertEqual(self.passfile.get_folder_list(uuid), None)
+        self.assertEqual(self.passfile.records[uuid][3], 'topnopass')
+        self.assertEqual(self.passfile.records[uuid][4], 'topusername')
+        self.assertFalse(5 in self.passfile.records[uuid])
+        self.assertEqual(self.passfile.records[uuid][6], '')
+        self.assertEqual(self.passfile.get_password_time(uuid, False),
+                         None)
+        self.assertEqual(self.passfile.get_modification_time(uuid, False),
+                         'Sat, 25 Oct 2014 15:07:52')
+
+    def test_entry_6(self):
+        uuid = 'd0b7295a7fc447fa4d8c1aa701ba8c30'
+        self.assertFalse(2 in self.passfile.records[uuid])
+        self.assertEqual(self.passfile.get_folder_list(uuid), None)
+        self.assertEqual(self.passfile.records[uuid][3], 'topnouser')
+        self.assertEqual(self.passfile.records[uuid][4], '')
+        self.assertFalse(5 in self.passfile.records[uuid])
+        self.assertEqual(self.passfile.records[uuid][6], 'toppassword')
+        self.assertEqual(self.passfile.get_password_time(uuid, False),
+                         'Sat, 25 Oct 2014 15:07:40')
+        self.assertEqual(self.passfile.get_modification_time(uuid, False),
+                         'Sat, 25 Oct 2014 15:07:40')
 
 if __name__ == '__main__':
     unittest.main()

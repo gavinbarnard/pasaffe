@@ -1,3 +1,237 @@
+2014-11-03  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.41
+
+2014-11-03  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	added to NEWS
+
+2014-11-03  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/ko.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	merged translations
+
+2014-11-03  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/ko.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2014-11-03  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* pasaffe_lib/readdb.py:
+	* tests/test_readdb.py:
+
+	fixed regression in notes in version 0.40
+
+2014-11-02  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	prepare for next release
+
+2014-11-02  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.40
+
+2014-11-02  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* pasaffe/PasaffeWindow.py:
+
+	disable menu and toolbar entries for missing fields
+
+2014-10-30  Launchpad Translations on behalf of mdeslaur
+
+	* po/en_GB.po:
+	* po/fr.po:
+
+	Launchpad automatic translations update.
+
+2014-10-29  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/ko.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2014-10-28  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/pasaffe.pot:
+
+	updated translation template
+
+2014-10-28  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* data/ui/EditDetailsDialog.ui:
+	* data/ui/EditFolderDialog.ui:
+	* data/ui/NewDatabaseDialog.ui:
+	* data/ui/NewPasswordDialog.ui:
+	* data/ui/PasaffeWindow.ui:
+	* data/ui/PasswordEntryDialog.ui:
+	* data/ui/PreferencesPasaffeDialog.ui:
+	* data/ui/SaveChangesDialog.ui:
+
+	stop using deprecated gtk stock items
+
+2014-10-27  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe_lib/Window.py:
+
+	make sure all dialogs have transient parents
+
+2014-10-25  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	updated NEWS file
+
+2014-10-25  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* tests/test_readdb.py:
+
+	tests/test_readdb.py: added tests for fixup code
+
+2014-10-25  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* bin/pasaffe-dump-db:
+	* docs/interopability.txt:
+	* pasaffe_lib/readdb.py:
+	* tests/test_passwdsafe_510.py:
+	* tests/test_pw_gorilla_15363.py:
+	* tests/test_pw_gorilla_1537.py:
+	* tests/test_pwsafe_331.py:
+
+	docs/interopability.txt: added more interopability notes about usernames
+	pasaffe_lib/readdb.py: added fixup functions to clean up and convert
+	databases on open and before save
+	bin/pasaffe-dump-db: don't clean up when dumping raw
+	tests/*: updated now that cleanup is being performed
+
+2014-10-25  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* tests/test_passwdsafe_510.py:
+	* docs/interopability.txt:
+
+	added passwdsafe 5.1.0 test script
+	added more interopability notes
+
+2014-10-25  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* tests/databases/passwdsafe-510.psafe3:
+	* tests/databases/README:
+
+	added passwdsafe test database
+
+2014-10-25  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* docs/interopability.txt:
+
+	added more interopability notes
+
+2014-10-25  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* bin/pasaffe-dump-db:
+
+	added raw dump option to pasaffe-dump-db
+
+2014-10-25  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* docs/interopability.txt:
+
+	added notes about password and username fields
+
+2014-10-25  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* tests/test_pw_gorilla_1537.py:
+
+	added test for new password gorilla database
+
+2014-10-25  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* tests/databases/pw-gorilla-1537.psafe3:
+	* tests/databases/README:
+
+	added new password gorilla test database
+
+2014-09-28  Launchpad Translations on behalf of mdeslaur
+
+	* po/fr.po:
+
+	Launchpad automatic translations update.
+
+2014-09-22  Launchpad Translations on behalf of mdeslaur
+
+	* po/fr.po:
+
+	Launchpad automatic translations update.
+
+2014-08-03  Launchpad Translations on behalf of mdeslaur
+
+	* po/es.po:
+
+	Launchpad automatic translations update.
+
+2014-08-02  Launchpad Translations on behalf of mdeslaur
+
+	* po/es.po:
+
+	Launchpad automatic translations update.
+
+2014-08-01  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/ko.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2014-07-31  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	prepare for next release
+
 2014-07-31  Marc Deslauriers  <marc.deslauriers@canonical.com>
 
 	* NEWS:

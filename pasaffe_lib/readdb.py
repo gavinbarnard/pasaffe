@@ -34,7 +34,8 @@ from . pasaffeconfig import get_version
 
 class PassSafeFile:
 
-    def __init__(self, filename=None, password=None, req_cipher='Twofish'):
+    def __init__(self, filename=None, password=None, req_cipher='Twofish',
+                 fixup=True):
         '''Reads a Password Safe v3 file'''
 
         self.keys = {}
@@ -60,9 +61,9 @@ class PassSafeFile:
             raise ValueError("Sorry, we don't support %s yet." % cipher)
 
         if filename != None:
-            self.readfile(filename, password)
+            self.readfile(filename, password, fixup=fixup)
 
-    def readfile(self, filename, password):
+    def readfile(self, filename, password, fixup=True):
         '''Parses database file'''
         logger.debug('Opening database: %s' % filename)
         try:
@@ -81,6 +82,9 @@ class PassSafeFile:
         self._validatehmac()
         self.dbfile.close()
         self.dbfile = None
+
+        if fixup:
+            self._postread_fixup()
 
         # Now that we've read the file, but before we get rid of the
         # password, generate new keys for our next save
@@ -617,11 +621,14 @@ class PassSafeFile:
         for uuid in self.records:
             for field in list(self.records[uuid].keys()):
 
+                # Fix up some of the fields
+                fixed_value = self._presave_fixup(uuid, field)
+
                 # Convert from strings to bytes
                 if field in self.record_text:
-                    value = self.records[uuid][field].encode('utf-8')
+                    value = fixed_value.encode('utf-8')
                 else:
-                    value = self.records[uuid][field]
+                    value = fixed_value
 
                 self._writefield(field, value)
             self._writefieldend()
@@ -725,3 +732,34 @@ class PassSafeFile:
     def _writehmac(self):
         self.dbfile.write(self.hmac.digest())
         self.hmac = None
+
+    def _postread_fixup(self):
+        '''Performs some cleanup after reading certain databases'''
+
+        for uuid in self.records:
+            # Some apps don't create username fields, so let's default
+            # to what the real Password Safe does and fix it up to be a
+            # field with an empty string
+            if 4 not in self.records[uuid]:
+                self.records[uuid][4] = ''
+
+            # Do basically the same with password fields
+            if 6 not in self.records[uuid]:
+                self.records[uuid][6] = ''
+
+            # Most apps use CRLF line terminators. Convert them to LF
+            # when opening in Pasaffe, we'll convert them back to CRLF
+            # before saving
+            if 5 in self.records[uuid]:
+                self.records[uuid][5] = self.records[uuid][5].replace("\r\n", "\n")
+
+    def _presave_fixup(self, uuid, field):
+        '''Performs some cleanup before saving certain databases'''
+
+        if field == 5:
+            # Most apps use CRLF line terminators. Convert LF to CRLF
+            # before saving
+            return self.records[uuid][5].replace("\n", "\r\n")
+        else:
+            return self.records[uuid][field]
+

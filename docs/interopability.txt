@@ -2,17 +2,49 @@ Here are some current issues with interopability:
 
 1- Line terminators in notes
 
-Both Password Safe for Windows v3.31 and Password Gorilla v1.5.3.6.3 on
-Ubuntu 13.04 create notes with CRLF line terminators, which Pasaffe creates
-them with LF line terminators. This doesn't seem to create an issue, but
-perhaps Pasaffe should make sure they are CRLF in the database, and
-migrate existing entries on import.
+Password Safe for Windows v3.31, Password Gorilla v1.5.3.6.3 on Ubuntu
+13.04 and PasswdSafe for Android create notes with CRLF line terminators,
+while Pasaffe creates them with LF line terminators. This doesn't seem to
+create an issue, but perhaps Pasaffe should make sure they are CRLF in the
+database, and migrate existing entries on import.
 
 2- Missing passwords
 
-Pasaffe allows creating entries with no password fields. Password Gorilla
-v1.5.3.6.3 on Ubuntu 13.04 has no trouble with missing password fields, but
-Password Safe for Windows v3.31 gives an error dialog when opening the
+Pasaffe used to allow creating entries with no password fields. Password
+Gorilla v1.5.3.6.3 on Ubuntu 13.04, and possibly other versions, has no
+trouble with missing password fields, but Password Safe for Windows v3.31,
+and possibly other versions, gives an error dialog when opening the
 database and proceeds to set a default password for all entries with no
 password fields.
+
+Password Gorilla v1.5.3.7, and possibly other versions, allows creating
+entries with no password fields.
+
+Password Safe for Windows v3.26, and possibly other versions, will not
+create en entry with no password, it will display an error message if the
+user doesn't use the password field.
+
+PasswdSafe for Android will not create an entry with no password.
+
+3- Missing usernames
+
+Password Gorilla v1.5.3.7, and possibly other versions, allows creating
+entries with no username fields.
+
+Password Safe for Windows v3.26, and possibly other versions, creates
+entries with no usernames with a username field composed of a blank string.
+
+PasswdSafe for Android will create entries with no username field.
+
+3- Password Modification Time
+
+When Password Gorilla doesn't save a password entry, it also doesn't save
+a Password Modification Time field.
+
+PasswdSafe on Android doesn't seem to save a Password Modification Time
+field.
+
+4- Last Modification Time
+
+PasswdSafe on Android doesn't seem to save a Last Modification Time field.
 
