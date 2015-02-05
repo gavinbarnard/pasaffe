@@ -1,3 +1,54 @@
+2015-02-05  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.42
+
+2015-02-05  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	updated NEWS
+
+2015-02-05  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/PreferencesPasaffeDialog.ui:
+
+	remove more deprecated gtk stuff
+
+2015-02-05  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/PasswordEntryDialog.ui:
+
+	removed deprecated ypad property
+
+2015-02-05  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe_lib/Window.py:
+
+	make sure about dialog has a transient parent
+
+2014-11-04  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/ko.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2014-11-03  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	prepare for next release
+
 2014-11-03  Marc Deslauriers  <marc.deslauriers@canonical.com>
 
 	* NEWS:

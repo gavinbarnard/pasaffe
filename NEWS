@@ -1,6 +1,15 @@
 This file summarizes the major and interesting changes for each release.
 For a detailed list of changes, please see ChangeLog.
 
+0.42 (2015-02-05)
+
+ * Enhancements:
+   - Updated translations
+   - Slightly improve preferences dialog layout
+
+ * Bug fixes:
+   - Fix more GTK deprecations
+
 0.41 (2014-11-03)
 
  * Enhancements:
