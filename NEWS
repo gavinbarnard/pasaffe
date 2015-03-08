@@ -1,6 +1,14 @@
 This file summarizes the major and interesting changes for each release.
 For a detailed list of changes, please see ChangeLog.
 
+0.43 (2015-03-08)
+
+ * Enhancements:
+   - Updated translations
+
+ * Bug fixes:
+   - Make sure left pane is focused on startup
+
 0.42 (2015-02-05)
 
  * Enhancements:

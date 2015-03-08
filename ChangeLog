@@ -1,3 +1,43 @@
+2015-03-08  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.43
+
+2015-03-07  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* pasaffe/PasaffeWindow.py:
+
+	- make sure left pane is focused on startup
+
+2015-02-13  Launchpad Translations on behalf of mdeslaur
+
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2015-02-07  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/ko.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2015-02-05  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	prepare for next release
+
 2015-02-05  Marc Deslauriers  <marc.deslauriers@canonical.com>
 
 	* NEWS:

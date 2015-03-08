@@ -1,3 +1,11 @@
+pasaffe (0.43-0ubuntu1) vivid; urgency=medium
+
+  * New upstream release
+    - Updated translations
+    - Make sure left pane is focused on startup
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Sun, 08 Mar 2015 14:32:25 -0400
+
 pasaffe (0.42-0ubuntu1) vivid; urgency=medium
 
   * New upstream release
