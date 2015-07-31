@@ -1,3 +1,11 @@
+pasaffe (0.44-0ubuntu1) wily; urgency=medium
+
+  * New upstream release
+    - PEP 8 cleanup
+    - No longer hardcode icon location (LP: #1459823)
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Thu, 30 Jul 2015 22:06:22 -0400
+
 pasaffe (0.43-0ubuntu1) vivid; urgency=medium
 
   * New upstream release

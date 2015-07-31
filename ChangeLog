@@ -1,3 +1,198 @@
+2015-07-30  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.44
+
+2015-07-24  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/ko.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2015-07-16  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/AboutPasaffeDialog.ui:
+	* data/ui/EditDetailsDialog.ui:
+	* data/ui/EditFolderDialog.ui:
+	* data/ui/NewDatabaseDialog.ui:
+	* data/ui/NewPasswordDialog.ui:
+	* data/ui/PasaffeWindow.ui:
+	* data/ui/PasswordEntryDialog.ui:
+	* data/ui/PreferencesPasaffeDialog.ui:
+	* data/ui/SaveChangesDialog.ui:
+
+	don't hardcode icon location in ui
+
+2015-06-27  Launchpad Translations on behalf of mdeslaur
+
+	* po/fr.po:
+
+	Launchpad automatic translations update.
+
+2015-06-26  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/ko.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2015-06-18  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/icons:
+	* data/icons/scalable:
+	* data/icons/scalable/apps:
+	* data/media:
+	* NEWS:
+	* pasaffe.desktop.in:
+	* setup.py:
+	* data/media/pasaffe.svg:
+	* data/icons/scalable/apps/pasaffe.svg:
+
+	No longer hardcode icon location (LP: #1459823)
+
+2015-04-30  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+
+	Launchpad automatic translations update.
+
+2015-04-28  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/ko.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2015-04-20  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* tests/test_pw_gorilla_15363.py:
+	* tests/test_pw_gorilla_1537.py:
+
+	fix some pep-8 cleanup
+
+2015-04-20  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* tests/generate_pasaffe_db.py:
+	* tests/test_dump_db.py:
+	* tests/test_example.py:
+	* tests/test_figaro_079.py:
+	* tests/test_figaro_import.py:
+	* tests/test_gpass_050.py:
+	* tests/test_gpass_import.py:
+	* tests/test_helpers.py:
+	* tests/test_import_entry.py:
+	* tests/test_keepass2_224.py:
+	* tests/test_keepass2_import.py:
+	* tests/test_keepassx_043.py:
+	* tests/test_keepassx_import.py:
+	* tests/test_lint.py:
+	* tests/test_pasaffe_025.py:
+	* tests/test_passwdsafe_510.py:
+	* tests/test_pw_gorilla_15363.py:
+	* tests/test_pw_gorilla_1537.py:
+	* tests/test_pwsafe_331.py:
+	* tests/test_readdb.py:
+
+	more pep8 cleanups
+
+2015-04-13  Launchpad Translations on behalf of mdeslaur
+
+	* po/fr.po:
+
+	Launchpad automatic translations update.
+
+2015-04-12  Launchpad Translations on behalf of mdeslaur
+
+	* po/fr.po:
+
+	Launchpad automatic translations update.
+
+2015-04-05  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/AboutPasaffeDialog.py:
+	* pasaffe/EditDetailsDialog.py:
+	* pasaffe/EditFolderDialog.py:
+	* pasaffe/NewDatabaseDialog.py:
+	* pasaffe/NewPasswordDialog.py:
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe/PasswordEntryDialog.py:
+	* pasaffe/PreferencesPasaffeDialog.py:
+	* pasaffe/SaveChangesDialog.py:
+	* pasaffe/__init__.py:
+
+	more PEP 8 cleanup
+
+2015-04-05  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* bin/pasaffe:
+	* bin/pasaffe-dump-db:
+	* bin/pasaffe-import-entry:
+	* bin/pasaffe-import-figaroxml:
+	* bin/pasaffe-import-gpass:
+	* bin/pasaffe-import-keepassx:
+
+	more PEP 8 cleanup
+
+2015-04-05  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* pasaffe_lib/AboutDialog.py:
+	* pasaffe_lib/Builder.py:
+	* pasaffe_lib/PreferencesDialog.py:
+	* pasaffe_lib/Window.py:
+	* pasaffe_lib/__init__.py:
+	* pasaffe_lib/blowfish.py:
+	* pasaffe_lib/figaroxml.py:
+	* pasaffe_lib/gpassfile.py:
+	* pasaffe_lib/helpersgui.py:
+	* pasaffe_lib/keepassx.py:
+	* pasaffe_lib/pasaffeconfig.py:
+	* pasaffe_lib/pytwofish.py:
+	* pasaffe_lib/readdb.py:
+
+	start PEP 8 cleanup
+
+2015-03-09  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/ko.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2015-03-08  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	prepare for next release
+
 2015-03-08  Marc Deslauriers  <marc.deslauriers@canonical.com>
 
 	* NEWS:

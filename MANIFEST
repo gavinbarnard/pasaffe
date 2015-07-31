@@ -17,7 +17,7 @@ bin/pasaffe-import-figaroxml
 bin/pasaffe-import-gpass
 bin/pasaffe-import-keepassx
 data/glib-2.0/schemas/net.launchpad.pasaffe.gschema.xml
-data/media/pasaffe.svg
+data/icons/scalable/apps/pasaffe.svg
 data/ui/AboutPasaffeDialog.ui
 data/ui/EditDetailsDialog.ui
 data/ui/EditFolderDialog.ui
