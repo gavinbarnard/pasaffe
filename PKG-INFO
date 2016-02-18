@@ -1,6 +1,6 @@
 Metadata-Version: 1.1
 Name: pasaffe
-Version: 0.44
+Version: 0.45
 Summary: Password manager for GNOME
 Home-page: https://launchpad.net/pasaffe
 Author: Marc Deslauriers
@@ -8,6 +8,7 @@ Author-email: marc.deslauriers@canonical.com
 License: GPL-3
 Description: Pasaffe is an easy to use password manager for GNOME.
 Platform: UNKNOWN
+Requires: gi
 Requires: gi.repository.GLib
 Requires: gi.repository.GObject
 Requires: gi.repository.Gdk

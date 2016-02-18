@@ -1,6 +1,15 @@
 This file summarizes the major and interesting changes for each release.
 For a detailed list of changes, please see ChangeLog.
 
+0.45 (2016-02-17)
+
+ * Enhancements:
+   - Added new pasaffe-cli command-line interface, thanks to C de-Avillez.
+
+ * Bug fixes:
+   - Specify Gtk version to prevent warning
+   - Stop using deprecated find icon
+
 0.44 (2015-07-30)
 
  * Enhancements:

@@ -11,6 +11,7 @@ do-release
 pasaffe.desktop.in
 setup.py
 bin/pasaffe
+bin/pasaffe-cli
 bin/pasaffe-dump-db
 bin/pasaffe-import-entry
 bin/pasaffe-import-figaroxml
@@ -101,6 +102,7 @@ tests/test_keepass2_import.py
 tests/test_keepassx_043.py
 tests/test_keepassx_import.py
 tests/test_lint.py
+tests/test_pasaffe-cli.py
 tests/test_pasaffe_025.py
 tests/test_passwdsafe_510.py
 tests/test_pw_gorilla_15363.py

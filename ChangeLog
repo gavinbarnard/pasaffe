@@ -1,3 +1,131 @@
+2016-02-17  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.45
+
+2016-02-17  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* data/ui/PasaffeWindow.ui:
+
+	stop using deprecated find icon
+
+2016-02-17  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	added NEWS entry
+
+2016-02-17  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/EditDetailsDialog.py:
+	* pasaffe/EditFolderDialog.py:
+	* pasaffe/NewDatabaseDialog.py:
+	* pasaffe/NewPasswordDialog.py:
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe/PasswordEntryDialog.py:
+	* pasaffe/SaveChangesDialog.py:
+	* pasaffe/__init__.py:
+	* pasaffe_lib/AboutDialog.py:
+	* pasaffe_lib/Builder.py:
+	* pasaffe_lib/PreferencesDialog.py:
+	* pasaffe_lib/Window.py:
+	* pasaffe_lib/helpersgui.py:
+
+	specify Gtk version when importing
+
+2016-02-17  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* data/ui/AboutPasaffeDialog.ui:
+
+	add author to about dialog
+
+2016-02-12  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+
+	add TODO item
+
+2016-02-12  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* tests/test_pasaffe-cli.py:
+
+	test_pasaffe-cli.py: don't use hardcoded /tmp directory
+
+2016-02-12  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/EditDetailsDialog.py:
+
+	pasaffe/EditDetailsDialog.py: add missing assignment
+
+2016-02-12  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* AUTHORS:
+	* NEWS:
+
+	updated AUTHORS and NEWS
+
+2016-02-12  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* bin/pasaffe-cli:
+	* tests/test_pasaffe-cli.py:
+	* pasaffe/EditDetailsDialog.py:
+	* pasaffe_lib/helpers.py:
+	* pasaffe_lib/readdb.py:
+
+	Merge Pasaffe command line tool from C de-Avillez. Thanks!
+
+2015-12-11  C de-Avillez  <hggdh2@ubuntu.com>
+
+	* tests/test_pasaffe-cli.py:
+
+	tests/test_pasaffe-cli.py: make sure there is no stale test DB before
+	starting a test.
+
+2015-12-10  C de-Avillez  <hggdh2@ubuntu.com>
+
+	* tests/test_pasaffe-cli.py:
+
+	tests/test_pasaffe-cli.py: readjusted code, prepare for testing lists.
+
+2015-10-14  C de-Avillez  <hggdh2@ubuntu.com>
+
+	* bin/pasaffe-cli:
+	* tests/test_pasaffe-cli.py:
+	* pasaffe/EditDetailsDialog.py:
+	* pasaffe_lib/helpers.py:
+	* pasaffe_lib/readdb.py:
+
+	* tests/test_pasaffe-cli.py: QA tests for the CLI option of passaffe
+	* pasaffe/EditDetailsDialog.py: adjust to call gen_password() instead of
+	directly calling apg.
+	* pasaffe_lib/helpers.py: add gen_password() function
+	* pasaffe_lib/readdb.py: check os.name to decide on which password reader
+	will be imported (preparation for a Windows port, at least for CLI).
+	* bin/pasaffe-cli: command-line option for pasaffe.
+
+2015-08-01  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/ko.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2015-07-31  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	prepare for next release
+
 2015-07-30  Marc Deslauriers  <marc.deslauriers@canonical.com>
 
 	* NEWS:

@@ -3,8 +3,10 @@ Section: python
 Priority: extra
 Build-Depends: debhelper (>= 8),
  dh-translations,
+ gir1.2-gtk-3.0,
  python3,
- python3-distutils-extra
+ python3-distutils-extra,
+ python3-gi
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 XSBC-Original-Maintainer: Marc Deslauriers <marc.deslauriers@canonical.com>
 Standards-Version: 3.9.5

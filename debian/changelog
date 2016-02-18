@@ -1,3 +1,13 @@
+pasaffe (0.45-0ubuntu1) xenial; urgency=medium
+
+  * New upstream release
+    - Added new pasaffe-cli command-line interface, thanks to C de-Avillez.
+    - Specify Gtk version to prevent warning
+    - Stop using deprecated find icon
+  * debian/control: added python3-gi and gir1.2-gtk-3.0 to BuildDepends
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Wed, 17 Feb 2016 19:09:04 -0500
+
 pasaffe (0.44-0ubuntu1) wily; urgency=medium
 
   * New upstream release
