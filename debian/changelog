@@ -1,3 +1,12 @@
+pasaffe (0.46-0ubuntu1) xenial; urgency=medium
+
+  * New upstream release
+    - Searches are now accent-insensitive (LP: #1488333)
+    - PEP 8 cleanup
+  * debian/control: added python3-unidecode to BuildDepends and Depends
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Sun, 13 Mar 2016 11:25:37 -0400
+
 pasaffe (0.45-0ubuntu1) xenial; urgency=medium
 
   * New upstream release

@@ -1,3 +1,106 @@
+2016-03-13  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.46
+
+2016-03-12  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	added NEWS
+
+2016-03-12  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* bin/pasaffe:
+	* bin/pasaffe-cli:
+	* bin/pasaffe-dump-db:
+	* bin/pasaffe-import-entry:
+	* bin/pasaffe-import-figaroxml:
+	* bin/pasaffe-import-gpass:
+	* bin/pasaffe-import-keepassx:
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe_lib/blowfish.py:
+	* pasaffe_lib/helpers.py:
+	* pasaffe_lib/pasaffeconfig.py:
+	* pasaffe_lib/pytwofishcbc.py:
+	* pasaffe_lib/readdb.py:
+	* tests/generate_pasaffe_db.py:
+	* tests/test_helpers.py:
+	* tests/test_pasaffe-cli.py:
+	* tests/test_readdb.py:
+
+	pep8 cleanup
+
+2016-03-12  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe_lib/readdb.py:
+	* tests/test_readdb.py:
+
+	improve find algorithm, and added tests
+
+2016-03-10  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe_lib/readdb.py:
+
+	move find to readdb.py
+
+2016-03-03  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/ko.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2016-02-24  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* README:
+	* pasaffe/PasaffeWindow.py:
+
+	perform accent-insensitive searches (LP: #1488333)
+
+2016-02-19  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/ko.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2016-02-18  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/ko.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2016-02-17  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	prepare for next release
+
 2016-02-17  Marc Deslauriers  <marc.deslauriers@canonical.com>
 
 	* NEWS:

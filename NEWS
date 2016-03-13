@@ -1,6 +1,14 @@
 This file summarizes the major and interesting changes for each release.
 For a detailed list of changes, please see ChangeLog.
 
+0.46 (2016-03-13)
+
+ * Enhancements:
+
+ * Bug fixes:
+   - Searches are now accent-insensitive (LP: #1488333)
+   - PEP 8 cleanup
+
 0.45 (2016-02-17)
 
  * Enhancements:
