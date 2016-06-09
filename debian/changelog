@@ -1,3 +1,9 @@
+pasaffe (0.46-0ubuntu2) yakkety; urgency=medium
+
+  * debian/control: drop yelp from Depends to Recommends. (LP: #1590848)
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Thu, 09 Jun 2016 12:07:23 -0400
+
 pasaffe (0.46-0ubuntu1) xenial; urgency=medium
 
   * New upstream release

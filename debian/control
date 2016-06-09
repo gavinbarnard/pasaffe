@@ -21,8 +21,8 @@ Depends: ${misc:Depends},
  gir1.2-gtk-3.0,
  python3-gi,
  python3-unidecode,
- yelp,
  apg
+Recommends: yelp
 Description: Password manager for GNOME
  Pasaffe is an easy to use password manager for GNOME. You can use it
  to safely store all your usernames and passwords into a single encrypted
