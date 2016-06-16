@@ -1,3 +1,13 @@
+pasaffe (0.47-0ubuntu1) yakkety; urgency=medium
+
+  * New upstream release
+    - Updated translations
+    - Error when opening database containing missing entry titles
+    - Properly handle blank entry and folder titles
+    - Don't crash if yelp is not installed
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Thu, 16 Jun 2016 17:04:54 +0300
+
 pasaffe (0.46-0ubuntu2) yakkety; urgency=medium
 
   * debian/control: drop yelp from Depends to Recommends. (LP: #1590848)

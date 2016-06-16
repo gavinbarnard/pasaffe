@@ -1,3 +1,106 @@
+2016-06-16  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.47
+
+2016-06-16  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* pasaffe_lib/helpersgui.py:
+
+	don't crash if yelp is not installed
+
+2016-06-13  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/ko.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2016-06-12  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe_lib/readdb.py:
+	* po/pasaffe.pot:
+	* tests/test_readdb.py:
+
+	properly handle blank entry and folder titles
+
+2016-06-12  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* TODO:
+
+	updated TODO
+
+2016-06-12  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/pasaffe.pot:
+
+	updated translations template
+
+2016-06-12  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe_lib/readdb.py:
+	* tests/test_readdb.py:
+
+	fix error when opening database with missing entry titles (LP: #1586335)
+
+2016-03-31  Launchpad Translations on behalf of mdeslaur
+
+	* po/es.po:
+
+	Launchpad automatic translations update.
+
+2016-03-29  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/ko.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2016-03-21  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	added NEWS entry
+
+2016-03-14  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/ko.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2016-03-13  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	prepare for next release
+
 2016-03-13  Marc Deslauriers  <marc.deslauriers@canonical.com>
 
 	* NEWS:

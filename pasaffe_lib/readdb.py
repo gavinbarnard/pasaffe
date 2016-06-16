@@ -416,6 +416,26 @@ class PassSafeFile:
         timestamp = struct.pack("<I", int(time.time()))
         self.records[uuid][12] = timestamp
 
+    def get_title(self, uuid):
+        '''Returns the entry title'''
+        return self.records[uuid].get(3)
+
+    def get_username(self, uuid):
+        '''Returns the entry username'''
+        return self.records[uuid].get(4)
+
+    def get_notes(self, uuid):
+        '''Returns the entry notes'''
+        return self.records[uuid].get(5)
+
+    def get_password(self, uuid):
+        '''Returns the entry password'''
+        return self.records[uuid].get(6)
+
+    def get_url(self, uuid):
+        '''Returns the entry URL'''
+        return self.records[uuid].get(13)
+
     def get_modification_time(self, uuid, localtime=True):
         '''Returns a string of the entry modification time'''
         return self.get_time(uuid, 12, localtime)
@@ -452,10 +472,12 @@ class PassSafeFile:
         if folder_list is None:
             return field
 
+        have_folders = False
         for folder in folder_list:
-            if field != "":
+            if have_folders is True:
                 field += "."
             field += folder.replace(".", "\\.")
+            have_folders = True
         return field
 
     def _field_to_folder_list(self, field):
@@ -470,7 +492,15 @@ class PassSafeFile:
 
         index = 0
         location = 0
+
         while index < len(field):
+
+            if field[index] == ".":
+                folders.append("")
+                location += 1
+                index += 1
+                continue
+
             location = field.find(".", location + 1)
 
             if location == -1:
@@ -762,6 +792,10 @@ class PassSafeFile:
             # Do basically the same with password fields
             if 6 not in self.records[uuid]:
                 self.records[uuid][6] = ''
+
+            # And the same with title fields
+            if 3 not in self.records[uuid]:
+                self.records[uuid][3] = ''
 
             # Most apps use CRLF line terminators. Convert them to LF
             # when opening in Pasaffe, we'll convert them back to CRLF
