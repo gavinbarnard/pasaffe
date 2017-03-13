@@ -1,3 +1,57 @@
+2017-03-13  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.48
+
+2016-11-04  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/ko.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2016-10-27  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* pasaffe/PasaffeWindow.py:
+
+	- Fixed compatibility with GTK+ 3.20. Thanks to Mathieu Trudel-Lapierre
+	for reporting the issue and for the initial patch.
+
+2016-08-08  Launchpad Translations on behalf of mdeslaur
+
+	* po/fr.po:
+
+	Launchpad automatic translations update.
+
+2016-06-17  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/ko.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2016-06-16  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	prepare for next release
+
 2016-06-16  Marc Deslauriers  <marc.deslauriers@canonical.com>
 
 	* NEWS:
