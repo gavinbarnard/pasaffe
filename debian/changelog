@@ -1,3 +1,14 @@
+pasaffe (0.49-0ubuntu1) artful; urgency=medium
+
+  * New upstream release
+    - Updated translations
+    - Add support for opening psafe3 files from the file manager. Thanks to
+      Tristan Hill.
+    - Raised password iteration limit from 50k to 100k. Thanks to
+      Joshua C. Randall.
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Sun, 21 May 2017 13:44:59 -0400
+
 pasaffe (0.48-0ubuntu1) zesty; urgency=medium
 
   * New upstream release

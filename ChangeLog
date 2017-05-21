@@ -1,3 +1,80 @@
+2017-05-17  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.49
+
+2017-05-12  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* setup.py:
+
+	- setup.py: install mime file
+	- NEWS: updated
+
+2017-05-12  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* mime:
+	* mime/pasaffe.xml:
+	* pasaffe.desktop.in:
+	* pasaffe/__init__.py:
+
+	Tristan Hill 2016-11-21 add mime type and support for opening from file
+
+2016-11-21  Tristan Hill  <tristan@saticed.me.uk>
+
+	* mime:
+	* mime/pasaffe.xml:
+	* pasaffe.desktop.in:
+	* pasaffe/__init__.py:
+
+	add mime type and support for opening from file manager
+
+2017-05-12  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	updated NEWS
+
+2017-05-12  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* pasaffe_lib/readdb.py:
+
+	Joshua C. Randall 2017-05-10 Raise ITER limit from 50k to 100k
+
+2017-05-10  Joshua C. Randall  <jcrandall@alum.mit.edu>
+
+	* pasaffe_lib/readdb.py:
+
+	Raise ITER limit from 50k to 100k
+
+2017-03-15  Launchpad Translations on behalf of mdeslaur
+
+	* po/en_GB.po:
+
+	Launchpad automatic translations update.
+
+2017-03-14  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/ko.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2017-03-13  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	prepare for next version
+
 2017-03-13  Marc Deslauriers  <marc.deslauriers@canonical.com>
 
 	* NEWS:

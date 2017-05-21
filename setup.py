@@ -19,6 +19,7 @@
 
 import os
 import sys
+from glob import glob
 
 try:
     import DistUtilsExtra.auto
@@ -73,13 +74,14 @@ class InstallAndUpdateDataDirectory(DistUtilsExtra.auto.install_auto):
 
 DistUtilsExtra.auto.setup(
     name='pasaffe',
-    version='0.48',
+    version='0.49',
     license='GPL-3',
     author='Marc Deslauriers',
     author_email='marc.deslauriers@canonical.com',
     description='Password manager for GNOME',
     long_description='Pasaffe is an easy to use password manager for GNOME.',
     url='https://launchpad.net/pasaffe',
+    data_files=[('share/mime/packages', glob('mime/*'))],
     cmdclass={'install': InstallAndUpdateDataDirectory}
     )
 

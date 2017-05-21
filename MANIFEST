@@ -54,6 +54,7 @@ help/fr/new-entry.page
 help/fr/preferences.page
 help/fr/show-secrets.page
 help/fr/figures/icon.png
+mime/pasaffe.xml
 pasaffe/AboutPasaffeDialog.py
 pasaffe/EditDetailsDialog.py
 pasaffe/EditFolderDialog.py
