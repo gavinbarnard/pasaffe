@@ -1,3 +1,19 @@
+pasaffe (0.50-0ubuntu1) bionic; urgency=medium
+
+  * New upstream release
+    - Set window title based on current loaded file. Thanks to Tristan Hill.
+    - Switch to symbolic icons
+    - Updated translations
+    - Make password window non-resizable
+    - Escape text e.g. in case of & in entry name. Thanks to Tristan Hill.
+    - Fix issue where Pasaffe would think a save was required when no
+      fields were changed in an entry.
+    - Fix some untranslated strings.
+    - Updated deprecated Gtk widgets.
+    - Properly support popup menus on Wayland.
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Tue, 19 Dec 2017 19:42:55 -0500
+
 pasaffe (0.49-0ubuntu1) artful; urgency=medium
 
   * New upstream release

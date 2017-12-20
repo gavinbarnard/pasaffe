@@ -24,9 +24,6 @@ from gi.repository import Gio, Gtk  # pylint: disable=E0611
 from gi.repository import Gdk, Pango, GLib  # pylint: disable=E0611
 import logging
 import os
-import struct
-import sys
-import time
 import webbrowser
 
 logger = logging.getLogger('pasaffe')
@@ -83,7 +80,6 @@ class PasaffeWindow(Window):
         self.ui.textview1.connect("motion-notify-event",
                                   self.textview_event_handler)
 
-        self.set_save_status(False)
         self.passfile = None
         self.is_locked = False
         self.idle_id = None
@@ -94,6 +90,9 @@ class PasaffeWindow(Window):
             self.database = self.settings.get_string('database-path')
         else:
             self.database = database
+        self.default_database = database is None
+
+        self.set_save_status(False)
 
         self.settings = Gio.Settings.new("net.launchpad.pasaffe")
         self.settings.connect('changed', self.on_preferences_changed)
@@ -217,19 +216,19 @@ class PasaffeWindow(Window):
     def create_folders(self, folders):
         parent = None
 
-        if folders is None or len(folders) == 0:
+        if not folders:
             return None
 
         node = self.ui.liststore1.get_iter_first()
 
         for folder in folders:
-            if len(folder) == 0:
+            if not folder:
                 return parent
             found = False
             while node is not None and not found:
                 if (self.ui.liststore1.get_value(node, 1) == folder) and \
                    ("pasaffe_treenode." in self.ui.liststore1.get_value(
-                        node, 2)):
+                           node, 2)):
                     found = True
                     parent = node
                     if self.ui.liststore1.iter_has_child(node):
@@ -249,9 +248,9 @@ class PasaffeWindow(Window):
 
     def _fixup_folders(self, folder_list):
         if folder_list:
-            return [_("[Untitled]") if x=="" else x for x in folder_list]
-        else:
-            return None
+            return [_("[Untitled]") if x == "" else x for x in folder_list]
+
+        return None
 
     def display_entries(self):
         entries = []
@@ -281,7 +280,7 @@ class PasaffeWindow(Window):
             parent = self.create_folders(record.path)
             if record.name != "":
                 self.ui.liststore1.append(parent,
-                                          ["gtk-file",
+                                          ["text-x-generic-symbolic",
                                            record.name,
                                            record.uuid])
         self.set_tree_expansion()
@@ -366,8 +365,8 @@ class PasaffeWindow(Window):
 
         self.passfile.set_tree_status(expansion_status)
 
-    def drag_data_received_data(self, treeview, context, x, y, selection,
-                                info, etime):
+    def drag_data_received_data(self, treeview, _context, x, y, _selection,
+                                _info, _etime):
         sourcemodel, sourceiter = treeview.get_selection().get_selected()
         source_uuid = sourcemodel.get_value(sourceiter, 2)
 
@@ -438,7 +437,7 @@ class PasaffeWindow(Window):
     def goto_uuid(self, uuid):
         item = self.search_uuid(uuid)
 
-        if (item is not None):
+        if item is not None:
             treemodel = self.ui.treeview1.get_model()
 
             # See if we need to expand some folders
@@ -455,7 +454,7 @@ class PasaffeWindow(Window):
 
     def goto_folder(self, folders):
         item = self.search_folder(folders)
-        if (item is not None):
+        if item is not None:
             self.ui.treeview1.get_selection().select_iter(item)
             self.display_folder(self.ui.liststore1.get_value(item, 1))
             path = self.ui.treeview1.get_model().get_path(item)
@@ -477,19 +476,19 @@ class PasaffeWindow(Window):
     def search_folder(self, folders):
         parent = None
 
-        if folders is None or len(folders) == 0:
+        if not folders:
             return None
 
         node = self.ui.liststore1.get_iter_first()
 
         for folder in folders:
-            if len(folder) == 0:
+            if not folder:
                 return parent
             found = False
             while node is not None and not found:
                 if (self.ui.liststore1.get_value(node, 1) == folder) and \
                    ("pasaffe_treenode." in self.ui.liststore1.get_value(
-                       node, 2)):
+                           node, 2)):
                     found = True
                     parent = node
                     if self.ui.liststore1.iter_has_child(node):
@@ -546,7 +545,6 @@ class PasaffeWindow(Window):
                 ttt.lookup('url'))
             data_buffer.insert(data_buffer.get_end_iter(), "\n\n")
 
-        contents = ''
         if show_secrets is False and \
            self.settings.get_boolean('only-passwords-are-secret') is False \
            and self.settings.get_boolean('visible-secrets') is False:
@@ -690,7 +688,7 @@ class PasaffeWindow(Window):
             itera = textview.get_iter_at_location(loc_x, loc_y)
             tags = itera.get_tags()
         except AttributeError:
-            (over, itera) = textview.get_iter_at_location(loc_x, loc_y)
+            (_over, itera) = textview.get_iter_at_location(loc_x, loc_y)
             tags = itera.get_tags()
 
         cursor = Gdk.Cursor.new(Gdk.CursorType.XTERM)
@@ -744,7 +742,11 @@ class PasaffeWindow(Window):
                 path, col, _cellx, _celly = pthinfo
                 treeview.grab_focus()
                 treeview.set_cursor(path, col, 0)
-                self.ui.menu_popup.popup(None, None, None, None, 3, event_time)
+
+                if not Gtk.check_version(3, 22, 0):
+                    self.ui.menu_popup.popup_at_pointer(event)
+                else:
+                    self.ui.menu_popup.popup(None, None, None, None, 3, event_time)
 
     def add_entry(self):
         self.disable_idle_timeout()
@@ -799,7 +801,7 @@ class PasaffeWindow(Window):
         # TODO: make sure folder name is unique in same level
 
         new_iter = self.ui.liststore1.append(treeiter,
-                                             ['gtk-directory',
+                                             ['inode-directory-symbolic',
                                               _('New Folder'),
                                               "pasaffe_treenode.New Folder"])
         if treeiter is not None:
@@ -851,7 +853,8 @@ class PasaffeWindow(Window):
 
             information = \
                 _('<big><b>Are you sure you wish to'
-                  ' remove "%s"?</b></big>\n\n') % entry_name
+                  ' remove "%s"?</b></big>\n\n') % \
+                    GLib.markup_escape_text(entry_name)
             information += _('Contents of the entry will be lost.\n')
 
             info_dialog = Gtk.MessageDialog(
@@ -873,7 +876,8 @@ class PasaffeWindow(Window):
 
             information = \
                 _('<big><b>Are you sure you wish'
-                  ' to remove folder "%s"?</b></big>\n\n') % folder_name
+                  ' to remove folder "%s"?</b></big>\n\n') % \
+                    GLib.markup_escape_text(folder_name)
             information += _('All entries in this folder will be lost.\n')
 
             info_dialog = Gtk.MessageDialog(
@@ -937,7 +941,7 @@ class PasaffeWindow(Window):
             self.editdetails_dialog = self.EditDetailsDialog()
             if new_entry is True:
                 title = self.editdetails_dialog.builder.get_object('title')
-                title.set_markup("<big><b>New entry</b></big>")
+                title.set_markup(_("<big><b>New entry</b></big>"))
 
             for record_type, widget_name in list(record_dict.items()):
                 # Handle folders separately
@@ -958,11 +962,11 @@ class PasaffeWindow(Window):
                 elif record_type == 3:
                     self.editdetails_dialog.builder.get_object(
                         widget_name).set_text(
-                        self.passfile.get_title(entry_uuid))
+                            self.passfile.get_title(entry_uuid))
                 elif record_type in self.passfile.records[entry_uuid]:
                     self.editdetails_dialog.builder.get_object(
                         widget_name).set_text(
-                        self.passfile.records[entry_uuid][record_type])
+                            self.passfile.records[entry_uuid][record_type])
 
             self.set_entry_window_size()
             self.editdetails_dialog.set_transient_for(self)
@@ -987,10 +991,10 @@ class PasaffeWindow(Window):
                     elif record_type == 5:
                         new_value = self.editdetails_dialog.builder.get_object(
                             widget_name).get_text(
-                            self.editdetails_dialog.builder.get_object(
-                                widget_name).get_start_iter(),
-                            self.editdetails_dialog.builder.get_object(
-                                widget_name).get_end_iter(), True)
+                                self.editdetails_dialog.builder.get_object(
+                                    widget_name).get_start_iter(),
+                                self.editdetails_dialog.builder.get_object(
+                                    widget_name).get_end_iter(), True)
                     else:
                         new_value = self.editdetails_dialog.builder.get_object(
                             widget_name).get_text()
@@ -1062,7 +1066,7 @@ class PasaffeWindow(Window):
 
             if new_folder is True:
                 title = self.editfolder_dialog.builder.get_object('title')
-                title.set_markup("<big><b>New folder</b></big>")
+                title.set_markup(_("<big><b>New folder</b></big>"))
 
             folder_name = treemodel.get_value(treeiter, 1)
             if folder_name == _("[Untitled]"):
@@ -1351,8 +1355,8 @@ class PasaffeWindow(Window):
         self.lock_screen()
 
     def on_mnu_info_activate(self, _menuitem):
-        information = _('<big><b>Database Information</b></big>\n\n')
-        information += _('Number of entries: %s\n') % \
+        header = _('<big><b>Database Information</b></big>\n\n')
+        information = _('Number of entries: %s\n') % \
             len(self.passfile.records)
         information += '\n'
         if self.passfile.get_saved_name():
@@ -1371,6 +1375,7 @@ class PasaffeWindow(Window):
                 self.passfile.get_saved_application()
         information += '\n'
         information += _('Database location:\n%s\n') % self.database
+        information = header + GLib.markup_escape_text(information)
 
         info_dialog = Gtk.MessageDialog(transient_for=self,
                                         modal=True,
@@ -1517,7 +1522,7 @@ class PasaffeWindow(Window):
         self.is_locked = False
         self.set_idle_timeout()
 
-    def on_lock_quit_button_clicked(self, button):
+    def on_lock_quit_button_clicked(self, _button):
         if self.save_warning() is False:
             Gtk.main_quit()
             return
@@ -1656,16 +1661,19 @@ class PasaffeWindow(Window):
             self.ui.mnu_display_secrets.set_sensitive(True)
             self.ui.display_secrets.set_sensitive(True)
 
-    def set_save_status(self, needed=False):
+    def _set_title(self):
+        prefix = ""
+        if not self.default_database:
+            prefix = "%s - " % os.path.basename(self.database)
+        self.set_title("%s%sPasaffe" % (
+            prefix,
+            "*" if self.needs_saving else ""))
+
+    def set_save_status(self, needed):
         self.needs_saving = needed
-        if needed is True:
-            self.set_title("*Pasaffe")
-            self.ui.save.set_sensitive(True)
-            self.ui.mnu_save.set_sensitive(True)
-        else:
-            self.set_title("Pasaffe")
-            self.ui.save.set_sensitive(False)
-            self.ui.mnu_save.set_sensitive(False)
+        self.ui.save.set_sensitive(needed)
+        self.ui.mnu_save.set_sensitive(needed)
+        self._set_title()
 
     def get_save_status(self):
         return self.needs_saving
