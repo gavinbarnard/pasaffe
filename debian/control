@@ -1,7 +1,8 @@
 Source: pasaffe
 Section: python
-Priority: extra
-Build-Depends: debhelper (>= 8),
+Priority: optional
+Build-Depends: debhelper-compat (= 12),
+ dh-python,
  dh-translations,
  gir1.2-gtk-3.0,
  python3,
@@ -10,7 +11,7 @@ Build-Depends: debhelper (>= 8),
  python3-unidecode
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 XSBC-Original-Maintainer: Marc Deslauriers <marc.deslauriers@canonical.com>
-Standards-Version: 3.9.5
+Standards-Version: 4.4.0
 
 Package: pasaffe
 Architecture: all

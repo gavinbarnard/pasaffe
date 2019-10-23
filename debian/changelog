@@ -1,3 +1,31 @@
+pasaffe (0.54-0ubuntu1) focal; urgency=medium
+
+  * New upstream release
+    - Clear the clipboard when locking or closing the window.
+      Do not clear clipboard content from another program.
+    - Make Double-click behaviour configurable.
+    - Make displaying usernames in tree configurable.
+    - Password field is now displayed in a monospaced font to prevent
+      certain characters from looking the same.
+    - Double click on tree item toggles folder expanded state or copies
+      password.
+    - On enter, toggles folder expanded state or opens password entry for
+      edit.
+    - Navigate tree with left & right key presses: toggling expanded state
+      or going to parent / child.
+    - Fixed bug in set_tree_expansion which could result in only partial
+      expansion of the tree.
+    - goto_uuid now also correctly displays folders.
+    - Show copy menu items first in the tree item context menu
+    - Display username in the tree view item title
+    - Fix copy truncates password containing pound sign (LP: #1819141)
+  * debian/control: switch debhelper Build-Depends to debhelper-compat,
+    add dh-python Build-Depends, updated to standards-version 4.4.0,
+    changed Priority to optional.
+  * debian/compat: removed, no longer needed.
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Wed, 23 Oct 2019 08:13:32 -0400
+
 pasaffe (0.51-0ubuntu1) bionic; urgency=medium
 
   * New upstream release

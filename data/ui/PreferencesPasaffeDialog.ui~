@@ -398,7 +398,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkComboBox" id="double-click">
+                      <object class="GtkComboBox" id="tree-expansion1">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="model">liststore2</property>
@@ -425,7 +425,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkCheckButton" id="display-usernames">
+                  <object class="GtkCheckButton" id="display-usernames1">
                     <property name="label" translatable="yes">Display usernames in tree</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>

@@ -1,3 +1,244 @@
+2019-10-23  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.54
+
+2019-09-26  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/fr.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2019-09-25  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/ko.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2019-09-24  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	NEWS: wrap some long lines
+
+2019-09-24  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* po/pasaffe.pot:
+
+	regenerate po
+
+2019-09-24  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* pasaffe/PasaffeWindow.py:
+
+	display password fields in a monospace font
+
+2019-09-24  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* data/glib-2.0/schemas/net.launchpad.pasaffe.gschema.xml:
+	* data/ui/PreferencesPasaffeDialog.ui:
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe/PreferencesPasaffeDialog.py:
+
+	Added configuration options for double-click behaviour and
+	displaying usernames in the tree.
+
+2019-09-24  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* data/ui/PasaffeWindow.ui:
+	* pasaffe/PasaffeWindow.py:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	Merged branch from Christophe Kamphaus. Thanks!
+	
+	Christophe Kamphaus 2019-09-23 Added the clipboard clearing feature to t...
+	Christophe Kamphaus 2019-09-23 Clear clipboard when locking or closi...
+	Christophe Kamphaus 2019-09-22 prepare for next release
+	Christophe Kamphaus 2019-09-22 release 0.53
+	Christophe Kamphaus 2019-09-22 Updated NEWS for next release
+	Christophe Kamphaus 2019-09-22 Right key press goes to first child o...
+	Christophe Kamphaus 2019-09-22 More robust folder expansion & collapse
+	Christophe Kamphaus 2019-09-22 On enter, open password entry for edit
+	Christophe Kamphaus 2019-09-22 Double click on tree item toggles fol...
+	Christophe Kamphaus 2019-09-19 prepare for next release
+	Christophe Kamphaus 2019-09-19 release 0.52
+	Christophe Kamphaus 2019-09-19 Added enhancements of last 2 commits ...
+	Christophe Kamphaus 2019-09-19 Display username in the tree view ite...
+	Christophe Kamphaus 2019-09-19 Show copy menu items first in entry c...
+	Christophe Kamphaus 2019-09-19 Added change brought by merging lp:~a...
+	Christophe Kamphaus 2019-09-19 [merge] Merged branch lp:~adrian-wilk...
+	Adrian Wilkins 2019-04-16 Unicode multibyte chars no longer cause sh...
+
+2019-09-23  Christophe Kamphaus  <christophe.kamphaus@gmail.com>
+
+	* NEWS:
+
+	Added the clipboard clearing feature to the NEWS
+
+2019-09-23  Christophe Kamphaus  <christophe.kamphaus@gmail.com>
+
+	* data/ui/PasaffeWindow.ui:
+	* pasaffe/PasaffeWindow.py:
+
+	Clear clipboard when locking or closing the window.
+	Do not clear the clipboard if the user has copied
+	something in another program.
+
+2019-09-22  Christophe Kamphaus  <christophe.kamphaus@gmail.com>
+
+	* NEWS:
+
+	prepare for next release
+
+2019-09-22  Christophe Kamphaus  <christophe.kamphaus@gmail.com>
+
+	* NEWS:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.53
+
+2019-09-22  Christophe Kamphaus  <christophe.kamphaus@gmail.com>
+
+	* NEWS:
+
+	Updated NEWS for next release
+
+2019-09-22  Christophe Kamphaus  <christophe.kamphaus@gmail.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	Right key press goes to first child of expanded folder.
+	Using set_cursor instead of select_iter when going to folder or uuid,
+	because this results in the correct behavior when toggling folder expansion.
+	goto_uuid now also correctly displays folders
+
+2019-09-22  Christophe Kamphaus  <christophe.kamphaus@gmail.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	More robust folder expansion & collapse
+	Left key press will collapse a folder or go to the parent folder
+	Right key press will expand a folder
+
+2019-09-22  Christophe Kamphaus  <christophe.kamphaus@gmail.com>
+
+	* data/ui/PasaffeWindow.ui:
+	* pasaffe/PasaffeWindow.py:
+
+	On enter, open password entry for edit
+
+2019-09-22  Christophe Kamphaus  <christophe.kamphaus@gmail.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	Double click on tree item toggles folder expanded state and copies password.
+
+2019-09-19  Christophe Kamphaus  <christophe.kamphaus@gmail.com>
+
+	* NEWS:
+
+	prepare for next release
+
+2019-09-19  Christophe Kamphaus  <christophe.kamphaus@gmail.com>
+
+	* NEWS:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.52
+
+2019-09-19  Christophe Kamphaus  <christophe.kamphaus@gmail.com>
+
+	* NEWS:
+
+	Added enhancements of last 2 commits to the news
+	
+	* Menu items re-ordering in the tree context menu
+	* Display username in the tree view item title
+
+2019-09-19  Christophe Kamphaus  <christophe.kamphaus@gmail.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	Display username in the tree view item title
+	
+	Updates of the username also trigger a refresh of the tree
+
+2019-09-19  Christophe Kamphaus  <christophe.kamphaus@gmail.com>
+
+	* data/ui/PasaffeWindow.ui:
+
+	Show copy menu items first in entry context menu
+
+2019-09-19  Christophe Kamphaus  <christophe.kamphaus@gmail.com>
+
+	* NEWS:
+
+	Added change brought by merging lp:~adrian-wilkins/pasaffe/fix-unicode-short-buffer into the news file
+
+2019-09-19  Christophe Kamphaus  <christophe.kamphaus@gmail.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	Merged branch lp:~adrian-wilkins/pasaffe/fix-unicode-short-buffer
+	
+	This fixes https://bugs.launchpad.net/pasaffe/+bug/1819141
+
+2019-04-16  Adrian Wilkins  <adrian.wilkins@gmail.com>
+
+	* pasaffe/PasaffeWindow.py:
+
+	Unicode multibyte chars no longer cause short buffers
+
+2018-12-09  Launchpad Translations on behalf of mdeslaur
+
+	* po/fr.po:
+
+	Launchpad automatic translations update.
+
+2018-12-08  Launchpad Translations on behalf of mdeslaur
+
+	* po/fr.po:
+
+	Launchpad automatic translations update.
+
+2017-12-21  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/ko.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2017-12-20  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	prepare for next release
+
 2017-12-20  Marc Deslauriers  <marc.deslauriers@canonical.com>
 
 	* NEWS:

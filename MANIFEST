@@ -27,6 +27,7 @@ data/ui/NewPasswordDialog.ui
 data/ui/PasaffeWindow.ui
 data/ui/PasswordEntryDialog.ui
 data/ui/PreferencesPasaffeDialog.ui
+data/ui/PreferencesPasaffeDialog.ui~
 data/ui/SaveChangesDialog.ui
 data/ui/about_pasaffe_dialog.xml
 data/ui/edit_details_dialog.xml
