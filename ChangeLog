@@ -1,3 +1,119 @@
+2019-11-15  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.55
+
+2019-11-15  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* README.development:
+
+	README.development: pytest-3, not pyunit-3
+
+2019-11-05  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/ko.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2019-11-01  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* README.development:
+
+	added README for developers
+
+2019-11-01  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* tests/autopilot:
+	* tests/autopilot/pasaffe:
+	* tests/autopilot/pasaffe/__init__.py:
+	* tests/autopilot/pasaffe/tests:
+	* tests/autopilot/pasaffe/tests/__init__.py:
+	* tests/autopilot/pasaffe/tests/test_pasaffe.py:
+	* tests/test_example.py:
+	* NEWS:
+	* pasaffe/AboutPasaffeDialog.py:
+	* pasaffe/EditDetailsDialog.py:
+	* pasaffe/EditFolderDialog.py:
+	* pasaffe/NewDatabaseDialog.py:
+	* pasaffe/NewPasswordDialog.py:
+	* pasaffe/PasaffeWindow.py:
+	* pasaffe/PasswordEntryDialog.py:
+	* pasaffe/PreferencesPasaffeDialog.py:
+	* pasaffe/SaveChangesDialog.py:
+	* pasaffe/__init__.py:
+	* pasaffe_lib/AboutDialog.py:
+	* pasaffe_lib/Builder.py:
+	* pasaffe_lib/PreferencesDialog.py:
+	* pasaffe_lib/Window.py:
+	* pasaffe_lib/__init__.py:
+	* pasaffe_lib/blowfish.py:
+	* pasaffe_lib/figaroxml.py:
+	* pasaffe_lib/gpassfile.py:
+	* pasaffe_lib/helpers.py:
+	* pasaffe_lib/helpersgui.py:
+	* pasaffe_lib/keepassx.py:
+	* pasaffe_lib/pasaffeconfig.py:
+	* pasaffe_lib/pytwofish.py:
+	* pasaffe_lib/readdb.py:
+	* setup.py:
+	* tests/generate_pasaffe_db.py:
+	* tests/test_dump_db.py:
+	* tests/test_figaro_079.py:
+	* tests/test_figaro_import.py:
+	* tests/test_gpass_050.py:
+	* tests/test_gpass_import.py:
+	* tests/test_helpers.py:
+	* tests/test_import_entry.py:
+	* tests/test_keepass2_224.py:
+	* tests/test_keepass2_import.py:
+	* tests/test_keepassx_043.py:
+	* tests/test_keepassx_import.py:
+	* tests/test_lint.py:
+	* tests/test_pasaffe_025.py:
+	* tests/test_passwdsafe_510.py:
+	* tests/test_pw_gorilla_15363.py:
+	* tests/test_pw_gorilla_1537.py:
+	* tests/test_pwsafe_331.py:
+	* tests/test_readdb.py:
+
+	do some pep 8 cleanup
+
+2019-10-28  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* pasaffe/PasaffeWindow.py:
+
+	Display passwords in right pane in a mono font
+
+2019-10-24  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/ko.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2019-10-23  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	prepare for next release
+
 2019-10-23  Marc Deslauriers  <marc.deslauriers@canonical.com>
 
 	* NEWS:

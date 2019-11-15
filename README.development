@@ -1,0 +1,8 @@
+Please run the following before submitting fixes:
+
+Test suite:
+pytest-3
+
+Code checker:
+flake8
+

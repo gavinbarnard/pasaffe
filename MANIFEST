@@ -6,6 +6,7 @@ ChangeLog
 MANIFEST
 NEWS
 README
+README.development
 TODO
 do-release
 pasaffe.desktop.in
@@ -27,7 +28,6 @@ data/ui/NewPasswordDialog.ui
 data/ui/PasaffeWindow.ui
 data/ui/PasswordEntryDialog.ui
 data/ui/PreferencesPasaffeDialog.ui
-data/ui/PreferencesPasaffeDialog.ui~
 data/ui/SaveChangesDialog.ui
 data/ui/about_pasaffe_dialog.xml
 data/ui/edit_details_dialog.xml
@@ -92,7 +92,6 @@ po/pasaffe.pot
 po/ru.po
 tests/generate_pasaffe_db.py
 tests/test_dump_db.py
-tests/test_example.py
 tests/test_figaro_079.py
 tests/test_figaro_import.py
 tests/test_gpass_050.py
@@ -111,9 +110,6 @@ tests/test_pw_gorilla_15363.py
 tests/test_pw_gorilla_1537.py
 tests/test_pwsafe_331.py
 tests/test_readdb.py
-tests/autopilot/pasaffe/__init__.py
-tests/autopilot/pasaffe/tests/__init__.py
-tests/autopilot/pasaffe/tests/test_pasaffe.py
 tests/databases/README
 tests/databases/figaro-079.xml
 tests/databases/gpass-050.gps
