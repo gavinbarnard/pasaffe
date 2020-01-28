@@ -1,3 +1,41 @@
+2020-01-28  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.56
+
+2020-01-28  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* pasaffe_lib/helpers.py:
+	* pasaffe_lib/readdb.py:
+	* setup.py:
+	* tests/test_helpers.py:
+	* tests/test_readdb.py:
+
+	fixed warnings with newer version of flake8
+
+2019-11-16  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/ko.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2019-11-15  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	prepare for next release
+
 2019-11-15  Marc Deslauriers  <marc.deslauriers@canonical.com>
 
 	* NEWS:

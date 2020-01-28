@@ -1,3 +1,10 @@
+pasaffe (0.56-0ubuntu1) focal; urgency=medium
+
+  * New upstream release
+    - Fix some warnings with a newer version of flake8 (LP: #1860613)
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Tue, 28 Jan 2020 14:23:41 -0500
+
 pasaffe (0.55-0ubuntu1) focal; urgency=medium
 
   * New upstream release

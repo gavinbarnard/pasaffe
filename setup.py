@@ -49,7 +49,7 @@ def update_config(values={}):
         fout.close()
         fin.close()
         os.rename(fout.name, fin.name)
-    except (OSError, IOError) as e:
+    except (OSError, IOError):
         print("ERROR: Can't find pasaffe_lib/pasaffeconfig.py")
         sys.exit(1)
     return oldvalues
@@ -78,7 +78,7 @@ class InstallAndUpdateDataDirectory(DistUtilsExtra.auto.install_auto):
 
 DistUtilsExtra.auto.setup(
     name='pasaffe',
-    version='0.55',
+    version='0.56',
     license='GPL-3',
     author='Marc Deslauriers',
     author_email='marc.deslauriers@canonical.com',
