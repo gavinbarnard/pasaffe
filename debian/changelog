@@ -1,3 +1,11 @@
+pasaffe (0.57-0ubuntu1) hirsute; urgency=medium
+
+  * New upstream release
+    - Fixed deprecated ElementTree API (LP: #1907304)
+    - Fix some deprecation warnings in the test suite
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Mon, 15 Mar 2021 09:31:36 -0400
+
 pasaffe (0.56-0ubuntu1) focal; urgency=medium
 
   * New upstream release

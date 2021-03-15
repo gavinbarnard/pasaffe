@@ -1,6 +1,14 @@
 This file summarizes the major and interesting changes for each release.
 For a detailed list of changes, please see ChangeLog.
 
+0.57 (2020-12-11)
+
+ * Enhancements:
+
+ * Bug fixes:
+   - Fixed deprecated ElementTree API (LP: #1907304)
+   - Fix some deprecation warnings in the test suite
+
 0.56 (2020-01-28)
 
  * Enhancements:

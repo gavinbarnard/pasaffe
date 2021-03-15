@@ -1,3 +1,50 @@
+2020-12-11  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* po/pasaffe.pot:
+	* setup.py:
+
+	release 0.57
+
+2020-12-11  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* tests/test_helpers.py:
+
+	Fix some deprecation warnings in the test suite
+
+2020-12-11  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+	* pasaffe_lib/Builder.py:
+
+	Fixed deprecated ElementTree API (LP: #1907304)
+
+2020-05-07  Launchpad Translations on behalf of mdeslaur
+
+	* po/fr.po:
+
+	Launchpad automatic translations update.
+
+2020-01-29  Launchpad Translations on behalf of mdeslaur
+
+	* po/de.po:
+	* po/en_GB.po:
+	* po/es.po:
+	* po/fr.po:
+	* po/it.po:
+	* po/ko.po:
+	* po/nl.po:
+	* po/ru.po:
+
+	Launchpad automatic translations update.
+
+2020-01-28  Marc Deslauriers  <marc.deslauriers@canonical.com>
+
+	* NEWS:
+
+	prepare for next release
+
 2020-01-28  Marc Deslauriers  <marc.deslauriers@canonical.com>
 
 	* NEWS:
