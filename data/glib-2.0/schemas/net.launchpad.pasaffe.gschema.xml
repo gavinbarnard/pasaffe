@@ -41,6 +41,11 @@
       <summary>Secrets should be visible by default</summary>
       <description>When this is true, secrets are visible in the details pane without user intervention.</description>
     </key>
+    <key name="visible-notes" type="b">
+      <default>true</default>
+      <summary>Notes will not be visible on the details pane</summary>
+      <description>When this is true, notes will not be visible in the details pane, and only visible via edit.</description>
+    </key>
     <key name="auto-save" type="b">
       <default>false</default>
       <summary>Automatically save changes</summary>

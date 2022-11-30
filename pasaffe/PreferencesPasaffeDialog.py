@@ -33,6 +33,9 @@ class PreferencesPasaffeDialog(PreferencesDialog):
         widget = self.builder.get_object('visible-secrets')
         settings.bind("visible-secrets", widget, "active",
                       Gio.SettingsBindFlags.DEFAULT)
+        widget = self.builder.get_object('visible-notes')
+        settings.bind("visible-notes", widget, "active",
+                      Gio.SettingsBindFlags.DEFAULT)
         widget = self.builder.get_object('only-passwords-are-secret')
         settings.bind("only-passwords-are-secret", widget, "active",
                       Gio.SettingsBindFlags.DEFAULT)

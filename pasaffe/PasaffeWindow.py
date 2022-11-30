@@ -590,8 +590,12 @@ class PasaffeWindow(Window):
                 data_buffer.insert_with_tags(data_buffer.get_end_iter(),
                                              _("Notes:") + "\n",
                                              ttt.lookup('section'))
-                data_buffer.insert(data_buffer.get_end_iter(),
-                                   self.passfile.get_notes(entry_uuid))
+                if self.settings.get_boolean('visible-notes') is True:
+                    data_buffer.insert(data_buffer.get_end_iter(),
+                                       self.passfile.get_notes(entry_uuid))
+                else:
+                    data_buffer.insert(data_buffer.get_end_iter(),
+                                        "-- Disabled -- Edit entry to view")
                 data_buffer.insert(data_buffer.get_end_iter(), "\n\n")
 
             # modification time
